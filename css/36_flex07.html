@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                width: 200px;
+                height: 150px;
+                display: flex;
+                flex-flow: row wrap;
+                margin: 30px;
+                background-color: darkgrey;
+            }
+
+            .box {
+                width: 80px;
+                background-color: darkcyan;
+                border: 1px solid #fff;
+            }
+
+            #container1 {
+                align-content: flex-start;
+            }
+
+            #container2 {
+                align-content: flex-end;
+            }
+
+            #container3 {
+                align-content: center;
+            }
+
+            #container4 {
+                align-content: space-around;
+            }
+
+            #container5 {
+                align-content: space-between;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="container1">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+        <div class="container" id="container2">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+        <div class="container" id="container3">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+        <div class="container" id="container4">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+        <div class="container" id="container5">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+    </body>
+</html>

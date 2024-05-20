@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                width: 300px;
+                height: 300px;
+                background-color: blue;
+                position: relative;
+            }
+
+            .container .item {
+                background-color: salmon;
+                border: 4px dashed red;
+                font-size: 50px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .container .item:nth-child(1) {
+                /* z-index: 10; */
+            }
+
+            .container .item:nth-child(2) {
+                position: absolute;
+                top: 50px;
+                left: 50px;
+                z-index: 2;
+            }
+            .container .item:nth-child(3) {
+                position: absolute;
+                z-index: 2;
+                top: 100px;
+                left: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 
+            요소에 쌓이는 순서(stack)
+                어떤 요소가 사용자가 보는 방향에 더 가깝게 쌓이는지 결정
+                1. 요소에 position 속성의 값이 있는 경우 위에 쌓인다. (position: static 제외)
+                2. 1번 조건이 같으면, z-index 속성의 숫자가 높을 수록 더 위에 쌓인다.
+                3. 1, 2번 조건이 같으면 나중에 쓰여진 요소가 더 위에 쌓인다.
+         -->
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+    </body>
+</html>

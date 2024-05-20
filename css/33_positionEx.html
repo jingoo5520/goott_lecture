@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Position + background img</title>
+        <style>
+            #contents {
+                background: url(img/background.png) no-repeat;
+                width: 700px;
+                height: 400px;
+                position: relative;
+                background-size: contain;
+            }
+
+            h1 {
+                color: white;
+                position: absolute;
+                top: 70px;
+                left: 30px;
+            }
+
+            h2 {
+                color: white;
+                position: absolute;
+                top: 120px;
+                left: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contents">
+            <h1>가정의 달</h1>
+            <h2>5월의 여행지</h2>
+        </div>
+    </body>
+</html>

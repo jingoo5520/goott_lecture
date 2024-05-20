@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .wrap {
+                width: 500px;
+                height: 1500px;
+                background-color: slateblue;
+                position: relative;
+            }
+
+            .container {
+                width: 300px;
+                height: 300px;
+                background-color: cornflowerblue;
+                /* position: relative; */
+            }
+
+            .container .item {
+                background-color: salmon;
+                border: 4px dashed red;
+                font-size: 50px;
+            }
+
+            .container .item:first-child {
+                width: 100px;
+                height: 100px;
+            }
+
+            .container .item:nth-child(2) {
+                width: 140px;
+                height: 70px;
+                /* relative 속성의 부모를 기준으로 배치 */
+                /* 위로 가장 가까운 부모를 찾음 */
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+
+            .container .item:nth-child(3) {
+                width: 70px;
+                height: 120px;
+            }
+
+            #fixed {
+                width: 100px;
+                height: 100px;
+                background-color: blueviolet;
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 요소를 화면의 원하는 곳에 배치하려 할 때 요소의 기준위치를 잡아주는 속성 -->
+        <!-- 
+            static: 문서의 흐름에 맞춰 배치(default)
+            relative: 자기 위치를 기준으로 배치
+            absolute: 기준 요소를 relative로 잡은 상위 요소를 기준으로 위치를 지정해서 배치
+            fixed: 브라우저 창 기준으로 지정해 배치
+        -->
+        <div class="wrap">
+            <div class="container">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+                <p id="fixed">top</p>
+            </div>
+        </div>
+    </body>
+</html>

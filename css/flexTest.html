@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>flex 연습해보기</title>
+        <script
+            src="https://kit.fontawesome.com/02b6277f46.js"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            i {
+                font-size: 40px;
+            }
+
+            .board {
+                width: 500px;
+                height: 200px;
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .menu {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .menuItem {
+                width: 100px;
+                height: 100px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="board">
+            <div class="menu">
+                <div class="menuItem">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </div>
+                <div class="menuItem">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </div>
+                <div class="menuItem">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My</span>
+                </div>
+                <div class="menuItem">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Call</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

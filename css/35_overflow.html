@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Overflow 속성</title>
+        <style>
+            div.overflow {
+                width: 200px;
+                height: 200px;
+                background-color: yellow;
+                /* 
+                    auto
+                    hidden
+                */
+                overflow: auto;
+            }
+
+            div.ellipse {
+                width: 200px;
+                height: 200px;
+                background-color: orange;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: pre;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="overflow">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            sunt excepturi quos, rerum pariatur autem consequuntur maiores
+            voluptatum ipsam dolores quidem praesentium, enim ipsa omnis
+            voluptates. Vero beatae praesentium velit? Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Doloribus quas voluptates sint
+            quasi, hic natus ut ipsam tempore! Similique reprehenderit et
+            suscipit officiis molestiae? Illo laudantium officia debitis ab
+            cumque? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Atque a, architecto eos, corporis distinctio dolor quia eveniet
+            molestias vitae aspernatur accusantium voluptatibus debitis expedita
+            impedit quas sunt. Sint, temporibus quisquam.
+        </div>
+        <div class="ellipse">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            sunt excepturi quos, rerum pariatur autem consequuntur maiores
+            voluptatum ipsam dolores quidem praesentium, enim ipsa omnis
+            voluptates. Vero beatae praesentium velit? Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Doloribus quas voluptates sint
+            quasi, hic natus ut ipsam tempore! Similique reprehenderit et
+            suscipit officiis molestiae? Illo laudantium officia debitis ab
+            cumque? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Atque a, architecto eos, corporis distinctio dolor quia eveniet
+            molestias vitae aspernatur accusantium voluptatibus debitis expedita
+            impedit quas sunt. Sint, temporibus quisquam.
+        </div>
+    </body>
+</html>
