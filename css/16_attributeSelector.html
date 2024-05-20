@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>속성 선택자</title>
+        <style>
+            ul {
+                /* 리스트 bullet 설정 */
+                list-style: none;
+            }
+
+            li {
+                width: 100px;
+                display: inline-block;
+            }
+
+            li a {
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            /* 속성 선택자 */
+            a[href] {
+                background-color: yellow;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 한 줄씩 차지하는 요소를 block 요소라 함 -->
+        <!-- inline 요소도 있음 -->
+        <ul>
+            <li><a>메인 메뉴: </a></li>
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li><a href="#">메뉴4</a></li>
+        </ul>
+    </body>
+</html>

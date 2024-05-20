@@ -1,0 +1,8 @@
+@import url(mycss.css);
+
+p {
+    color: red;
+    font-size: 22px;
+    text-align: center;
+    border: 1px dotted red;
+}

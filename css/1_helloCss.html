@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <style>
+            p {
+                color: yellow;
+                font-size: 22px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS를 기술하는 3가지 방법</h1>
+        <p>Hello, CSS!</p>
+        <p>1. 외부 스타일 파일 링크</p>
+        <p>2. 내부 head - style 태그 작성</p>
+        <!-- inline 방식이 최우선 적용, 권유하지 않음, 코드 테스팅때만 사용 -->
+        <p style="color: red">3. inline 방식</p>
+        <p>4. 외부 스타일 파일에 또 다른 스타일 파일 링크도 가능</p>
+        <div>외부 스타일 파일에 있는 또 다른 외부의 스타일 파일 적용</div>
+        <!-- 
+            @import를 이용해 다른 css 파일과 연결 
+            구조
+            html
+                css1
+                    css2 
+            이 방법 역시 잘 사용되지 않음
+        -->
+    </body>
+</html>

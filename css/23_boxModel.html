@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>박스 모델</title>
+        <style>
+            div {
+                /* 
+                    박스 모델에 따라서 박스의 크기를 계산할 때 방식 지정
+                    box-sizing: border-box
+                        border영역까지의 박스크기를 width/height 설정
+                    box-sizing: content-box
+                        컨텐츠 영역만큼만 width/height 설정
+                 */
+                box-sizing: border-box;
+                width: 300px;
+                border: 15px solid green;
+                padding: 50px;
+                margin: 20px;
+                box-shadow: 5px 5px 15px blue;
+                /* 태그가 가질 수 있는 최대 width/height */
+                max-width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 
+            요소의 크기는 contents + border + padding + margin 영역의 합으로 구성된다
+
+         -->
+
+        <h1>아래의 div 크기를 계산해 보자구요</h1>
+        <div>CSS Box Model</div>
+        컨텐츠 + padding + border + margin
+    </body>
+</html>

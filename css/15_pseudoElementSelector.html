@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>가상(의사) 요소 선택자</title>
+        <style>
+            .box1::before {
+                content: "BEFORE";
+            }
+
+            .box2::after {
+                content: "AFTER";
+            }
+
+            p::first-line {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1">div-tag</div>
+        <div class="box2">div-tag</div>
+
+        <!-- lorem 입력시 의미없는 문자열 출력 -->
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+            cupiditate animi rem nihil, quod culpa itaque est ad modi.
+            Accusantium sunt dolor voluptate corrupti adipisci, tempore dicta
+            quam eum molestias! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+        </p>
+        <p>
+            Nam, debitis fugit! Quibusdam maiores commodi dolorem eligendi
+            adipisci, vitae, nisi possimus molestias sint recusandae, sequi
+            aliquam doloremque? Reprehenderit dicta recusandae soluta!
+        </p>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>복합 선택자</title>
+        <style>
+            /* 
+                일치 선택자
+                span 태그의 carrot 클래스 이름을 가진 컨텐트에만 적용
+            */
+            span.carrot {
+                color: orange;
+            }
+
+            div.carrot {
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>일치 선택자</h1>
+        <div>
+            <ul>
+                <li>사과</li>
+                <li>블루베리</li>
+                <li class="carrot">오렌지</li>
+            </ul>
+            <div>수박</div>
+            <p>토마토</p>
+            <span class="carrot">당근</span>
+        </div>
+    </body>
+</html>

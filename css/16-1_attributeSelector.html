@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>속성 선택자</title>
+        <style>
+            a {
+                text-decoration: none;
+            }
+
+            a[target="_blank"] {
+                padding-right: 20px;
+                background: url(img/icons/expend.png) no-repeat right;
+                background-size: 20px;
+            }
+
+            /* class가 딱 button 하나만 있는 경우만 적용 */
+            a[class="button"] {
+                color: red;
+            }
+
+            /* class에 other이 포함되어 있는 경우면 적용 */
+            a[class~="other"] {
+                color: blue;
+            }
+
+            /* href 속성 값에 "wiki"를 포함하는 태그에만 적용*/
+            a[href*="wiki"] {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <!-- a 태그 새탭에서 열기 -->
+            <!-- target='_blank' -->
+            <li><a href="https://namu.wiki/w/HTML" target="_blank">html</a></li>
+            <li><a href="">css</a></li>
+            <li><a class="button" href="">javaScript</a></li>
+
+            <li><a class="button other" href="">jquery</a></li>
+            <li><a class="button" href="">ajax</a></li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>text CSS</title>
+        <style>
+            .greeting {
+                /* 소문자화, 대문자화, 첫 음절마다 대문자화 등등 */
+                text-transform: uppercase;
+                /* 
+                    간 설정
+                    음수로 기존 자간보다 좁힐 수 있음
+                */
+                letter-spacing: 1px;
+                text-decoration: underline;
+            }
+
+            .text-left {
+                text-align: left;
+                letter-spacing: 2px;
+            }
+
+            .text-right {
+                text-align: right;
+                letter-spacing: 2px;
+                /* 단어 간격 */
+                word-spacing: 3px;
+                /* 줄 간격, 단위는 'em' */
+                line-height: 1em;
+                text-decoration: line-through;
+            }
+
+            .text-center {
+                text-align: center;
+
+                /* 크기는 대 소문자 형식인데 문자는 모두 대문자로 변경*/
+                font-variant: small-caps;
+            }
+
+            .text-justify {
+                /* 양쪽 끝 맞춤 */
+                text-align: justify;
+                /* 들여쓰기 */
+                text-indent: 15px;
+            }
+
+            /* HTML validator: 코드 검사 */
+        </style>
+    </head>
+    <body>
+        <div class="greeting">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+            perferendis consequuntur repellendus ut necessitatibus voluptatibus
+            ea, dolor architecto tempore ad culpa doloribus dolores fuga facilis
+            molestiae quia sint maxime eius.
+        </div>
+        <p class="text-left">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+            dicta a aperiam beatae impedit, repellendus voluptate doloribus iste
+            dolore vitae atque optio est nulla nesciunt, rerum quibusdam unde
+            nam? Delectus.
+        </p>
+        <p class="text-right">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+            dicta a aperiam beatae impedit, repellendus voluptate doloribus iste
+            dolore vitae atque optio est nulla nesciunt, rerum quibusdam unde
+            nam? Delectus.
+        </p>
+        <p class="text-center">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod nihil
+            facilis voluptas minus, totam accusantium sed esse, magnam laborum
+            veritatis officia officiis omnis. Quaerat velit consectetur ex, ut
+            possimus doloremque.
+        </p>
+        <!-- 
+            p.text-justify + tab 을 통해 text-justify 클래스를 가진 p 태그 생성
+            id는 #을 이용
+         -->
+        <p class="text-justify">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, autem
+            quibusdam recusandae doloribus ullam atque quas soluta aspernatur,
+            sint quos sed dicta qui dolore necessitatibus similique minus. Vel,
+            facilis nesciunt. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Tempore impedit quasi reprehenderit rem enim magni unde sunt
+            nulla sequi esse sit iusto molestias, debitis dicta dignissimos
+            commodi beatae. Animi, amet!
+        </p>
+    </body>
+</html>

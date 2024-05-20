@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>가상 요소 선택자</title>
+        <style>
+            h1::first-letter {
+                font-size: 40px;
+                color: hotpink;
+            }
+
+            li.new::after {
+                content: "NEW";
+                font-size: 10px;
+                background-color: red;
+                color: white;
+                padding: 2px 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>New Items</h1>
+            <ul>
+                <li class="new">Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li class="new">Item 4</li>
+            </ul>
+        </div>
+    </body>
+</html>

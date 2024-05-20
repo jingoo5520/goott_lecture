@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>VariousInputTags</title>
+        <script>
+            //JS 영역
+            function changePay(pay) {
+                console.log(pay.value);
+                document.getElementById("pay").innerHTML = pay.value;
+            }
+        </script>
+    </head>
+    <body>
+        <!-- action속성의 값은 form이 제출될 때 이동하는 페이지 -->
+        <form action="test.html" , method="get">
+            <div>
+                이름:
+                <input
+                    type="text"
+                    placeholder="이름을 입력하세요."
+                    maxlength="5"
+                    name="userName"
+                />
+            </div>
+            <div>
+                비밀번호:
+                <input
+                    type="password"
+                    placeholder="암호입력..."
+                    name="userPwd"
+                />
+            </div>
+            <!-- 여러 줄 텍스트 입력을 위한 태그 -->
+            <div>
+                메모:
+                <textarea cols="10" rows="4" name="memo"></textarea>
+            </div>
+            <!-- 중복 선택 가능 체크박스 -->
+            <!-- name 속성을 입력해야 주소창에서 데이터 확인 가능 -->
+            <div>
+                <fieldset>
+                    <legend>좋아하는 음식:</legend>
+                    <label for="favFood">짜장면</label
+                    ><input type="checkbox" name="favFood" id="짜장면" />
+                    <label for="favFood">김치찌개</label>
+                    <input type="checkbox" name="favFood" id="김치찌개" />
+                    <label for="favFood">라면</label>
+                    <input type="checkbox" name="favFood" id="라면" />
+                </fieldset>
+            </div>
+            <!-- 중복 선택 불가능 라디오 버튼 -->
+            <!-- name 속성이 같은 radio 타입의 input은 중복 선택 불가 -->
+            <div>
+                <fieldset>
+                    <legend>성별:</legend>
+                    <label for=""
+                        ><input
+                            type="radio"
+                            name="gender"
+                            value="man"
+                        />남성</label
+                    >
+                    <input type="radio" name="gender" value="woman" />여성
+                    <input type="radio" name="gender" value="none" />비공개
+                </fieldset>
+            </div>
+            <!-- 셀렉트 타입 -->
+            <div>
+                <!-- value값이 있다면 value값이, 없다면 선택지 그대로 제출됨 -->
+                <select name="comm">
+                    <option value="skt">SKT</option>
+                    <option value="kt">KT</option>
+                    <option value="lg">LG</option>
+                </select>
+            </div>
+
+            <!-- 히든 타입 -->
+            <div>
+                <input type="hidden" name="myHidden" value="10" />
+            </div>
+
+            <!-- 기타 타입들 -->
+            <div>생년월일: <input type="date" name="birth" /></div>
+            <div>이메일: <input type="email" name="email" /></div>
+            <!-- 이메일의 경우 백엔드로 데이터를 넘기기 전에 유효성 검사를 진행 -->
+            <!-- 보통 type="text"로 사용하고 따로 텍스트 유효성 검사를 함 -->
+
+            <div>파일 업로드: <input type="file" /></div>
+            <div>좋아하는 색상: <input type="color" /></div>
+            <div>나이: <input type="number" min="0" max="150" /></div>
+            <div>
+                희망 연봉:
+                <input
+                    type="range"
+                    min="3000"
+                    max="9000"
+                    step="100"
+                    name="pay"
+                    onchange="changePay(this);"
+                /><span id="pay">6000</span>만원
+            </div>
+
+            <div>
+                <input type="reset" value="초기화" />
+                <input type="submit" value="제출" />
+            </div>
+            <!-- 전송버튼 누를 시 주소창 확인 -->
+            <!-- 실제 넘어가는 데이터는 value 속성의 값임 -->
+        </form>
+    </body>
+</html>

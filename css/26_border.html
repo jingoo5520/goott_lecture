@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            h1 {
+                border-bottom: 3px solid royalblue;
+                border-bottom: 3px dotted royalblue;
+                border-bottom: 3px dashed royalblue;
+            }
+
+            p {
+                padding: 10px;
+                border: 3px dotted greenyellow;
+                border-right: 3px solid red;
+                border-left: 3px solid red;
+                border-radius: 20px 0px;
+            }
+
+            #round {
+                border-radius: 50%;
+            }
+
+            .radius {
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+                border: 1px solid blue;
+            }
+
+            .rad1 {
+                border-radius: 100px 100px 0 0;
+            }
+
+            .rad2 {
+                border-radius: 100px;
+            }
+
+            .rad3 {
+                border-radius: 100px 0 0 0;
+            }
+
+            .rad4 {
+                border-radius: 40px 50px 30px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>border</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
+            natus, veniam cumque praesentium nulla quasi ad inventore
+            repellendus reiciendis, illum nemo. Soluta exercitationem suscipit
+            quibusdam corporis cumque officia ullam dicta.
+        </p>
+        <div>
+            <img id="round" src="img/caffe/caffe_americano.png" alt="" />
+        </div>
+
+        <div class="radius rad1">radius1</div>
+        <div class="radius rad2">radius2</div>
+        <div class="radius rad3">radius3</div>
+        <div class="radius rad4">radius4</div>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>블럭 요소 vs 인라인 요소</title>
+        <!-- 
+            블럭 요소 특징:
+                연달아 사용시 세로로 정렬됨
+                크기 적용 가능
+            인라인 요소 특징:
+                연달아 사용시 가로로 정렬됨
+                크기 적용 불가능
+         -->
+        <style>
+            .accent {
+                font-weight: bold;
+                /* 적용 안됨 */
+                width: 100px;
+            }
+
+            div,
+            p {
+                border: 1px solid red;
+            }
+
+            img {
+                width: 140px;
+                border: 2px solid red;
+            }
+
+            .img {
+                text-align: center;
+            }
+
+            a {
+                background-color: yellow;
+                width: 100px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>시간이란...</h1>
+        <div>
+            내일 죽을 것 처럼
+            <span class="accent">오늘</span>
+            을 살고
+        </div>
+        <p>영원히 살 것 처럼 <br />내일을 꿈 꾸어라</p>
+        <!--
+            연달아 쓰면 인라인 요소 처럼 보이는데 
+            블럭 요소처럼 크기 적용이 가능 
+        -->
+        <div class="img">
+            <img src="img/caffe/caffe_americano.png" alt="coffee" />
+            <img src="img/caffe/caffe_americano.png" alt="coffee" />
+            <img src="img/caffe/caffe_americano.png" alt="coffee" />
+        </div>
+        <div>
+            <!-- a 태그는 인라인 요소에 가까움 -->
+            <a href="https://naver.com">네이버</a>
+            <a href="https://naver.com">네이버</a>
+            <a href="https://naver.com">네이버</a>
+            <a href="https://naver.com">네이버</a>
+        </div>
+    </body>
+</html>

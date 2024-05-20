@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>class Selector</title>
+        <style>
+            .bg {
+                color: green;
+            }
+
+            .accent {
+                border: 1px dashed black;
+            }
+
+            .fav {
+                font-size: 40px;
+            }
+
+            p {
+                font-weight: 1000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>클래스 선택자</h1>
+        <p class="bg">
+            태그의 내부에 class 속성을 사용하여 같은 class 값을 이용해 모두 적용
+        </p>
+        <p class="bg">가장 많이 사용되는 선택자</p>
+        <p class="bg accent fav">클래스는 여러 개 줄 수 있음</p>
+    </body>
+
+    <!-- 선택자 끼리 적용 우선순위가 존재 -->
+    <!-- 
+        1순위: class 선택자
+        2순위: tag 선택자
+
+     -->
+</html>

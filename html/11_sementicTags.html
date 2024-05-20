@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SementicTags</title>
+    <style>
+        /* 
+            관습적으로 css는 페이지에 쓰이는 태그 순서대로 설정
+        */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        header {
+            width: 100%;
+            height: 15%;
+            background-color: red;
+        }
+
+        nav {
+            width: 15%;
+            height: 70%;
+            background-color: yellow;
+            float: left;
+        }
+
+        section {
+            width: 70%;
+            height: 70%;
+            background-color: purple;
+            float: left;
+        }
+
+        aside {
+            width: 15%;
+            height: 70%;
+            background-color: blue;
+            float: left;
+            
+        }
+        
+        footer {
+            width: 100%;
+            height: 15%;
+            background-color: green;
+            clear: left;
+            /* 
+                float 설정을 해제함
+            */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- 시맨틱 태그(Semantic Tags) -->
+    <!-- 의미가 있는, 의미가 통하는, 의미론 적인 -->
+    <!-- html5 에 존재 -->
+    <!-- 모든 태그를 div로 사용해도 되지만 header, nav 등 의미가 있는 태그들을 뜻함 -->
+    
+    <header>헤더</header>
+    <nav>메뉴바</nav>
+    <section>컨텐츠</section>
+    <aside>부가적인 내용</aside>
+    <footer>꼬리말</footer>
+</body>
+</html>

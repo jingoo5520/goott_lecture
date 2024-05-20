@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function sum() {
+                var f = Math.floor(document.getElementById("first").value);
+                var s = Math.floor(document.getElementById("second").value);
+
+                document.getElementById("result").innerHTML = f + s;
+            }
+        </script>
+    </head>
+    <body>
+        <form action="">
+            <input id="first" type="number" />
+            +
+            <input id="second" type="number" />
+            <input type="button" value="계산하기" onclick="sum()" />=
+            <span id="result">결과값</span>
+        </form>
+    </body>
+</html>

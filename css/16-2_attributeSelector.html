@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>속성 선택자</title>
+        <style>
+            ul {
+                list-style: none;
+            }
+
+            li {
+                display: inline-block;
+            }
+
+            li a {
+                text-decoration: none;
+            }
+
+            /* jp-... 까지 포함 */
+            a[class|="jp"] {
+                padding-left: 20px;
+                background: url(img/flag/jp.png) no-repeat;
+            }
+            a[class|="ch"] {
+                padding-left: 20px;
+                background: url(img/flag/ch.png) no-repeat;
+            }
+            a[class|="us"] {
+                padding-left: 20px;
+                background: url(img/flag/us.png) no-repeat;
+            }
+
+            /* title이라는 속성의 값이 eng로 시작하는.. */
+            a[title^="eng"] {
+                color: red;
+            }
+
+            /* title속성 값이 "se"로 끝나는.. */
+            a[title$="se"] {
+                color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>외국어:</li>
+            <li><a href="#" class="us" title="english">영어</a></li>
+            <li><a href="#" class="ch" title="chinese">중국어</a></li>
+            <li><a href="#" class="jp-japan">일본어</a></li>
+        </ul>
+    </body>
+</html>

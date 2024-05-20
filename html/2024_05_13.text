@@ -1,0 +1,46 @@
+C에서 D드라이브 확장 방법
+
+vsCode 설치
+
+html 기본 골격
+css 스타일링
+js 사용자의 액션에 반응
+
+웹 시스템의 구동 과정
+
+웹 서버는 리눅스 기반
+
+Mdn
+웹 관련 정보
+https://developer.mozilla.org/ko/
+
+HTML의 기본 태그
+html 요소(element)의 구조
+<p>안녕하세요</p>
+오픈태그 / 컨텐트 / 클로즈태그
+
+! [tab] -> html 문서 양식 자동완성
+
+Tab을 이용해 태그 자동완성
+ex) h1 [tab] -> <h1></h1>
+
+ctrl + / 로 주석 자동완성
+ctrl + / -> <!--  --> 
+
+ctrl + , 로 설정창 열기
+-자동 줄바꿈 on/off
+
+ctrl + k + f 로 선택글 자동 정렬
+
+태그에 마우스커서를 가져다대어 MDN Reference 를 클릭해 부가 설명 볼 수 있음
+
+vsCode 확장 프로그램
+auto Rename Tag: 태그 변경시 오픈/클로즈태그 동시변경
+open in browser: html 확장자 파일 brower로 바로 열기
+
+<img> 태그
+*특성
+src: 이미지 파일 or 링크
+alt: 이미지 에러시 대체 텍스트
+
+

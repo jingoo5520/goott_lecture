@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Display</title>
+        <style>
+            .menu {
+                text-align: center;
+            }
+
+            li {
+                display: inline-block;
+                list-style: none;
+                width: 100px;
+                height: 40px;
+                background-color: yellow;
+                line-height: 40px;
+                margin: 30px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            #big {
+                display: none;
+            }
+        </style>
+        <script>
+            function sizeUp() {
+                document.getElementById("big").style.display = "block";
+            }
+
+            function sizeDown() {
+                document.getElementById("big").style.display = "none";
+            }
+        </script>
+    </head>
+    <body>
+        <ul class="menu">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li><a href="#">메뉴4</a></li>
+        </ul>
+
+        <img
+            id="small"
+            src="img/caffe/caffe_americano.png"
+            width="200px"
+            onmouseover="sizeUp()"
+            onmouseout="sizeDown()"
+        />
+
+        <img id="big" src="img/caffe/caffe_americano.png" width="800px" />
+    </body>
+</html>

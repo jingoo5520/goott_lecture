@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>자손 선택자</title>
+        <style>
+            /* 
+                div태그의 자식인 p태그에 스타일 적용
+            */
+            /* 
+                stlye sheets도 순차적으로(위에서 아래로) 적용됨
+                일반적으로 같은 태그에 대해 두개의 스타일 적용시 첫 번째 스타일이 적용되고 두 번째 스타일이 덮어씀
+                하지만 class가 있는 태그와 일반 태그의 자식 태그 두 스타일이 있는 경우 class가 있는 태그의 스타일이 최우선 적용
+            */
+            .seconDiv p {
+                background-color: pink;
+            }
+
+            div p {
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자손(하위) 선택자</h1>
+        <p>자손 선택자로 스타일 꾸며보기</p>
+        <div>
+            <p>div태그의 자식 p태그</p>
+            <p>div태그의 자식 p태그</p>
+            <p>div태그의 자식 p태그</p>
+        </div>
+
+        <p>div태그의 외부에 있는 p태그</p>
+        <div class="seconDiv">
+            <p>div태그의 자식 p태그</p>
+            <p>div태그의 자식 p태그</p>
+            <p>div태그의 자식 p태그</p>
+        </div>
+    </body>
+</html>

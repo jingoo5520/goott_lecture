@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>의사(가상) 클래스 선택자</title>
+        <style>
+            /* :link (방문하지 않은 링크에 대한 스타일)
+        :visited (방문한 링크에 대한 스타일)
+        :hover (특정 요소에 마우스 포인터를 올려둘 때의 스타일)
+        :active (특정 요소를 클릭하는 순간의 스타일)
+        :focus (웹 요소에 포커스가 잡혔을 때 스타일) */
+
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                transition: 3s;
+            }
+
+            .box:hover {
+                width: 100%;
+                background-color: red;
+            }
+
+            a:visited {
+                color: red;
+            }
+
+            a:active {
+                color: blue;
+            }
+
+            li:hover {
+                background-color: yellow;
+            }
+
+            input:focus {
+                background-color: yellow;
+            }
+
+            input:checked + label {
+                color: blue;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <div><input type="text" /></div>
+
+        <h1>Web Front 기술</h1>
+        <ul>
+            <li><a href="https://namu.wiki/w/HTML">HTML</a></li>
+            <li><a href="https://namu.wiki/w/CSS?from=css">CSS</a></li>
+            <li><a href="https://namu.wiki/w/JS">JS</a></li>
+            <li><a href="">JQuery</a></li>
+            <li><a href="">AJAX</a></li>
+        </ul>
+
+        <ul>
+            <li>
+                <input type="radio" id="female" name="gender" />
+                <label for="female">여성</label>
+            </li>
+            <li>
+                <input type="radio" id="male" name="gender" />
+                <label for="male">남성</label>
+            </li>
+        </ul>
+    </body>
+</html>
