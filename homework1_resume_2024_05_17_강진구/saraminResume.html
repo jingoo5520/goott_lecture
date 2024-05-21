@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사람인 이력서 양식</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+    <!-- 로고 -->
+    <div id="logoArea" class="clear">
+        <img id="logoImg" src="img/logo.png" width="100px" height="40px" alt="" />
+    </div>
+    <!-- 프로필 사진, 프로필 테이블 -->
+    <div id="profileArea" class="clear">
+        <div id="title">이력서 제목</div>
+        <div id="picture"></div>
+        <div>
+            <table class="profileTable">
+                <colgroup class="profileGroup">
+                    <col style="width: 15%;">
+                    <col style="width: 35%;">
+                    <col style="width: 3%;">
+                    <col style="width: 12%;">
+                    <col style="width: 15%;">
+                    <col style="width: 20%;">
+                </colgroup>
+                <tr>
+                    <td class="thead">지원분야</td>
+                    <td colspan="3"></td>
+                    <td class="thead">경력여부</td>
+                    <td class="center">
+                        <input type="checkbox">신입
+                        <input type="checkbox">경력
+                    </td>
+                </tr>
+                <tr>
+                    <td class="thead">성명(국문)</td>
+                    <td></td>
+                    <th colspan="2">성명(영문)</th>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="thead">생년월일</td>
+                    <td colspan="2">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;&nbsp;
+                            일</span>
+                        (<span>
+                            <input type="checkbox">양
+                            <span>/</span>
+                            <input type="checkbox">음
+                        </span>)
+                    </td>
+                    <td class="thead">연락처</td>
+                    <td colspan="2"></td>
+
+                </tr>
+                <tr>
+                    <td class="thead">이메일</td>
+                    <td colspan="5"></td>
+
+                </tr>
+                <tr>
+                    <td class="thead">주소</td>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td class="thead">병역사항</td>
+                    <td colspan="5">
+                        <input type="checkbox">필
+                        <input type="checkbox">미필
+                        <input type="checkbox">면제
+                        <input type="checkbox">해당없음
+                        /
+                        <span class="hintText">복무기간, 군별코드, 계급 or 면제사유</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- 학력사항 테이블 -->
+    <div id="eduArea">
+        <div class="subTitle">학력 사항</div>
+        <table class="otherTable">
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 35%;">
+                <col style="width: 30%;">
+                <col style="width: 15%;">
+            </colgroup>
+            <tr>
+                <td class="thead">재학기간</td>
+                <td class="thead">학교명</td>
+                <td class="thead">전공 및 수료과목</td>
+                <td class="thead">소재지</td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td class="hintText">ㅇㅇ 고등학교</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td class="hintText">ㅇㅇ 대학교</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td class="hintText">ㅇㅇ 대학원</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <!-- 주요활동 및 사회경험 테이블 -->
+    <div id="expArea">
+        <div class="subTitle">주요활동 및 사회경험</div>
+        <table class="otherTable">
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 25%;">
+                <col style="width: 20%;">
+                <col style="width: 35%;">
+            </colgroup>
+            <tr>
+                <td class="thead">활동기간</td>
+                <td class="thead">활동구분</td>
+                <td class="thead">기관</td>
+                <td class="thead">활동내용</td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <!-- 수상 경력 테이블 -->
+    <div id="awardsArea">
+        <div class="subTitle">수상 경력</div>
+        <table class="otherTable">
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 15%;">
+                <col style="width: 35%;">
+                <col style="width: 20%;">
+            </colgroup>
+            <tr>
+                <td class="thead">수상일자</td>
+                <td class="thead">수상명</td>
+                <td class="thead">내용</td>
+                <td class="thead">기관</td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <!-- 자격사항 및 어학능력 테이블 -->
+    <div id="skillsArea">
+        <div class="subTitle">자격사항 및 어학능력</div>
+        <table class="otherTable">
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 30%;">
+                <col style="width: 25%;">
+                <col style="width: 25%;">
+            </colgroup>
+            <tr>
+                <td class="thead">취득일자</td>
+                <td class="thead">자격증 및 면허종류</td>
+                <td class="thead">취득번호</td>
+                <td class="thead">발행기관</td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="hintText center">2000.01-2001.01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

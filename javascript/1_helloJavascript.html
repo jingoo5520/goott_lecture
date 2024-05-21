@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript를 이용해 화면에 출력하는 4가지 방법</title>
+        <script>
+            // 자바스크립트 주석
+            // onload시에 함수 실행
+            window.onload = function () {
+                document.getElementById("yogi").innerHTML =
+                    "이름은 <b>홍길동</b> 입니다.";
+            };
+        </script>
+    </head>
+    <body>
+        일반 텍스트 출력
+        <div>1. document.write()를 이용</div>
+        <script>
+            // method, function 차이?
+            // html 태그도 사용 가능
+            document.write("<h1>Hello JavaScript</h1>");
+        </script>
+
+        <div>2. window.alert()를 이용한다.</div>
+        <script>
+            // html 태그 사용 불가능
+            // window.alert("<h2>Hello JavaScript</h2>");
+        </script>
+
+        <div>3. console.log()를 이용한다. 디버깅 용이</div>
+        <script>
+            // html 태그 사용 불가능
+            console.log("<h2>Hello JavaScript</h2>");
+        </script>
+
+        <div>4. 태그에 접근하여 출력한다.</div>
+        <h5 id="yogi"></h5>
+        <script>
+            document.getElementById("yogi").innerHTML = "이름은 홍길동입니다.";
+        </script>
+    </body>
+</html>
+
+<!-- 
+    JS 공부법
+        문법을 익힌다 (외운다)
+        알고리즘(문제해결 능력)
+ -->

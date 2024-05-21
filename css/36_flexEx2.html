@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/5b368e41d5.js"
+            crossorigin="anonymous"
+        ></script>
+        <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 1024px;
+                background-color: yellow;
+            }
+            .icon {
+                width: 600px;
+                height: 600px;
+                background-color: rgb(0, 62, 177);
+                color: white;
+                display: flex;
+                justify-content: center;
+            }
+            .icon-row {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .icon-row__icon {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                padding: 25px;
+                height: 80px;
+            }
+
+            .icon-row__icon i {
+                font-size: 30px;
+            }
+
+            .icon-row__icon span {
+                font-size: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="icon">
+            <div class="icon-row">
+                <div class="icon-row__icon">
+                    <i class="fa-solid fa-calendar-days"></i><span>일정</span>
+                </div>
+                <div class="icon-row__icon">
+                    <i class="fa-solid fa-gear"></i><span>설정</span>
+                </div>
+                <div class="icon-row__icon">
+                    <i class="fa-solid fa-share-from-square"></i
+                    ><span>공유</span>
+                </div>
+                <div class="icon-row__icon">
+                    <i class="fa-solid fa-star"></i><span>저장</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

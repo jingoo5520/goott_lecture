@@ -1,0 +1,95 @@
+input[type="checkbox"] {
+    margin: 0px;
+    width: 10px;
+}
+
+body {
+    width: 840px;
+    margin: 0;
+    border: 1px solid black;
+    padding: 0px 20px;
+}
+
+body > * {
+    width: 100%;
+}
+
+table {
+    margin-bottom: 50px;
+}
+
+#logoImg {
+    float: right;
+}
+
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#title {
+    height: 60px;
+    line-height: 60px;
+    font-size: 25px;
+    font-weight: bold;
+    color: grey;
+    padding-left: 10px;
+}
+
+.subTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#picture {
+    width: 20%;
+    height: 220px;
+    border: 1px solid rgb(220, 220, 220);
+    float: left;
+}
+
+.profileTable {
+    width: 78%;
+    float: right;
+    height: 220px;
+    border-collapse: collapse;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.profileTable td {
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.profileTable .thead {
+    text-align: center;
+    font-weight: bold;
+}
+
+.hintText {
+    color: grey;
+}
+
+.center {
+    text-align: center;
+}
+
+.otherTable {
+    width: 100%;
+    height: 120px;
+    border-collapse: collapse;
+}
+
+.otherTable .thead {
+    text-align: center;
+    font-weight: bold;
+    background-color: royalblue;
+    color: white;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.otherTable td {
+    border: 1px solid rgb(200, 200, 200);
+}
