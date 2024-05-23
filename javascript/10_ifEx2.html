@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 랜덤하게 메뉴를 추천해주는 프로그램 작성
+            // 1 ~ 7 사이의 랜덤한 수를 뽑아서, 그 수가
+            // 1: 짜장면, 2: 김치찌개, 3: 돈까스, ... 7: 라면
+
+            let random = 0;
+            random = Math.random();
+
+            let number = Math.floor((random * 10) % 7);
+            // random * 7 방법도 가능
+            console.log(number);
+
+            let foodName;
+            let foodImg;
+
+            // if (number == 0) {
+            //     foodName = "짜장면";
+            //     foodImg = "../css/img/foods/jjajang.jpg";
+            // }
+            // if (number == 1) {
+            //     foodName = "짬뽕";
+            //     foodImg = "../css/img/foods/jjambong.jpg";
+            // }
+            // if (number == 2) {
+            //     foodName = "비빔밥";
+            //     foodImg = "../css/img/foods/bibimbap.jpg";
+            // }
+            // if (number == 3) {
+            //     foodName = "돈가스";
+            //     foodImg = "../css/img/foods/dongasu.jpg";
+            // }
+            // if (number == 4) {
+            //     foodName = "김치전";
+            //     foodImg = "../css/img/foods/kimchi-geon.jpg";
+            // }
+            // if (number == 5) {
+            //     foodName = "유부초밥";
+            //     foodImg = "../css/img/foods/tofu-sushi.jpg";
+            // }
+            // if (number == 6) {
+            //     foodName = "떡볶이";
+            //     foodImg = "../css/img/foods/tteokbokki.jpg";
+            // }
+
+            // console.log(foodName);
+            // console.log(foodImg);
+
+            // window.onload = function () {
+            //     document.getElementById("foodName").innerHTML = foodName;
+            //     document.getElementById("foodImg").src = foodImg;
+            // };
+
+            // 스위치문으로 변경해보기
+
+            switch (number) {
+                case 0:
+                    foodName = "짜장면";
+                    foodImg = "../css/img/foods/jjajang.jpg";
+                    break;
+                case 1:
+                    foodName = "짬뽕";
+                    foodImg = "../css/img/foods/jjambong.jpg";
+                    break;
+                case 2:
+                    foodName = "비빔밥";
+                    foodImg = "../css/img/foods/bibimbap.jpg";
+                    break;
+                case 3:
+                    foodName = "돈가스";
+                    foodImg = "../css/img/foods/dongasu.jpg";
+                    break;
+                case 4:
+                    foodName = "김치전";
+                    foodImg = "../css/img/foods/kimchi-geon.jpg";
+                    break;
+                case 5:
+                    foodName = "유부초밥";
+                    foodImg = "../css/img/foods/tofu-sushi.jpg";
+                    break;
+                case 6:
+                    foodName = "떡볶이";
+                    foodImg = "../css/img/foods/tteokbokki.jpg";
+                    break;
+            }
+
+            console.log(foodName);
+            console.log(foodImg);
+
+            window.onload = function () {
+                document.getElementById("foodName").innerHTML = foodName;
+                document.getElementById("foodImg").src = foodImg;
+            };
+        </script>
+
+        <style>
+            #foodName {
+                font-size: 22px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>오늘의 추천 메뉴</h1>
+        <div id="foodName"></div>
+        <div id="foodImgArea">
+            <img id="foodImg" src="../css/img/" width="400px" height="400px" />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>연산자</title>
+        <script>
+            // 산술 연산자(+, -, *, /, %(나머지), **(제곱))
+            let a = 3;
+            let b = 5;
+            console.log(a * b - a);
+            console.log(b % a);
+            console.log(5 ** 3);
+            console.log(b ** (a ** 2));
+            console.log((b ** a) ** 2);
+
+            // 증감 연산자
+            // 연산자의 위치에 따라 우선순위가 달라진다.
+            // 전치연산: 선증감 후대입
+            // 후치연산: 선대입 후증감
+            console.log(a, b);
+            console.log(a++);
+            console.log(a);
+
+            console.log(++a);
+            console.log(a);
+
+            console.log(b++ * ++a);
+            console.log(a, b);
+
+            // 관계 연산자: 연산자 결과가 true, false 가 나옴
+            // >, <, >=, <=
+            // ==, !=
+            console.log(a > b);
+            console.log(a == b);
+            console.log(a != b);
+            console.log(a != b);
+            console.log(++a == b);
+            console.log(b % 2 == 0);
+
+            // 논리 연산자: 관계 연산자와 관계연산자의 조합을 하는 연산
+            // and (&&): 모두 true인 경우에만 true
+            // or (||): 하나라도 true라면 true
+            console.log(a, b);
+            console.log(a > b && b != 3);
+            console.log(a == 6 && b == 3);
+            console.log(a == 6 && b == 6 && b % 2 == 0);
+
+            console.log(a > 2 || b == 6);
+            console.log(a < 0 || b > 0);
+            console.log(a < 0 || b < 0);
+            console.log(a < 0 || b < 0);
+
+            // 0을 제외한 모든 숫자, 문자는 true
+            console.log(!a);
+            console.log(!0);
+            console.log(!3.2);
+
+            // 우선 순위: 증감 > 논리 > 산술 > 관계 > 논리
+
+            // 대입 연산자
+            let result = 3;
+            result += 3; // result = result + 3;
+            console.log(result); // 6
+
+            result *= 2;
+            console.log(result); // 12
+
+            result /= 2;
+            console.log(result); // 6
+
+            result %= 2;
+            console.log(result); // 0
+
+            // ===============================================
+            // 비교적 덜 중요한 연산자들
+            // 비트 연산자 &
+            // xor(exclusive or : 베타 or)
+            // ~ (비트 not)
+            // 쉬프트 연산자 (자리이동 연산자)
+
+            console.log("A" > "a"); // 아스키코드로 적용
+
+            console.log(3 == "3"); // 값이 같으냐? true,
+            console.log(3 === "3"); // 값과 타입이 같으냐? false
+            console.log(3 === 3); // 값과 타입이 같으냐? true
+            // ===
+        </script>
+    </head>
+    <body></body>
+</html>

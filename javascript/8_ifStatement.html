@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 사용자에게 이름, 국어, 영어, 수학 점수를 입력받아
+            // 총점, 평균을 구하고
+            // 학점을 구해 테이블로 출력하는 프로그램을 작성하라
+            // 평균 90~100: A
+            // 평균 80~89: B
+            // 평균 70~79: C
+            // 평균 60~69: D
+            // 나머지는 F
+
+            // 사용자에게 이름, 국, 영, 수 점수를 입력받아 각 변수에 저장
+            let name;
+            let kor;
+            let eng;
+            let math;
+
+            name = window.prompt("이름을 입력하세요");
+            kor = Number(window.prompt("국어 점수를 입력하세요", "0"));
+            eng = Number(window.prompt("이름을 입력하세요", "0"));
+            math = Number(window.prompt("이름을 입력하세요", "0"));
+
+            let totalScore = kor + eng + math;
+
+            console.log(`이름: ${name}`);
+            console.log(`총점: ${totalScore}`);
+
+            let average = totalScore / 3;
+
+            console.log(`평균: ${average}`);
+
+            let grade;
+
+            if (average >= 90) {
+                grade = "A";
+            } else if (average >= 80) {
+                grade = "B";
+            } else if (average >= 70) {
+                grade = "C";
+            } else if (average >= 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            let output = `<table class="score">
+                <tr>
+                    <td>이름</td>
+                    <td>국어</td>
+                    <td>영어</td>
+                    <td>수학</td>
+                    <td>총점</td>
+                    <td>평균</td>
+                    <td>학점</td>
+                </tr>
+                <tr>
+                    <td>${name}</td>
+                    <td>${kor}</td>
+                    <td>${eng}</td>
+                    <td>${math}</td>
+                    <td>${totalScore}</td>
+                    <td>${average}</td>
+                    <td>${grade}</td>
+                </tr>
+            </table>`;
+
+            document.write(output);
+        </script>
+        <style>
+            .score,
+            tr,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body></body>
+</html>

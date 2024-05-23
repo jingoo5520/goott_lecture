@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>숫자 판별</title>
+        <script>
+            // NaN: Not a Number
+            // (1) isNaN() 사용..
+            console.log(isNaN(123)); // 숫자 인 경우 false, 숫자가 아닌 경우 true 출력
+            console.log(isNaN("123")); // 문자를 숫자로 자동 변경 후 판별 위와 결과 동일
+            console.log(isNaN("abc")); // 순수 문자인 경우, true 출력
+            console.log(isNaN("abc123")); // true
+            console.log(isNaN("")); // false
+            console.log(isNaN(null)); // false
+
+            console.log("------------");
+            console.log(Number.isNaN(123));
+            console.log(Number.isNaN("123"));
+            console.log(Number.isNaN("abc"));
+            console.log(Number.isNaN("abc123"));
+            console.log(Number.isNaN(""));
+            console.log(Number.isNaN(null));
+            console.log(Number.isNaN(NaN));
+
+            // isNaN: 인수를 숫자로 변환한 후 확인
+            // Number.isNaN: 인수를 숫자로 변환하지 않고 확인
+
+            console.log(isFinite(123)); // true
+            console.log(isFinite("123")); // false
+            console.log(isFinite("abc")); // false
+            console.log(isFinite("abc123")); // false
+            console.log(isFinite("")); // true
+            console.log(isFinite(null)); // true
+
+            let data = 3;
+            if (isFinite(data) && data != "" && data != null) {
+                document.write(`${data}는 숫자입니다.`);
+            } else {
+                document.write(`${data}는 숫자가 아닙니다.`);
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

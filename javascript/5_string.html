@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>백틱(`)을 이용하여 문자열과 변수 조합 출력 방법</title>
+        <script>
+            let str1 = "스트링1";
+            let str2 = "스트링2";
+            let str3 = `스트링3`;
+
+            console.log(str1, str2, str3);
+
+            // 백틱을 이용하면 문자열과 변수를 조합하여 출력하는 것이 쉬워진다.
+            // ex) 내 이름은 name 입니다. 출력방법
+            let name = "홍길동";
+            document.write("<div>내 이름은 " + name + " 입니다.</div>");
+            document.write(`<div>내 이름은 ${name} 입니다.</div>`);
+        </script>
+    </head>
+    <body></body>
+</html>

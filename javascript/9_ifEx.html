@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>if문 연습</title>
+        <script>
+            // html, css, javascript 세 과목의 점수를 입력받아 평균을 구하고
+
+            // 평균이 60점 이상이고, 과목당 40점 이상이어야 합격
+            // 40점 미만 과목은 불합격,
+            // 합격 여부를 출력하세요
+
+            let htmlScore;
+            let cssScore;
+            let jsScore;
+
+            htmlScore = Number(window.prompt("html 과목의 점수를 입력하세요"));
+            cssScore = Number(window.prompt("css 과목의 점수를 입력하세요"));
+            jsScore = Number(window.prompt("js 과목의 점수를 입력하세요"));
+
+            let totalScore = htmlScore + cssScore + jsScore;
+
+            let average = totalScore / 3;
+
+            let result;
+
+            if (average >= 60) {
+                if (htmlScore >= 40 && cssScore >= 40 && jsScore >= 40) {
+                    result = "합격";
+                } else {
+                    result = "불합격";
+                }
+            } else {
+                result = "불합격";
+            }
+
+            document.write(
+                `html: ${htmlScore}, css: ${cssScore}, js: ${jsScore}, average: ${average}, result: ${result}`
+            );
+
+            let output = `<table class="score">
+                <tr>
+                    <td>HTML</td>
+                    <td>CSS</td>
+                    <td>JS</td>
+                    <td>평균</td>
+                    <td>결과</td>
+                </tr>
+                <tr>
+                    <td>${htmlScore}</td>
+                    <td>${cssScore}</td>
+                    <td>${jsScore}</td>
+                    <td>${average}</td>
+                    <td>${result}</td>
+                </tr>
+            </table>`;
+
+            document.write(output);
+        </script>
+        <style>
+            .score,
+            tr,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+
+        <!-- <script>
+            window.onload = function () {
+                let num1 = Number(document.getElementById("num1").innerHTML);
+                let num2 = Number(document.getElementById("num2").innerHTML);
+                let multi = num1 * num2;
+
+                document.getElementById("result").innerHTML = multi;
+            };
+        </script> -->
+    </head>
+    <body>
+        <!-- <table border="1">
+            <tr>
+                <td id="num1">1500</td>
+                <td>*</td>
+                <td id="num2">50</td>
+                <td>=</td>
+                <td id="result"></td>
+            </tr>
+        </table> -->
+    </body>
+</html>

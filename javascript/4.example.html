@@ -20,6 +20,7 @@
                     "cm<sup>2</sup></div>"
             );
 
+            // 문제2) 반지름이 5cm인 원의 넓이를 구해 화면에 출력
             let radius = 5;
             const PI = 3.141592;
 
@@ -30,6 +31,49 @@
                     circleArea +
                     "cm<sup>2</sup></div>"
             );
+
+            // 문제3) num1이라는 변수에 3이 대입되어 있고 num2 라는 변수에 5라는 값이 있다.
+            // 두 변수의 값을 바꾸어 저장되도록 하고, 화면에 출력하라.
+            let num1 = 3;
+            let num2 = 5;
+
+            document.write("변경 전: num1 = " + num1 + ", num2 = " + num2);
+            document.write("<br>");
+
+            let temp;
+
+            temp = 3;
+            num1 = num2;
+            num2 = temp;
+
+            document.write("변경 후: num1 = " + num1 + ", num2 = " + num2);
+
+            // 문제4)
+            // 밑변과 높이를 유저에게 입력 받아, 삼각형의 넓이를 구해 출력하라.
+
+            let base;
+            let triangleHeight;
+            let triangleArea;
+
+            base = window.prompt("밑변을 입력하세요");
+            triangleHeight = window.prompt("밑변을 입력하세요");
+
+            triangleArea = (base * triangleHeight) / 2;
+
+            document.write("<br>");
+
+            document.write(
+                "밑변 " +
+                    base +
+                    ", 높이 " +
+                    triangleHeight +
+                    "인 삼각형의 넓이는 " +
+                    triangleArea +
+                    " 입니다."
+            );
+
+            // 유저가 문자를 입력한 경우, 넓이를 계산할 수 없으므로
+            // NaN(Not a number) 출력
         </script>
     </head>
     <body></body>
