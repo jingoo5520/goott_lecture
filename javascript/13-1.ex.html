@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 문제1
+            // 사용자에게 키와 몸무게를 입력받아(input태그 이용) 체질량지수(BMI)를 계산하여 출력하고
+            // 기준표에 맞춰서 비만 여부를 출력하세요.
+            // BMI = 체중(kg) / 신장(cm)^2
+            function calBMI() {
+                let height = Number(document.getElementById("height").value);
+                let weight = Number(document.getElementById("weight").value);
+
+                let bmi = (weight / (height / 100) ** 2).toFixed(2);
+
+                // console.log(bmi);
+
+                let result;
+                if (bmi < 18.5) {
+                    result = "저체중";
+                } else if (bmi <= 22.9) {
+                    result = "정상";
+                } else if (bmi <= 24.9) {
+                    result = "비만전단계";
+                } else if (bmi <= 29.9) {
+                    result = "1단계 비만";
+                } else if (bmi <= 34.9) {
+                    result = "2단계 비만";
+                } else {
+                    result = "3단계 비만";
+                }
+
+                document.getElementById("bmi").innerHTML = bmi;
+                document.getElementById("result").innerHTML = result;
+            }
+        </script>
+    </head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #calBMI {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <body>
+        <div id="calBMI">
+            <img src="../css/img/bmi.png" alt="" /><br />
+            <input
+                id="height"
+                type="text"
+                placeholder="키를 입력하세요(cm)"
+            /><br />
+            <input
+                id="weight"
+                type="text"
+                placeholder="몸무계를 입력하세요(kg)"
+            /><br />
+            <input type="button" value="계산하기" onclick="calBMI()" /><br />
+            <div>BMI: <span id="bmi"></span></div>
+            <div>당신은? <span id="result"></span></div>
+        </div>
+    </body>
+</html>

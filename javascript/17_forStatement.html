@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 반복문
+            // 명령문을 정해진 횟수만큼 반복 수행
+            // (1) for문
+            // for(반복 인덱스 초기값 할당; b.조건식; c.증감식){
+            //     d. 조건식이 참일 동안 반복 수행할 문장들
+            // }
+            // 1. 최초 반복 1회 수행
+            // 2. b 조건식을 비교하여 참이면 d가 수행.
+            // 3. c 증감식 수행
+            // 4. 2번으로 돌아감
+
+            // for (let i = 0; i <= 4; i++) {
+            //     document.write(`${i}번째 반복중<br>`);
+            // }
+
+            // let outputList = "<ul>";
+            // for (let i = 0; i < 5; i++) {
+            //     outputList += `<li>${i + 1}</li>`;
+            // }
+
+            // outputList += "</ul>";
+            // document.write(outputList);
+
+            // for문을 한 번만 사용하여
+            // 4행 3열의 테이블을 만드세요.
+            // td 태그 안에 0부터 1씩 증가하는 숫자가 들어가도록 하세요
+
+            // let outputTable = "<table border='1'>";
+
+            // for (i = 1; i < 13; i++) {
+            //     if (i % 3 == 1) {
+            //         outputTable += `<tr>`;
+            //         outputTable += `<td>${i}</td>`;
+            //     } else if (i % 3 == 0) {
+            //         outputTable += `<td>${i}</td>`;
+            //         outputTable += `</tr>`;
+            //     } else {
+            //         outputTable += `<td>${i}</td>`;
+            //     }
+            // }
+
+            // for (let i = 0; i < 4; i++) {
+            //     outputTable += `<tr>`;
+            //     outputTable += `<td>${i * i + 1}</td>`;
+            //     outputTable += `<td>${i * i + 2}</td>`;
+            //     outputTable += `<td>${i * i + 3}</td>`;
+            //     outputTable += `</tr>`;
+            // }
+
+            // outputTable += "</table>";
+            // document.write(outputTable);
+
+            // 1부터 100까지 합을 구해서 화면에 출력하세요
+            // let sum = 0;
+            // for (let i = 0; i < 100; i++) {
+            //     sum += i + 1;
+            // }
+            // document.write(`1부터 100까지의 합은: ${sum} 입니다.`);
+
+            // // 1부터 100까지 짝수끼리 합, 홀수끼리 합을 따로 구하세요.
+            // let sumOdd = 0;
+            // let sumEven = 0;
+            // for (let i = 1; i <= 100; i++) {
+            //     if (i % 2 == 0) {
+            //         //짝수
+            //         sumEven += i;
+            //     } else {
+            //         sumOdd += i;
+            //     }
+            // }
+
+            // document.write(
+            //     `<div>1부터 100까지 짝수의 합은: ${sumEven} 입니다.</div>`
+            // );
+            // document.write(
+            //     `<div>1부터 100까지 홀수의 합은: ${sumOdd} 입니다.</div>`
+            // );
+
+            // 문제) 구구단
+            // 사용자에게 단을 입력받아, 해당 단을 출력하라
+
+            function gugudan() {
+                let dan = document.getElementById("dan").value;
+
+                let outputDan = "";
+
+                outputDan += `<table border='1'>`;
+
+                for (let i = 1; i < 10; i++) {
+                    outputDan += `<tr>`;
+                    outputDan += `<td>${dan} * ${i} = ${dan * i}</td>`;
+                    outputDan += `</tr>`;
+                }
+                outputDan += `</table>`;
+
+                console.log(outputDan);
+
+                document.getElementById("danTable").innerHTML = outputDan;
+            }
+        </script>
+    </head>
+    <body>
+        <input id="dan" type="text" placeholder="단 입력" />
+        <input type="button" value="단 시작" onclick="gugudan()" />
+        <div id="danTable"></div>
+    </body>
+</html>

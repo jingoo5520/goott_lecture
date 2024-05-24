@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 연습문제2
+            // 유저에게 숫자를 입력받아, 홀수 짝수를 구분해 출력하라.
+            // 단, switch-case 문을 이용하여 만들어라
+
+            function holjac() {
+                let num = Number(document.getElementById("num").value);
+
+                let result;
+                switch (num % 2) {
+                    case 0:
+                        result = "짝수";
+                        break;
+                    default:
+                        result = "홀수";
+                }
+
+                document.getElementById("result").innerHTML = result;
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <input id="num" type="text" placeholder="숫자를 입력하세요(정수)" />
+            <input type="button" value="홀짝?" onclick="holjac()" />
+            <span id="result">결과</span>
+        </div>
+    </body>
+</html>

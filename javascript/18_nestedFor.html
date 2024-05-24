@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>중첩 for문</title>
+        <script>
+            // ☆★★★☆★★★☆★★★☆★★★ 출력하기
+            // for (let i = 0; i < 3; i++) {
+            //     console.log(`i = ${i}`);
+
+            //     for (let j = 0; j < 2; j++) {
+            //         console.log(`i = ${i}, j = ${j}`);
+            //     }
+            // }
+
+            // for (let i = 0; i < 4; i++) {
+            //     document.write("☆");
+            //     for (let j = 0; j < 3; j++) {
+            //         document.write("★");
+            //     }
+            // }
+
+            // 4행 3열 테이블 만들기
+            // let outputTable = "<table border='1'>";
+
+            // let cnt = 0;
+            // for (let i = 0; i < 4; i++) {
+            //     outputTable += "<tr>";
+            //     for (let j = 0; j < 3; j++) {
+            //         outputTable += `<td>${cnt++}</td>`;
+            //     }
+            //     outputTable += "</td>";
+            // }
+
+            // document.write(outputTable);
+
+            // 3행 4열 직사각형 별 만들기
+            // ★★★★
+            // ★★★★
+            // ★★★★
+            // for (let i = 0; i < 3; i++) {
+            //     for (let j = 0; j < 4; j++) {
+            //         document.write("★");
+            //     }
+            //     document.write("<br>");
+            // }
+
+            // 직각 삼각형 별 만들기
+            // ★
+            // ★★
+            // ★★★
+            // ★★★★
+            // ★★★★★
+            // for (let i = 0; i < 5; i++) {
+            //     for (let j = 0; j < i + 1; j++) {
+            //         document.write("★");
+            //     }
+            //     document.write("<br>");
+            // }
+
+            // 피라미드 별 만들기
+            //     *
+            //    ***
+            //   *****
+            //  *******
+            // *********
+
+            let space = 5;
+            let stars = -1;
+            for (let i = 0; i < 9; i++) {
+                if (i < 5) {
+                    space--;
+                    stars += 2;
+                    for (let j = 0; j < space; j++) {
+                        document.write("&nbsp;");
+                    }
+                    for (let k = 0; k < stars; k++) {
+                        document.write("*");
+                    }
+                } else {
+                    space++;
+                    stars -= 2;
+                    for (let j = 0; j < space; j++) {
+                        document.write("&nbsp;");
+                    }
+                    for (let k = 0; k < stars; k++) {
+                        document.write("*");
+                    }
+                }
+
+                document.write("<br>");
+            }
+        </script>
+    </head>
+    <body></body>
+</html>
