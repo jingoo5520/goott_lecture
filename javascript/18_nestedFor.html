@@ -66,27 +66,53 @@
             //  *******
             // *********
 
-            let space = 5;
-            let stars = -1;
-            for (let i = 0; i < 9; i++) {
-                if (i < 5) {
-                    space--;
-                    stars += 2;
-                    for (let j = 0; j < space; j++) {
-                        document.write("&nbsp;");
-                    }
-                    for (let k = 0; k < stars; k++) {
-                        document.write("*");
-                    }
-                } else {
-                    space++;
-                    stars -= 2;
-                    for (let j = 0; j < space; j++) {
-                        document.write("&nbsp;");
-                    }
-                    for (let k = 0; k < stars; k++) {
-                        document.write("*");
-                    }
+            // let space = 5;
+            // let stars = -1;
+            // for (let i = 0; i < 9; i++) {
+            //     if (i < 5) {
+            //         space--;
+            //         stars += 2;
+            //         for (let j = 0; j < space; j++) {
+            //             document.write("&nbsp;");
+            //         }
+            //         for (let k = 0; k < stars; k++) {
+            //             document.write("*");
+            //         }
+            //     } else {
+            //         space++;
+            //         stars -= 2;
+            //         for (let j = 0; j < space; j++) {
+            //             document.write("&nbsp;");
+            //         }
+            //         for (let k = 0; k < stars; k++) {
+            //             document.write("*");
+            //         }
+            //     }
+
+            //     document.write("<br>");
+            // }
+
+            for (let i = 0; i < 5; i++) {
+                for (let j = 5; j > i; j--) {
+                    document.write("&nbsp;&nbsp;&nbsp;");
+                }
+
+                for (let k = 0; k < i * 2 + 1; k++) {
+                    document.write("★");
+                }
+
+                document.write("<br>");
+            }
+
+            document.write("<hr>");
+
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < i; j++) {
+                    document.write("&nbsp;&nbsp;&nbsp;");
+                }
+
+                for (let k = 0; k < 9 - 2 * i; k++) {
+                    document.write("★");
                 }
 
                 document.write("<br>");

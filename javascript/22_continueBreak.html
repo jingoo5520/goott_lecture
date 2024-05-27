@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            for (let i = 0; i < 5; i++) {
+                document.write(`${i} 번째 안녕하세요.`);
+                if (i == 3) {
+                    break;
+                }
+                document.write("<br>");
+            }
+
+            document.write("<hr>");
+
+            for (let i = 0; i < 5; i++) {
+                if (i == 3) {
+                    // 건너뛰겠다.
+                    continue;
+                }
+                document.write(`${i} 번째 안녕하세요.`);
+                document.write("<br>");
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

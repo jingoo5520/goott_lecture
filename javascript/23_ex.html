@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 문제1) 1부터 9까지 3의 배수를 제외한 숫자들의 합을 구하세요.
+
+            // let num = 1;
+            // let sum = 0;
+            // while (num < 10) {
+            //     if (num % 3 == 0) {
+            //         num++;
+            //         continue;
+            //     }
+            //     console.log(num);
+            //     sum += num;
+            //     num++;
+            // }
+
+            // console.log(sum);
+
+            // 문제2) 1부터 100까지의 숫자중 짝수들의 합을 구하세요.
+            // continue 사용하기
+
+            // let num = 1;
+            // let sum = 0;
+            // while (num < 101) {
+            //     if (num % 2 == 1) {
+            //         num++;
+            //         continue;
+            //     }
+            //     sum += num;
+            //     num++;
+            // }
+
+            // console.log(sum);
+
+            // 문제3) 1부터 누적합을 구하되, 몇 까지 더해야 누적 합이 1000이 넘어가는지 출력하세요
+
+            let num = 1;
+            let sum = 0;
+            // do {
+            //     sum += num;
+            //     console.log(num, sum);
+            //     num++;
+            // } while (sum < 1000);
+
+            // console.log(sum);
+
+            while (sum < 1000) {
+                sum += num;
+
+                console.log(num, sum);
+                num++;
+            }
+
+            document.write(
+                `1부터 ${num - 1}까지 더했을 때 누적합이 1000보다 큽니다.<br>`
+            );
+        </script>
+    </head>
+    <body></body>
+</html>

@@ -4,6 +4,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>형제 sibling (동위 또는 이웃) 선택자</title>
+        <style>
+            div ~ p {
+                background-color: yellow;
+            }
+        </style>
     </head>
-    <body></body>
+    <body>
+        <h1>Sibling 선택자</h1>
+        <p>Sibling 선택자로 스타일을 꾸미면 어떻게 될까요?</p>
+        <div>
+            <p>div 내부에 P태그 (div의 자식)</p>
+            <p>div 내부에 P태그 (div의 자식)</p>
+            <p>div 내부에 P태그 (div의 자식)</p>
+        </div>
+        <p>div 외부의 p태그1</p>
+        <p>div 외부의 p태그2</p>
+        <p>div 외부의 p태그3</p>
+
+        <ul>
+            <li class="firstItem">첫 번째 아이템</li>
+            <li>두 번째 아이템</li>
+            <li>세 번째 아이템</li>
+        </ul>
+    </body>
 </html>
