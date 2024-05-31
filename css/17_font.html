@@ -4,22 +4,47 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>폰트</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
             rel="stylesheet"
+        /> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&display=swap"
+            rel="stylesheet"
         />
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
-            @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poetsen+One&display=swap");
+            .hi-melody-regular {
+                font-family: "Hi Melody", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            .nanum-brush-script-regular {
+                font-family: "Nanum Brush Script", cursive;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            .nanum-pen-script-regular {
+                font-family: "Nanum Pen Script", cursive;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            /* @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poetsen+One&display=swap"); */
             /* .poetsen-one-regular {
                 font-family: "Poetsen One", sans-serif;
                 font-weight: 400;
                 font-style: normal;
             } */
 
-            .oswald {
+            /* .oswald {
                 font-family: "Oswald", sans-serif;
                 font-optical-sizing: auto;
                 font-weight: 200;
@@ -35,13 +60,51 @@
                 color: blue;
                 font-size: 30px;
                 font-weight: 400;
+            } */
+
+            #first {
+                font-family: "Hi Melody", sans-serif;
+                text-align: justify;
+            }
+
+            #second {
+                font-family: "Nanum Brush Script", cursive;
+            }
+
+            #third {
+                font-family: "Nanum Pen Script", cursive;
+            }
+
+            div {
+                font-family: sans-serif;
             }
         </style>
     </head>
     <body>
         <h1>폰트</h1>
 
-        <p class="poetsen-one-regular">
+        <p id="first">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius in
+            quaerat blanditiis doloribus nisi fugit temporibus dolor nihil
+            quisquam odio et, rem quas provident eveniet. Minima debitis numquam
+            harum nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Tempore architecto consequatur, itaque at maxime obcaecati
+            repudiandae sapiente illo veritatis quas, magnam ea reiciendis
+            impedit quis nostrum saepe aut facilis fugiat! Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Eos, labore exercitationem! Modi
+            corrupti tenetur minima, saepe veritatis officiis, laboriosam eius
+            fugit similique dolor at impedit ipsam obcaecati. Optio, placeat
+            voluptatibus?
+        </p>
+
+        <p id="second">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius in
+            quaerat blanditiis doloribus nisi fugit temporibus dolor nihil
+            quisquam odio et, rem quas provident eveniet. Minima debitis numquam
+            harum nesciunt!
+        </p>
+
+        <p id="third">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius in
             quaerat blanditiis doloribus nisi fugit temporibus dolor nihil
             quisquam odio et, rem quas provident eveniet. Minima debitis numquam
@@ -54,5 +117,9 @@
             dignissimos illum accusamus in, quisquam maxime? Atque quas
             laboriosam voluptatum ullam.
         </div>
+
+        <div id="font1">Lorem ipsum dolor.</div>
+        <div id="font2">consectetur adipisicing elit.</div>
+        <div id="font3">doloribus deserunt sequi ipsum.</div>
     </body>
 </html>

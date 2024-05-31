@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>오름차순 정렬</title>
+        <script>
+            // 1 ~ 100까지의 랜덤한 수 10개를 배열에 넣고
+            // 오름차순으로 정렬하고
+            // 정렬 전, 정렬 후의 배열을 각각 출력하라
+
+            let arr = new Array(10);
+
+            for (let i = 0; i < 10; i++) {
+                arr[i] = Math.floor(Math.random() * 100 + 1);
+            }
+
+            let tableBeforeSort = `<table><tr>`;
+
+            for (let i = 0; i < arr.length; i++) {
+                tableBeforeSort += `<td>${arr[i]}</td>`;
+            }
+            tableBeforeSort += `</tr></table>`;
+
+            for (let i = 0; i < 10; i++) {
+                min = arr[i];
+
+                for (let j = i + 1; j < 10; j++) {
+                    if (min > arr[j]) {
+                        let temp;
+                        temp = min;
+                        min = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+
+                arr[i] = min;
+            }
+
+            let tableAfterSort = `<table><tr>`;
+
+            for (let i = 0; i < arr.length; i++) {
+                tableAfterSort += `<td>${arr[i]}</td>`;
+            }
+            tableAfterSort += `</tr></table>`;
+
+            document.write(`정렬 전: ${tableBeforeSort}`);
+            document.write(`정렬 후: ${tableAfterSort}`);
+        </script>
+        <style>
+            table td {
+                width: 50px;
+                border: 1px solid black;
+            }
+
+            .box {
+                width: 50px;
+                height: 50px;
+                border: 1px solid black;
+            }
+
+            [class|="dashed"] {
+                width: 20px;
+                height: 20px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="dashed-border"></div>
+    </body>
+</html>

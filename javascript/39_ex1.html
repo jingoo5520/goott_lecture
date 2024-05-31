@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 연습문제)
+            // 99개의 값을 저장할 수 있는 배열이 있다.
+            // 1 ~ 100까지의 수를 무작위로 꺼내어 배열에 저장
+            // 단, 중복된 수는 없다.
+            // 배열의 크기가 99 이므로, 1 ~ 100 사이의 수 중에 하나의 숫자가 남는다.
+            // 남은 숫자가 어떤 숫자인지 확인하는 프로그램을 작성하시오.
+
+            // 1부터 100까지의 숫자가 들어있는 배열
+            let numberBox = new Array(100);
+            for (let i = 0; i < numberBox.length; i++) {
+                numberBox[i] = i + 1;
+            }
+
+            // 99개의 값을 저장할 수 있는 배열
+            let arr = new Array(99);
+
+            let randomIndex;
+
+            for (let i = 0; i < arr.length; i++) {
+                // index는 최초 0 ~ 99 중에 고름
+                // 그 뒤에는 numberBox의 배열 크기가 1씩 줄어드므로
+                // 0 ~ 100 - i 로 설정
+                randomIndex = Math.floor(Math.random() * (100 - i));
+                // 랜덤한 index를 뽑고 뽑은 index의 값을 새 배열 i번에 저장
+                arr[i] = numberBox[randomIndex];
+                // 저장 후 해당 index의 값을 splice로 지워준다.
+                // numberBox 배열의 크기가 1 줄어듬
+                // 최초 100개 -> 99
+                numberBox.splice(randomIndex, 1);
+            }
+
+            console.log(arr);
+            let remainNumber = numberBox[0];
+            console.log(`남은 숫자는 ${remainNumber}입니다.`);
+        </script>
+    </head>
+    <body></body>
+</html>

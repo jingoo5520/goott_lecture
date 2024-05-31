@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // testReturn();
+
+            testReturnForEach();
+
+            function testReturn() {
+                let sum = 0;
+                for (let i = 0; i < 10; i++) {
+                    if (sum > 10) {
+                        // 함수 종료
+                        return;
+                    }
+
+                    sum += i;
+                    console.log(i, sum);
+                }
+
+                console.log("여기까지 실행될까?");
+            }
+
+            // for-each
+
+            function testReturnForEach() {
+                let arr = [1, 2, 3, 4, 5];
+
+                arr.forEach(function (item, index) {
+                    if (item == 3) {
+                        return;
+                    }
+                    console.log(index, item);
+                });
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

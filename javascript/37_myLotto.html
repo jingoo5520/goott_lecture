@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>로또 번호 생성기</title>
+        <script>
+            // 1 ~ 45 까지의 랜덤한 정수를 6개 뽑기
+            // 중복 불가
+            // 로또 번호 6개를 출력 하세요.
+            // let myNumbers = [1, 5, 17, 19, 32, 45];
+
+            //let myNumbers = [1, 2, 3, 4, 5, 6];
+
+            let myNumbers = [4, 15, 18, 29, 30, 44];
+
+            onload = function () {
+                let randNumbers;
+
+                for (let i = 0; i < 1; i++) {
+                    randNumbers = getLottoNumbers();
+                    randNumbers.sort((a, b) => a - b);
+                    document.write(randNumbers + "<br />");
+
+                    if (arraysEqual(myNumbers, randNumbers) == true) {
+                        console.log("1등 당첨!");
+                        console.log(randNumbers);
+                        break;
+                    } else {
+                        console.log("ㅠㅠ");
+                    }
+                }
+
+                let divBox = "";
+                for (let i in randNumbers) {
+                    let boxId = "box" + i;
+                    console.log(boxId);
+
+                    divBox += `<div class='box' id=${boxId}>${randNumbers[i]}</div>`;
+                }
+                document.write(divBox);
+            };
+
+            function getRandNum() {
+                let randNum = Math.floor(Math.random() * 45 + 1);
+                return randNum;
+            }
+
+            function getLottoNumbers() {
+                let numbers = [];
+
+                let cnt = 0;
+                while (cnt < 6) {
+                    let randNum = getRandNum();
+
+                    // 중복이 없는 경우
+                    if (numbers.indexOf(randNum) == -1) {
+                        numbers.push(randNum);
+                        cnt++;
+                    } else {
+                        continue;
+                    }
+                }
+
+                return numbers;
+            }
+
+            function arraysEqual(arr1, arr2) {
+                if (arr1.length !== arr2.length) {
+                    return false;
+                }
+                for (let i = 0; i < arr1.length; i++) {
+                    if (arr1[i] !== arr2[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // 선생님 코드
+            // let lotto = [];
+            // let tmp;
+
+            // for (let i = 0; i < lotto.length; i++) {
+            //     do {
+            //         tmp = Math.floor(Math.random() * 45 + 1);
+            //     } while (isDuplicate());
+            //     lotto[i] = tmp;
+            // }
+
+            // function isDuplicate() {
+            //     for (let item of lotto) {
+            //         if (tmp == item) {
+            //             return true;
+            //         }
+            //     }
+            //     return false;
+            // }
+        </script>
+    </head>
+    <body></body>
+</html>

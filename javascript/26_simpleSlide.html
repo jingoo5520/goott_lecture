@@ -8,28 +8,61 @@
             // 1) length = 5인 이미지 배열 생성
             // ex) images[0] = "img/ex.png";
 
-            let imgArr = [];
+            let imgArr = [
+                "img/background1.png",
+                "img/background2.png",
+                "img/background3.png",
+                "img/background4.png",
+                "img/background5.png",
+            ];
+
+            let intervalId;
+            let index = 0;
 
             function pre() {
                 // 이전 이미지 보여주기
                 // 0번째 이미지에서 실행시 4번째 이미지로 이동
+                if (index == 0) {
+                    index = 4;
+                } else {
+                    index--;
+                }
+
+                document.getElementById("imgSlider").src = imgArr[index];
             }
             function next() {
                 // 다음 이미지 보여주기
                 // 4번째 이미지에서 실행시 0번째 이미지로 이동
+                if (index == 4) {
+                    index = 0;
+                } else {
+                    index++;
+                }
+                document.getElementById("imgSlider").src = imgArr[index];
+            }
+
+            function auto() {
+                intervarId = setInterval(next, 300);
+            }
+
+            function stopAuto() {
+                clearInterval(intervarId);
             }
         </script>
-        <style></style>
+        <style>
+            img {
+                width: 500px;
+                height: 500px;
+            }
+        </style>
     </head>
     <body>
         <div>
-            <img
-                src="../css/img/caffe/caffe_americano.png"
-                id="imgSlider"
-                alt=""
-            />
+            <img src="img/background1.png" id="imgSlider" alt="" />
         </div>
         <button onclick="pre()">이전</button>
-        <button onclick="next()">단계</button>
+        <button onclick="next()">다음</button>
+        <button onclick="auto()">자동시작</button>
+        <button onclick="stopAuto()">자동정지</button>
     </body>
 </html>

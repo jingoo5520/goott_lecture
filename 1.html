@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>test</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 50px;
+                background-color: red;
+                border: 2px solid black;
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <script>
+            let table = `<table border=1>`;
+
+            for (let i = 0; i < 12; i++) {
+                // i = 0, 3, 6, 9
+                if (i % 3 == 0) {
+                    table += `<tr><td>${i}</td>`;
+                } else if (i == endTr) {
+                    table += `<td>${i}</td></tr>`;
+                } else {
+                    table += `<td>${i}</td>`;
+                }
+            }
+
+            table += "</table>";
+
+            document.write(table);
+        </script>
+    </head>
+    <body>
+        <div id="table"></div>
+    </body>
+</html>
+
+<!-- 여기서부터 정리 -->

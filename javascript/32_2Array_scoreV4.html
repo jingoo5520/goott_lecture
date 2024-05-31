@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>2차원 배열을 이용한 성적표</title>
+        <script>
+            let scoreTable = [];
+
+            let stuArr = [
+                ["123456", "강진구", 95, 100, 100],
+                ["234567", "김진구", 80, 50, 45],
+                ["135135", "최혜지", 100, 100, 100],
+                ["567890", "최진구", 85, 60, 70],
+                ["135790", "홍진구", 60, 85, 70],
+                ["456456", "박진구", 70, 100, 100],
+            ];
+
+            for (let i = 0; i < stuArr.length; i++) {
+                scoreTable[i] = stuArr[i];
+            }
+
+            let outputTable = "<table>";
+
+            outputTable += `<tr>
+                <th>stuNo</th>
+                <th>name</th>
+                <th>kor</th>
+                <th>eng</th>
+                <th>math</th>
+                <th>total</th>
+                <th>average</th>
+                <th>grade</th>
+                    </tr>`;
+
+            let total;
+            let avg;
+            let grade;
+            for (let i = 0; i < scoreTable.length; i++) {
+                total = scoreTable[i][2] + scoreTable[i][3] + scoreTable[i][4];
+                avg = Number((total / 3).toFixed(2));
+
+                switch (Math.floor(avg / 10)) {
+                    case 10:
+                    case 9:
+                        grade = "A";
+                        break;
+                    case 8:
+                        grade = "B";
+                        break;
+                    case 7:
+                        grade = "C";
+                        break;
+                    case 6:
+                        grade = "D";
+                        break;
+                    default:
+                        grade = "F";
+                        break;
+                }
+
+                scoreTable[i].push(total);
+                scoreTable[i].push(avg);
+                scoreTable[i].push(grade);
+
+                outputTable += "<tr>";
+
+                for (let j = 0; j < 8; j++) {
+                    outputTable += `<td>${scoreTable[i][j]}</td>`;
+                }
+
+                outputTable += "</tr>";
+            }
+            outputTable += "</table>";
+
+            // 추가문제: 평균을 기준으로 내림차순 정렬하라
+
+            let temp;
+            for (let i = 0; i < scoreTable.length; i++) {
+                for (let j = i + 1; j < scoreTable.length; j++) {
+                    console.log(scoreTable[j]);
+                    if (scoreTable[i][6] < scoreTable[j][6]) {
+                        temp = scoreTable[i];
+                        scoreTable[i] = scoreTable[j];
+                        scoreTable[j] = temp;
+                    }
+                }
+            }
+
+            let sortedScoreTable = "<table>";
+
+            sortedScoreTable += `<tr>
+                <th>stuNo</th>
+                <th>name</th>
+                <th>kor</th>
+                <th>eng</th>
+                <th>math</th>
+                <th>total</th>
+                <th>average</th>
+                <th>grade</th>
+                    </tr>`;
+            for (let i = 0; i < scoreTable.length; i++) {
+                sortedScoreTable += "<tr>";
+
+                for (let j = 0; j < scoreTable[0].length; j++) {
+                    sortedScoreTable += `<td>${scoreTable[i][j]}</td>`;
+                }
+
+                sortedScoreTable += "</tr>";
+            }
+            sortedScoreTable += "</table>";
+
+            // 추가 문제 2
+            // 등수를 매겨 보세요.
+            // 평균을 기준으로 등수를 매겨보되, 평균이 같으면 순위는 같다.
+
+            let rank = 1;
+            let tempRank = 1;
+
+            for (let i = 0; i < scoreTable.length; i++) {
+                // i = 0;
+                // push(rank);
+                // 1출력
+
+                // i= 1;
+                // scoreTable[i] == scoreTable[i-1]?
+                // scoreTable[1] == scoreTable[0]? -> no!
+                // rank++; tempRank++;
+                // rank = 2, tempRank = 2;
+                // push(rank);
+                // 2출력
+
+                // i= 2;
+                // scoreTable[i] == scoreTable[i-1]?
+                // scoreTable[2] == scoreTable[1]? -> no!
+                // rank++;, tempRank++;
+                // rank = 3, tempRank = 3;
+                // push(rank);
+                // 3 출력
+
+                // i= 3;
+                // scoreTable[i] == scoreTable[i-1]?
+                // scoreTable[3] == scoreTable[2]? -> no!
+                // rank++;, tempRank++;
+                // rank = 4, tempRank = 4;
+                // push(rank);
+                // 4 출력
+
+                // i= 4;
+                // scoreTable[i] == scoreTable[i-1]?
+                // scoreTable[4] == scoreTable[3]? -> yes!
+                // rank++;
+                // rank = 5, tempRank = 4;
+                // push(tempRank);
+                // 4 출력
+
+                // i= 5;
+                // scoreTable[i] == scoreTable[i-1]?
+                // scoreTable[5] == scoreTable[6]? -> no!
+                // rank++; tempRank++;
+                // rank = 6, tempRank = 6;
+                // push(rank);
+                // 6 출력
+
+                if (i == 0) {
+                    scoreTable[i].push(rank);
+                    continue;
+                } else {
+                    if (scoreTable[i][6] != scoreTable[i - 1][6]) {
+                        rank++;
+                        tempRank = rank;
+                        scoreTable[i].push(rank);
+                    } else {
+                        rank++;
+                        scoreTable[i].push(tempRank);
+                    }
+                }
+            }
+
+            let rankedTable = "<table>";
+
+            rankedTable += `<tr>
+                <th>stuNo</th>
+                <th>name</th>
+                <th>kor</th>
+                <th>eng</th>
+                <th>math</th>
+                <th>total</th>
+                <th>average</th>
+                <th>grade</th>
+                <th>rank</th>
+            </tr>`;
+
+            for (let i = 0; i < scoreTable.length; i++) {
+                rankedTable += "<tr>";
+
+                for (let j = 0; j < scoreTable[0].length; j++) {
+                    rankedTable += `<td>${scoreTable[i][j]}</td>`;
+                }
+
+                rankedTable += "</tr>";
+            }
+            rankedTable += "</table>";
+
+            onload = function () {
+                document.getElementById("scoreTable").innerHTML = outputTable;
+                document.getElementById("sortedScoreTable").innerHTML =
+                    sortedScoreTable;
+                document.getElementById("rankedTable").innerHTML = rankedTable;
+            };
+        </script>
+
+        <style>
+            table,
+            td,
+            th {
+                border: 1px solid black;
+            }
+
+            td {
+                width: 200px;
+            }
+
+            table tr:nth-child(even) {
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div>정렬전</div>
+        <div id="scoreTable"></div>
+        <div>
+            <hr />
+            정렬후
+        </div>
+        <div id="sortedScoreTable"></div>
+        <div>
+            <hr />
+            랭크매김
+        </div>
+        <div id="rankedTable"></div>
+    </body>
+</html>

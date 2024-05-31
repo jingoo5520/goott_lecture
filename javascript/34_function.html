@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>사용자 정의 함수의 기본 운용법</title>
+        <script>
+            // 함수호출
+            addTwoNumbers(3, 5);
+
+            document.write("<br/>");
+
+            sayHello();
+
+            document.write("<br/>");
+
+            sayHi(5);
+
+            let sum = addTwoNumbersWithReturnValue(10, 20);
+            // console.log(sum);
+
+            // console.log(sumThree(10));
+            // console.log(sumThree(10, 20));
+
+            let gVar = "global";
+            myfunc();
+
+            // 함수 선언은 script 아래에 해도 됨
+            function addTwoNumbers(num1, num2) {
+                document.write(num1 + num2);
+            }
+
+            function sayHello() {
+                document.write("hello");
+            }
+
+            function sayHi(times) {
+                for (let i = 0; i < times; i++) {
+                    document.write("Hi<br />");
+                }
+            }
+
+            function addTwoNumbersWithReturnValue(num1, num2) {
+                let sum = num1 + num2;
+                return sum;
+            }
+
+            // 함수 인수의 기본 값을 줄 수 있다.
+            function sumThree(a, b = 5, c = 10) {
+                return a + b + c;
+            }
+
+            function myfunc() {
+                let lVar = "local";
+                console.log(gVar);
+                console.log(lVar);
+
+                function innerFunc() {
+                    let innerVar = "inner";
+                    console.log(innerVar);
+                }
+
+                innerFunc();
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

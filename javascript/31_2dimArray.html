@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 2행 3열의 2차원 배열 생성
+
+            let arr = new Array(2);
+
+            arr[0] = new Array(3);
+            arr[1] = new Array(3);
+
+            arr[0][0] = "a";
+            arr[0][1] = "b";
+            arr[0][2] = "c";
+            arr[1][0] = "d";
+            arr[1][1] = "e";
+            arr[1][2] = "f";
+
+            let table = "<table>";
+
+            for (let i = 0; i < arr.length; i++) {
+                table += "<tr>";
+                for (let j = 0; j < arr[i].length; j++) {
+                    table += `<td>${arr[i][j]}</td>`;
+                }
+                table += "</td>";
+            }
+
+            table += "</table>";
+
+            document.write(table);
+        </script>
+        <style>
+            table,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+
+    <body></body>
+</html>

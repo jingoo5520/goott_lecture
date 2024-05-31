@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>로또 번호 생성기</title>
+        <script>
+            // 1 ~ 45 까지의 랜덤한 정수를 6개 뽑기
+            // 중복 불가
+            // 로또 번호 6개를 출력 하세요.
+
+            let randNumbers;
+
+            randNumbers = getLottoNumbers();
+            randNumbers.sort((a, b) => a - b);
+            // document.write(randNumbers + "<br />");
+
+            let divBox = "";
+            for (let i in randNumbers) {
+                let boxId = "box" + i;
+                console.log(boxId);
+                let color = pickColor(randNumbers[i]);
+
+                console.log(randNumbers[i]);
+                // console.log(color);
+                divBox += `<div class="box" id="${boxId}" style="background-color:${color}">${randNumbers[i]}</div>`;
+            }
+
+            console.log(divBox);
+            document.write(divBox);
+            // document.getElementById("test").innerHTML = divBox;
+
+            function getRandNum() {
+                let randNum = Math.floor(Math.random() * 45 + 1);
+                return randNum;
+            }
+
+            function getLottoNumbers() {
+                let numbers = [];
+
+                let cnt = 0;
+                while (cnt < 6) {
+                    let randNum = getRandNum();
+
+                    // 중복이 없는 경우
+                    if (numbers.indexOf(randNum) == -1) {
+                        numbers.push(randNum);
+                        cnt++;
+                    } else {
+                        continue;
+                    }
+                }
+
+                return numbers;
+            }
+
+            function pickColor(num) {
+                let color = "";
+
+                switch (Math.floor(num / 10)) {
+                    case 4:
+                        color = "green";
+                        break;
+                    case 3:
+                        color = "grey";
+                        break;
+                    case 2:
+                        color = "orange";
+                        break;
+                    case 1:
+                        color = "lightblue";
+                        break;
+                    default:
+                        color = "yellow";
+                        break;
+                }
+
+                return color;
+            }
+
+            // 선생님 코드
+            // let lotto = [];
+            // let tmp;
+
+            // for (let i = 0; i < lotto.length; i++) {
+            //     do {
+            //         tmp = Math.floor(Math.random() * 45 + 1);
+            //     } while (isDuplicate());
+            //     lotto[i] = tmp;
+            // }
+
+            // function isDuplicate() {
+            //     for (let item of lotto) {
+            //         if (tmp == item) {
+            //             return true;
+            //         }
+            //     }
+            //     return false;
+            // }
+        </script>
+        <style>
+            .box {
+                float: left;
+                text-align: center;
+                line-height: 100px;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="test"></div>
+    </body>
+</html>

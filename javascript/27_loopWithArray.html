@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Document</title>
+        <script>
+            let heroes = [
+                "아인언맨",
+                "캡틴아메리카",
+                "토르",
+                "헐크",
+                "비전",
+                "나타샤",
+                "블랙펜서",
+            ];
+
+            for (let i = 0; i < heroes.length; i++) {
+                if (i == heroes.length - 1) {
+                    document.write(heroes[i]);
+                } else {
+                    document.write(heroes[i] + ", ");
+                }
+            }
+
+            document.write("<hr>");
+
+            // for in 문법
+            // 인덱스를 하나씩 추출
+            for (let index in heroes) {
+                if (index == heroes.length - 1) {
+                    document.write(heroes[index]);
+                } else {
+                    document.write(heroes[index] + ", ");
+                }
+            }
+
+            document.write("<hr>");
+
+            // for ~ of 문법
+            // 요소를 하나씩 추출
+            for (let hero of heroes) {
+                if (heroes.length - 1 == heroes.indexOf(hero)) {
+                    document.write(hero);
+                } else {
+                    document.write(hero + ", ");
+                }
+            }
+
+            document.write("<hr>");
+
+            // for each 문법
+            // 각 요소에 적용
+            heroes.forEach(function (item) {
+                document.write("요소는 " + item + "입니다. <br>");
+            });
+
+            document.write("<br>");
+
+            heroes.forEach(function (item, i) {
+                document.write(i + "번 째 요소는 " + item + "입니다. <br>");
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
