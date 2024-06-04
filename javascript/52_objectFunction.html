@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>생성자 함수를 이용해 객체 생성 및 사용</title>
+        <script>
+            // owner, accNum, balance를 인자로 받는 Account 객체 생성 함수 선언
+            function Account(owner, accNum, balance) {
+                // 객체 속성
+                this.owner = owner;
+                this.accNum = accNum;
+                this.balance = balance;
+                this.name = "직장인 예금";
+                this.bankName = "우리은행";
+
+                console.log(this);
+
+                // 객체 메서드
+
+                this.checkBalance = function () {
+                    return this.balance;
+                };
+
+                this.deposit = function (money) {
+                    this.balance += money;
+                };
+
+                this.withDraw = function (money) {
+                    if (this.balance >= money) {
+                        this.balance -= money;
+                    } else {
+                        window.alert("잔액 부족");
+                    }
+                };
+            }
+
+            // 객체 생성
+            let acc1 = new Account("홍길동", "1111-222-33-456", 500);
+
+            document.write(`예금주: ${acc1.owner} <br>`);
+            document.write(`계좌번호: ${acc1.accNum} <br>`);
+            document.write(`잔액: ${acc1.balance} <br>`);
+
+            // 예금하기
+            acc1.deposit(3000000);
+
+            // 입금 후 잔액 확인
+            document.write(`입금 후 잔액: ${acc1.checkBalance()} <br>`);
+
+            // 인출
+            acc1.withDraw(2000000);
+
+            // 인출 후 잔액 확인
+            document.write(`입출 후 잔액: ${acc1.checkBalance()} <br>`);
+
+            // 또 다른 객체 생성
+            let acc2 = new Account("둘리", "1010-222-33-456", 0);
+        </script>
+    </head>
+    <body></body>
+</html>

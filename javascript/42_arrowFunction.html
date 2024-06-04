@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>화살표 함수</title>
+        <script>
+            // 1) 선언식
+            function greeting() {
+                return "hello";
+            }
+            // 선언이 어디에 되어있어도 호출 가능
+            // 호이스팅
+
+            // 2) 함수 표현식
+            const greeting = function sayHi() {
+                return "hi";
+            };
+            // 함수 사용은 표현식 이후에만 사용 가능
+            // 호이스팅 안됨
+
+            // 3) 화살표 함수
+            function sayHello() {
+                return "Hello";
+            }
+
+            const func1 = () => "Hello";
+
+            const a = () => {};
+            const b = (x) => {};
+            const c = (x, y) => {};
+            const d = (x) => {
+                return 2 * x;
+            };
+            const e = (x) => 2 * x;
+            const f = (x) => {
+                console.log(2 * x);
+                return 2 * x;
+            };
+
+            // 중괄호가 있다면 return 키워드 생략 불가
+            // 중괄호가 없다면 return 키워드가 없어도 expression 반환
+        </script>
+    </head>
+    <body></body>
+</html>

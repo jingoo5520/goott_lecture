@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>문자열 객체</title>
+        <script>
+            let str = new String("대한민국");
+
+            console.log(str);
+            console.log(typeof str);
+            console.log(str[0]);
+            console.log(str[1]);
+            console.log(str[2]);
+            console.log(str[3]);
+            console.log(str[0] + str[1] + str[2] + str[3]);
+
+            str[1] = "핸"; // 직접 수정은 불가
+            console.log(str);
+
+            str = "대한민국 우리나라 좋은나라";
+
+            document.write(str + "<br />");
+            // n번째 문자 찾기
+            document.write(str.charAt(2) + "<br />");
+            // 붙이기
+            document.write(str.concat(" ", "좋아요") + "<br />");
+            // indexOf()
+            // 일치하는 첫 인덱스 반환, 없다면 -1 반환
+            document.write(str.indexOf("나") + "<br>");
+            document.write(str.indexOf("나", 8) + "<br>"); // index번 이후부터 찾아라
+
+            // lastIndexOf()
+            // 역순으로 탐색하여, 최초로 마주치는 인덱스를 반환(인덱스 자체는 정순임)
+            document.write(str.lastIndexOf("국") + "<br>");
+
+            // substr(startIndex, [length])
+            // 특정 위치부터 시작하여 특정 수만큼의 문자들을 반환
+            document.write(str.substr(6) + "<br>");
+            document.write(str.substr(10, 2) + "<br>");
+            document.write(str.substr(str.indexOf("좋은"), 2) + "<br>");
+
+            // subString()
+            // subString(startIndex, [lastIndex])
+            // string 객체의 시작 인덱스로 부터 종료 인덱스 전 까지의 문자열 반환
+            document.write(str.substring(5, 9) + "<br>"); // 5 ~ 8 인덱스 추출
+
+            let statement = "I am a student";
+            document.write(statement.toLowerCase() + "<br>");
+            document.write(statement.toUpperCase() + "<br>");
+
+            // student 단어만 추출해서 대문자로 변환해보기
+            let index = statement.indexOf("student");
+            let length = "student".length;
+
+            let stu = statement.substr(index, length);
+            document.write(stu.toUpperCase() + "<br>");
+
+            // split()
+            // 구분자를 기준으로 문자열을 나누어 배열로 출력
+            // join() 배열 원소 각각에 구분자를 붙여 하나의 스트링으로 출력
+            let temp = statement.split(" ");
+            console.log(temp.reverse().join(" "));
+
+            // replace()
+
+            // trim()
+            // 문자열 양 끝 공백을 제거하고 원본 문자열은 나두고 새로운 문자열을 반환
+
+            let name = " 홍 길 동 "; // 양쪽 공백
+            document.write(`[${name}]` + "<br>"); // 공백 확인용 괄호, 보이지 않았으나 실제로 공백이 존재함을 확인
+
+            document.write(`[${name.trim()}]` + "<br>");
+
+            // 가운데 공백 제거 하기
+            // 방법1
+            temp = name.split(" ");
+            document.write(temp.join("") + "<br>");
+
+            // 방법2
+            temp = name.replaceAll(" ", "");
+            document.write(temp + "<br>");
+
+            // 방법3
+            // 정규식
+            document.write(name.replace(/\s/g, ""));
+        </script>
+    </head>
+    <body></body>
+</html>

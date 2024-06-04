@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>내장 함수</title>
+        <script>
+            // 1. eval() : 자바스크립트  명령어를 실행한다.
+            // 사용하지 말것!
+            let result = eval("3 * 2 + 5");
+            console.log(result);
+
+            let str1 = " var num1 = 10";
+            let str2 = " var num2 = 20";
+            eval(str1);
+            eval(str2);
+            console.log(num1 + num2);
+
+            // 2. parselnt() : 문자열을 정수로 변환이 되는 부분을 변환
+            console.log(parseInt("3.94")); // 3
+            console.log(typeof parseInt("3.94")); // number
+            console.log(parseInt("3.94 입니다.")); // 3 문자가 섞여있어도 숫자를 인식하고 정수로 변환해 준다.
+
+            // 2-1. parseFloat() : 실수로 변환
+
+            console.log(parseFloat("3.141592입니다.")); // 3.141592
+
+            // 3. isNaN() : 숫자인지 아닌지 판별.
+            console.log(isNaN(3)); // false 숫자 이므로
+
+            // 4. isFinite() : 유한(숫자)인지 를 판별
+            console.log(isFinite(1 / 0)); // 무한 이기때문에 false
+            console.log(isFinite(3.14)); // 유한 이기때문에 true
+            console.log(isFinite("숫자")); // 텍스트로 false
+
+            // 5. 인코딩, 디코딩 함수
+            let qStr = "자바 Script()-_.~*!'#"; // -_.~*!' 는 인코딩되지않음
+            console.log(encodeURIComponent(qStr));
+            console.log(decodeURIComponent(encodeURIComponent(qStr)));
+        </script>
+    </head>
+    <body></body>
+</html>

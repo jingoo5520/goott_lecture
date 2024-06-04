@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 앞으로 읽어도 뒤로 읽어도 같은 단어를 회문이라 함
+            // 우영우, 기러기, madam, eye, 문장..
+            // 유저에게 문자열을 입력받아 입력된 문자가 회문인지 아닌지 판단하는 함수를 만들어라.
+            // 회문인 경우 true, 아닌 경우 false를 반환한다.
+
+            // 특수문자, 공백 정규식
+            const regExp = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim;
+
+            function isPalindrome() {
+                let isPal = true;
+                let str = document.getElementsByTagName("input")[0].value;
+
+                // 미입력시 리턴
+                if (str.length == 0) {
+                    console.log("빈값");
+                    return;
+                }
+
+                // 특수문자, 공백 모두 제거
+                // 모두 소문자 변환
+                str = str.replace(regExp, "").toLowerCase();
+
+                console.log(str);
+
+                for (let i = 0; i < str.length / 2; i++) {
+                    console.log(str[i], str[str.length - 1 - i]);
+
+                    if (str[i] == str[str.length - 1 - i]) {
+                        console.log("패스");
+                    } else {
+                        console.log("불합격");
+                        isPal = false;
+                        break;
+                    }
+                }
+
+                let result;
+                if (isPal) {
+                    result = `${str} 은 회문입니다.`;
+                } else {
+                    result = `${str} 은 회문이 아닙니다.`;
+                }
+
+                document.getElementById("result").innerHTML = result;
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" />
+        <button onclick="isPalindrome()">확인</button>
+        <div id="result">결과</div>
+    </body>
+</html>

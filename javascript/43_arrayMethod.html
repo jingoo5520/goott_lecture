@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>배열: 메서드</title>
+        <script>
+            let arr = [1, 2, 3, 4];
+
+            // every(): 배열의 모든 요소가
+            const isValid = arr.every((item) => item < 5);
+            console.log(isValid);
+
+            // find(): 배열에서 제공된 테스트 함수를 만족하는 첫 번째 요소를 반환
+            let arr1 = [1, 3, 9, 15, 20];
+            const findItem = arr1.find((item) => item > 10);
+            console.log(findItem);
+
+            // flat(): 배열의 차원을 감소시킴
+            let arr2 = [0, 1, 2, [3, 4]];
+            console.log(arr2.flat());
+
+            let arr3 = [0, 1, [2, [3, 4]]];
+            // flat(): 배열의 차원을 두 번 감소시킴
+            console.log(arr3.flat(2));
+
+            let arr4 = [0, [1, [2, [3, 4]]]];
+            // flat(): 배열의 차원을 1차원 까지 감소시킴
+            console.log(arr3.flat(Infinity));
+
+            // includes(): 배열의 항목에 특정 값이 있는지를 판단하여 true/false 반한
+            console.log(arr1.includes(2)); // false
+            console.log(arr1.includes(3)); // true
+
+            console.log(arr1.indexOf(2)); // -1
+            console.log(arr1.indexOf(3)); // 1
+        </script>
+    </head>
+    <body></body>
+</html>

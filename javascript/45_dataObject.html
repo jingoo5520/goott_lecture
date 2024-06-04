@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 객체(Object)
+            // 현실 세계의 모든 것
+            // 객체지향 언어
+            // : 현실세계의 모든 것을 프로그래밍 코드로 변환하기 위해 만든 패러다임
+            //
+            // 객체는 속성(객체의 성질을 설명)과 기능(객체가 하는 일)
+            // 속성과 기능을 객체의 멤버 라고 한다.
+            //
+            // (1) 내장 객체(built-in 객체)
+            // Date 객체
+            // (2) 사용자 정의 객체
+            // 프로그래머가 직접 만드는 객체
+
+            let date = new Date(); // 생성자를 이용해서 날짜 객체 생성
+
+            document.write(`${date} <br />`);
+            document.write(`${typeof date} <br />`);
+            document.write(`${date.toDateString()} <br />`);
+            document.write(`${date.toLocaleDateString()} <br />`);
+            document.write(`${date.toLocaleTimeString()} <br />`);
+
+            let pastDate = new Date(1996, 7, 25, 0, 10, 10);
+            console.log(pastDate);
+
+            let pastDate1 = new Date(2004, 6, 1);
+            console.log(pastDate1);
+
+            let pastDate2 = new Date(
+                "Mon Jun 03 2024 16:43:31 GMT+0900 (한국 표준시)"
+            );
+            console.log(pastDate2);
+
+            // getter
+            document.write(`현재 연도: ${date.getFullYear()} <br />`);
+            document.write(`현재 월: ${date.getMonth() + 1} <br />`);
+
+            // 요일을 담은 배열을 만들어서 오늘의 요일을 출력
+            let yoil = [
+                "일요일",
+                "월요일",
+                "화요일",
+                "수요일",
+                "목요일",
+                "금요일",
+                "토요일",
+            ];
+
+            // setter
+            let date2 = new Date();
+            document.write(`현재: ${date2} <br />`);
+            date2.setDate(1);
+            document.write(`현재: ${date2} <br />`);
+            date2.setHours(1, 10, 11);
+            document.write(`현재: ${date2} <br />`);
+
+            // getTime()
+            // 1970년 1월 1일 00:00:00 UTC와 주어진 날짜 사이의 경과 시간을 밀리초로 나타내는 숫자
+            document.write(`현재 getTime() : ${date.getTime()} <br />`);
+
+            // 나는 태어난지 x일 됬다. 계산하기
+            let myBirthday = new Date(1996, 7, 25);
+            let now = new Date();
+            console.log(myBirthday);
+            let toMyBirth = myBirthday.getTime();
+            let toNow = now.getTime();
+
+            let fromBirthToNow = toNow - toMyBirth;
+            let second = fromBirthToNow / 1000;
+            console.log(`나는 태어난지 ${second}초 되었다.`);
+            let minute = second / 60;
+            console.log(`나는 태어난지 ${minute}분 되었다.`);
+            let hour = minute / 60;
+            console.log(`나는 태어난지 ${hour}시간 되었다.`);
+            let day = hour / 24;
+            console.log(`나는 태어난지 ${day}일 되었다.`);
+            let month = day / 30;
+            console.log(`나는 태어난지 약 ${month}달 되었다.`);
+
+            let year = month / 12;
+            console.log(`나는 태어난지 약 ${year}년 되었다.`);
+
+            // 시계 출력
+            setInterval(function () {
+                let now = new Date();
+                // document.write(`${now.getSeconds()} <br />`);
+                document.getElementById("clock").innerHTML = now;
+            }, 1000);
+        </script>
+    </head>
+    <body>
+        <div id="clock"></div>
+    </body>
+</html>

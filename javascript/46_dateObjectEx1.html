@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 사용자에게 날짜를 입력받아, 현재 시간이 입력받은 날짜로부터 얼마나 지났는지(며칠) 계산해 보세요.
+            // 입력은 input 태그로 받아라.
+
+            onload = function () {
+                // let now = new Date();
+                // let maxTime = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+                // console.log(maxTime);
+                // document.getElementById("date").max = maxTime;
+            };
+
+            function calDate() {
+                let now = new Date();
+
+                let from1970ToNow = now.getTime(); // 1970년부터 지금까지의 밀리초
+                let from1970ToDate = Date.parse(
+                    document.getElementById("date").value
+                ); // 1970년부터 입력받은 시간까지의 밀리초
+
+                console.log(from1970ToNow, from1970ToDate);
+
+                let gap = from1970ToNow - from1970ToDate;
+
+                console.log(
+                    `입력받은 시간으로 부터 ${Math.floor(
+                        gap / 1000 / 60 / 60 / 24
+                    )} 일 지났습니다.`
+                );
+            }
+        </script>
+    </head>
+    <body>
+        <div id="calendar">
+            <label for="">시간 입력 후 확인버튼을 눌러라.</label>
+            <input id="date" type="date" max="" />
+            <button onclick="calDate()">계산</button>
+        </div>
+
+        <div id="result">결과</div>
+    </body>
+</html>
