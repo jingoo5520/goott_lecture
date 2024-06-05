@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>배열에 객체를 담아 관리</title>
+        <script>
+            function Account(owner, accNum, balance) {
+                this.owner = owner;
+                this.accNum = accNum;
+                this.balance = balance;
+                this.name = "직장인 비과세 예금";
+                this.bankName = "카카오뱅크";
+                // console.log(this);
+
+                // 객체 기능 부여 (메서드)
+                this.checkBalance = function () {
+                    return this.balance;
+                };
+
+                this.deposit = function (money) {
+                    this.balance += money;
+                };
+                this.withdraw = function (money) {
+                    if (this.balance >= money) {
+                        this.balance -= money;
+                    } else {
+                        window.alert("잔액이 부족합니다.");
+                    }
+                };
+            }
+
+            let acc1 = new Account("홍길동", "1111-22-3333-44444", 500);
+
+            let acc2 = new Account("둘리", "1445-22-3333-412674", 1000);
+
+            let clients = [];
+            //   let clients = new Array(1000);
+            clients.push(acc1);
+            clients.push(acc2);
+            // console.log(clients);
+
+            // 고객의 명단을 list로 화면에 출력하세요. (이름, 계좌번호, 잔액)
+
+            let list = "<ul>";
+
+            for (let i = 0; i < clients.length; i++) {
+                list += `<li>${clients[i].owner}, ${clients[i].accNum}, ${clients[i].balance} </li>`;
+            }
+
+            list += "</ul>";
+
+            // onload = function () {
+            //     document.getElementById("list").innerHTML = list;
+            // };
+
+            document.write(JSON.stringify(clients));
+            let jsonStr = JSON.stringify(clients);
+            console.log(typeof jsonStr);
+
+            let jsonObj = JSON.parse(jsonStr);
+            console.log(jsonObj);
+        </script>
+    </head>
+    <body>
+        <div id="list"></div>
+    </body>
+</html>

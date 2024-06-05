@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>This</title>
+        <script>
+            console.log(this); // 최상위 객체 window가 출력
+
+            func();
+
+            function func() {
+                console.log(this); // window 객체
+            }
+
+            const obj1 = {
+                fullname: "홍길동",
+                balance: 500,
+
+                sayHello: function () {
+                    console.log("hello");
+                    console.log(this);
+                },
+            };
+
+            obj1.sayHello(); // obj 객체
+
+            const obj2 = {
+                innerobj: {
+                    fullName: "둘리",
+                    sayHi: function () {
+                        console.log("Hi");
+                        console.log(this);
+                    },
+                },
+            };
+
+            const obj3 = {
+                innerobj: {
+                    fullName: "둘리",
+                    // 화살표 함수의 this?
+                    //
+                    sayHi: () => {
+                        console.log("Hi");
+                        console.log(this.fullName); // undefined
+                    },
+                },
+            };
+
+            obj3.innerobj.sayHi();
+
+            // 상위 함수 생성
+            // 함수 내에서 객체 생성
+            function outFunc() {
+                this.fullname = "michol";
+
+                const obj = {
+                    fullname: "홍길동",
+                    balance: 500,
+
+                    sayHello: () => {
+                        console.log("hello");
+                        console.log(this.fullname);
+                    },
+
+                    innerobj: {
+                        fullName: "이너둘리",
+                        // 화살표 함수의 this?
+                        //
+                        sayHi: () => {
+                            console.log("하이이너");
+                            console.log(this.fullname); // undefined
+                        },
+                    },
+                };
+
+                obj.innerobj.sayHi();
+            }
+
+            outFunc();
+
+            // 정리
+            // this
+            // 일반 함수의 this는 호출되는 위치에서 정의됨
+            // 화살표 함수의 this는 선언된 함수범위에서 정의
+        </script>
+    </head>
+    <body></body>
+</html>

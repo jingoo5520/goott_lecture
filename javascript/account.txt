@@ -1,0 +1,9 @@
+{
+    "owner" : "홍길동",
+    "accNum" : "1111-2222-3333",
+    "balance" : 500
+}
+
+
+제이슨 검증
+https://jsonlint.com/

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <script>
+            // input 태그로 5명 학생의 이름, 국어, 영어, 수학점수를 입력받아
+            // "성적처리" 버튼을 누르면 총점, 평균, 학점, 등수를 테이블로 출력
+            // "성적처리" 버튼을 누르기 전에는 보이지 않게 한다.
+            // 학생 한명 한명을 객체화 한다.
+            // 검색창을 만들어, 학생이름으로 검색하면, 그 학생의 성적이 보이도록 한다.
+            function Student(name, kor, eng, math, total, avg, grade) {
+                this.name = name;
+                this.kor = kor;
+                this.eng = eng;
+                this.math = math;
+                this.total = total;
+                this.avg = avg;
+                this.grade = grade;
+            }
+
+            let tableHead = [
+                "name",
+                "kor",
+                "eng",
+                "math",
+                "total",
+                "avg",
+                "grade",
+                "rank",
+            ];
+
+            let studentList = [];
+
+            function gradeProcessing() {
+                let name;
+                let kor;
+                let eng;
+                let math;
+                let total;
+                let avg;
+                let grade;
+                let rank;
+
+                name = document.getElementById("name").value;
+                kor = Number(document.getElementById("kor").value);
+                eng = Number(document.getElementById("eng").value);
+                math = Number(document.getElementById("math").value);
+                total = kor + eng + math;
+                avg = total / 3;
+                grade = getGrade(avg);
+
+                let stu = new Student(name, kor, eng, math, total, avg, grade);
+
+                studentList.push(stu);
+
+                makeScoreTable(studentList);
+            }
+
+            function getGrade(avg) {
+                let grade;
+                switch (Math.floor(avg / 10)) {
+                    case 10:
+                    case 9:
+                        grade = "A";
+                        break;
+                    case 8:
+                        grade = "B";
+                        break;
+                    case 7:
+                        grade = "C";
+                        break;
+                    case 6:
+                        grade = "D";
+                        break;
+                    default:
+                        grade = "F";
+                }
+
+                return grade;
+            }
+
+            function makeScoreTable(list) {
+                // 평균값을 이용해 배열 정렬
+                list.sort((a, b) => b.avg - a.avg);
+
+                calRank(list);
+
+                let table = "<table>";
+
+                table += "<tr>";
+                for (let i = 0; i < tableHead.length; i++) {
+                    table += `<td>${tableHead[i]}</td>`;
+                }
+                table += "</tr>";
+
+                for (let i = 0; i < list.length; i++) {
+                    table += `<tr id=stu${i}>`;
+                    table += `<td>${list[i].name}</td>`;
+                    table += `<td>${list[i].kor}</td>`;
+                    table += `<td>${list[i].eng}</td>`;
+                    table += `<td>${list[i].math}</td>`;
+                    table += `<td>${list[i].total}</td>`;
+                    table += `<td>${list[i].avg}</td>`;
+                    table += `<td>${list[i].grade}</td>`;
+                    table += `<td>${list[i].rank}</td>`;
+
+                    table += "</tr>";
+                }
+
+                table += "</table>";
+
+                document.getElementById("table").innerHTML = table;
+            }
+
+            // 배열을 받아 순위를 매김
+            function calRank(list) {
+                let rank = 1;
+                let tempRank = 1;
+
+                list[0].rank = rank;
+                for (let i = 1; i < list.length; i++) {
+                    if (list[i].avg == list[i - 1].avg) {
+                        list[i].rank = rank;
+                        tempRank++;
+                    } else {
+                        list[i].rank = ++tempRank;
+                        rank = tempRank;
+                    }
+                }
+            }
+
+            // 검색
+            function searchStu() {
+                let searchName = document.getElementById("searchName").value;
+                console.log(searchName);
+
+                for (let i = 0; i < studentList.length; i++) {
+                    if (studentList[i].name == searchName) {
+                        // 이름을 찾아서 해당 tr 태그의 스타일을 변경
+                        document.getElementById(`stu${i}`).style =
+                            "background-color:skyblue";
+                    } else {
+                        document.getElementById(`stu${i}`).style =
+                            "background-color:none";
+                    }
+                }
+            }
+        </script>
+    </head>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        .input-stu-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    </style>
+    <body>
+        <div class="input-stu-info">
+            <div>
+                <div>
+                    <label>이름: </label
+                    ><input id="name" type="text" size="8" />
+                </div>
+                <div>
+                    <label>국어: </label><input id="kor" type="text" size="8" />
+                </div>
+
+                <div>
+                    <label>영어: </label><input id="eng" type="text" size="8" />
+                </div>
+                <div>
+                    <label>수학: </label
+                    ><input id="math" type="text" size="8" />
+                </div>
+            </div>
+            <div style="width: 10px"></div>
+            <div>
+                <button onclick="gradeProcessing()">성적처리</button>
+            </div>
+        </div>
+
+        <div id="table" style="height: 100px"></div>
+
+        <label>이름 검색</label><input id="searchName" type="text" />
+        <button onclick="searchStu()">검색</button>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>객체 생성, 관리 연습</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <script>
+            // 자동차 카탈로그
+            // 가격, 제조사, 모델명, 색상, 설명, 이미지, 링크 등...
+            // 1. 생성자 함수 만들기
+            // 2. 속성 추가
+            // 생성자 - 배열에 추가 - 카드로 출력
+
+            function Car(
+                modelName,
+                company,
+                price,
+                color,
+                description,
+                img,
+                link
+            ) {
+                (this.modelName = modelName),
+                    (this.company = company),
+                    (this.price = price),
+                    (this.color = color),
+                    (this.description = description),
+                    (this.img = img),
+                    (this.link = link);
+            }
+
+            let cars = [];
+
+            let car1 = new Car(
+                "Tesla model 3",
+                "Tesla",
+                "35,000$",
+                "Pearl White",
+                "전기차",
+                "img/tesla.png",
+                "https://namu.wiki/w/%ED%85%8C%EC%8A%AC%EB%9D%BC%20%EB%AA%A8%EB%8D%B8%203"
+            );
+            let car2 = new Car(
+                "BMW 3 Series",
+                "BMW",
+                "41,000$",
+                "Alpine White",
+                "중형 럭셔리 세단",
+                "img/bmw.png",
+                "https://namu.wiki/w/BMW%203%EC%8B%9C%EB%A6%AC%EC%A6%88"
+            );
+
+            let car3 = new Car(
+                "Audi A4",
+                "Audi",
+                "39,000$",
+                "Ibis White",
+                "세련된 디자인",
+                "img/audi.png",
+                "https://namu.wiki/w/%EC%95%84%EC%9A%B0%EB%94%94%20A4"
+            );
+
+            cars.push(car1);
+            cars.push(car2);
+            cars.push(car3);
+
+            // console.log(cars);
+
+            let output = [];
+
+            for (let i = 0; i < cars.length; i++) {
+                output[i] = "";
+
+                output[i] += `
+                <div class="container mt-3">
+                    <h2>${cars[i].company}</h2>
+                    <div class="card" style="width: 400px">
+                        <img
+                            class="card-img-top"
+                            src="${cars[i].img}"
+                            style="width: 100%"
+                        />
+                        <div class="card-body">
+                            <h4 class="card-title">${cars[i].modelName}</h4>
+                            <p class="card-text">
+                                ${cars[i].description}
+                            </p>
+                            <p class="card-text">
+                                ${cars[i].color}
+                            </p>
+                            <p class="card-text">
+                                ${cars[i].price}
+                            </p>
+                            <a href="${cars[i].link}" class="btn btn-primary">더보기</a>
+                        </div>
+                    </div>
+                    <br />
+                </div>`;
+            }
+
+            onload = function () {
+                for (let i = 0; i < output.length; i++) {
+                    document.getElementById(`car${i + 1}`).innerHTML =
+                        output[i];
+                }
+            };
+
+            // static 객체?
+            // new 연산자?
+        </script>
+    </head>
+    <style>
+        .cars {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+    <body>
+        <div class="cars">
+            <div id="car1"></div>
+            <div id="car2"></div>
+            <div id="car3"></div>
+        </div>
+    </body>
+</html>
