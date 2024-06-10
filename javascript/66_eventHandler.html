@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function sayHello() {
+                alert("hello");
+            }
+
+            function sayHi() {
+                alert("Hi");
+                document.getElementById("btn4").style.backgroundColor = "red";
+            }
+
+            onload = function () {
+                let btn3 = document.getElementById("btn3");
+                // console.log(btn3);
+
+                // onclick 함수 할당은 가장 마지막에 할당된 함수만 실행
+                btn3.onclick = sayHello;
+                btn3.onclick = function () {
+                    alert("button3 clicked!");
+                };
+
+                // eventListener 는 모두 실행됨
+                let btn4 = document.getElementById("btn4");
+                btn4.addEventListener("click", sayHi);
+
+                btn4.addEventListener("click", function () {
+                    console.log("btn4 clicked!");
+                });
+
+                let btn5 = document.getElementById("btn5");
+
+                // dblclick
+                btn5.addEventListener("dblclick", sayHi);
+
+                // onclick 속성
+                // 하나의 이벤트 핸들러만 지정
+
+                // addEventHandler 메서드
+                // 동일한 이벤트에 대해 여러 핸들러 추가
+            };
+        </script>
+    </head>
+    <body>
+        <button id="btn1" onclick="alert(`button1`)">버튼1</button>
+        <button id="btn2" onclick="sayHello()">버튼2</button>
+        <button id="btn3">버튼3</button>
+        <button id="btn4">버튼4</button>
+        <button id="btn5">버튼5</button>
+    </body>
+</html>

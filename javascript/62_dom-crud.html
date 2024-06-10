@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = function () {
+                const parentElt = document.querySelector(".child");
+
+                console.log(parentElt.tagName); // 태그이름을 대문자로 반환
+
+                const childElt = document.querySelector(".child");
+
+                console.log(childElt.id);
+
+                childElt.id = "id-child1";
+
+                console.log(childElt.id);
+
+                const str = "Hello world";
+                childElt.dataset.helloWorld = str;
+
+                console.log(childElt);
+
+                const obj = { a: 1, b: 2 };
+                // String 타입으로 변환
+                childElt.dataset.object = JSON.stringify(obj);
+
+                // 다시 object 화
+                console.log(JSON.parse(childElt.dataset.object));
+
+                console.log(childElt);
+
+                // 클래스 이름 가져오기
+                console.log(childElt.className);
+
+                // 클래스 추가
+                childElt.className += " first active";
+
+                // 부여된 클래스 목록
+                console.log(childElt.classList);
+
+                // classList
+                // add(), remove(), toggle(), contains(), item()
+
+                console.log(childElt.classList.item(1)); // 1번 클래스명 반환
+
+                childElt.classList.remove("active"); // 클래스 명 삭제
+
+                childElt.addEventListener("click", function () {
+                    childElt.classList.toggle("active");
+                    console.log(childElt.classList.contains("active"));
+                });
+
+                // 하이픈(-) 사용 불가, 카멜 표기법 사용
+                childElt.style.fontSize = "30px";
+                childElt.style.backgroundColor = "pink";
+                childElt.style.textAlign = "center";
+
+                console.log(childElt.style.textAlign);
+
+                const button = document.querySelector("button");
+
+                console.log(button);
+
+                button.setAttribute("name", "clickBtn");
+            };
+        </script>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child">content-1</div>
+            <div class="child">content-2</div>
+        </div>
+        <button>click</button>;
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <script>
+            // Math.random() 메서드는 0 < x < 1 범위 내의 랜덤한 숫자를 반환
+            // 반환값에 7을 곱해주면 범위가 0 < x < 7
+            // 여기에 1을 더해주면 1 < x < 8
+            // 최종적으로 Math.floor() 메서드를 이용해 소수점을 때버리면 1 ~ 7의 랜덤한 정수값을 얻을 수 있음
+            let randNum = Math.floor(Math.random() * 7 + 1);
+
+            let foodName; // 음식 이름
+            let foodImg; // 음식 사진
+
+            // 숫자 따라 다른 값 할당
+            if (randNum == 1) {
+                foodName = "짜장면";
+                foodImg = "img/foods/jajangmyeon.jpg";
+            } else if (randNum == 2) {
+                foodName = "짬뽕";
+                foodImg = "img/foods/jjambbong.jpg";
+            } else if (randNum == 3) {
+                foodName = "비빔밥";
+                foodImg = "img/foods/bibimbap.jpg";
+            } else if (randNum == 4) {
+                foodName = "돈가스";
+                foodImg = "img/foods/dongaseu.jpg";
+            } else if (randNum == 5) {
+                foodName = "김치전";
+                foodImg = "img/foods/gimchijeon.jpg";
+            } else if (randNum == 6) {
+                foodName = "유부초밥";
+                foodImg = "img/foods/tofu-sushi.jpg";
+            } else {
+                foodName = "떡볶이";
+                foodImg = "img/foods/tteokbokki.jpg";
+            }
+
+            window.onload = function () {
+                document.getElementById("foodName").innerHTML = foodName;
+                document.getElementById("foodImg").src = foodImg;
+            };
+        </script>
+    </head>
+    <body>
+        <h1>오늘의 추천 메뉴</h1>
+        <div id="foodName"></div>
+        <img id="foodImg" src="" width="400px" height="400px" />
+    </body>
+</html>

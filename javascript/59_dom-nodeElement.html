@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 선택자를 이용해 요소를 호출
+
+            window.onload = function () {
+                const PARENT = document.querySelector(".parent");
+
+                console.log(PARENT);
+                console.log(PARENT.children); // 요소 리스트 반환
+                console.log(PARENT.childNodes); // 노드 리스트 반환
+            };
+        </script>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child">content-1</div>
+            <div class="child">content-2</div>
+        </div>
+    </body>
+</html>

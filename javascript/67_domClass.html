@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>찜</title>
+        <script
+            src="https://kit.fontawesome.com/02b6277f46.js"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            window.onload = function () {
+                // 찜 기능 만들어보기
+                let jjim1 = document.getElementById("jjim1");
+
+                jjim1.addEventListener("click", function (e) {
+                    console.log("jjim");
+                    let target = e.target;
+                    target.classList.toggle("fa-regular");
+                    target.classList.toggle("fa-solid");
+                });
+            };
+        </script>
+        <style>
+            .item {
+                display: flex;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="item">
+            item1
+            <div><i id="jjim1" class="fa-regular fa-heart"></i></div>
+        </div>
+    </body>
+</html>

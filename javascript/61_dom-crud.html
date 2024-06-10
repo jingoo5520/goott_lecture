@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = function () {
+                // create
+                const divElt = document.createElement("div");
+                console.log(divElt);
+
+                const inputElt = document.createElement("input");
+                console.log(inputElt);
+
+                const parentElt = document.querySelector(".parent");
+                console.log(parentElt);
+
+                const elt = document.createElement("div");
+                elt.textContent = "안녕";
+                console.log(elt);
+
+                // 요소의 마지막 자식으로 추가
+                parentElt.append(elt);
+
+                // 요소의 첫 번째 자식으로 추가
+                parentElt.prepend(new Comment("주석"));
+
+                // 여러 개 추가
+                const elt1 = document.createElement("div");
+                elt1.textContent = "안녕하세요";
+                parentElt.append(elt1, "텍스트!!");
+
+                // Remove
+                const childElt = document.querySelector(".child");
+                // console.log(childElt);
+                childElt.remove();
+
+                // Element.insertAdjacentElement(position, element)
+                // 새로운 요소 추가
+
+                // <!-- beforebegin -->
+                // <p>
+                //   <!-- afterbegin -->
+                //   foo
+                //   <!-- beforeend -->
+                // </p>
+                // <!-- afterend -->
+
+                const childElt2 = document.querySelector(".child");
+                console.log(childElt2);
+
+                const newElt = document.createElement("span");
+                newElt.textContent = "Hello";
+                childElt2.insertAdjacentElement("beforebegin", newElt);
+
+                // insertBefore(newNode, referenceNode)
+                // 부모노드 자식인 참조노드의 이전 형제로 새로운 노드를 삽입
+                console.log(parentElt);
+
+                const newElt2 = document.createElement("div");
+                newElt2.textConten = "test-insertBefore";
+
+                parentElt.insertBefore(newElt2, childElt2);
+
+                // Node.contains()
+                // 노드를 포함하는지 확인
+                console.log(parentElt.contains(childElt2));
+                console.log(parentElt.contains(childElt));
+            };
+        </script>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child" id="child1">content-1</div>
+            <div class="child" id="child2">content-2</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 선택자를 이용해 요소를 호출
+
+            window.onload = function () {
+                const elt = document.getElementById("child2");
+
+                // console.log(elt);
+
+                // console.log(document.getElementsByClassName("child"));
+
+                // 모든 요소를 가져옴
+                const elt1 = document.querySelectorAll(".child");
+
+                console.log(elt1); // 유사배열
+
+                // 첫 번째 요소만 가져옴
+                // console.log(document.querySelector(".child"));
+
+                elt1.forEach((e) => console.log(e.textContent));
+
+                // 유사배열 -> 배열
+                console.log(Array.from(elt1).reverse());
+
+                const elt2 = document.querySelector(".child");
+
+                // 노드의 부모요소 반환
+                console.log(elt2.parentElement);
+
+                // 노드의 이전 형제, 다음 형제 노드를 반환
+                console.log(elt2.previousSibling);
+                console.log(elt2.nextSibling);
+
+                // 노드의 이전 형제 요소, 다음 형제 요소를 반환
+                console.log(elt2.previousElementSibling);
+                console.log(elt2.nextElementSibling);
+
+                console.log(elt2.previousSibling.parentElement);
+
+                const eltParent = document.querySelector(".parent");
+
+                // 요소의 모든 자식요소를 반환
+                console.log(eltParent.children);
+
+                console.log(eltParent.firstElementChild);
+
+                // 요소와 노드를 잘 구분하기
+            };
+        </script>
+    </head>
+    <body>
+        <div class="parent">
+            <!-- 주석 -->
+            <div class="child" id="child1">content-1</div>
+            text1
+            <div class="child" id="child2">content-2</div>
+            text2
+        </div>
+    </body>
+</html>
