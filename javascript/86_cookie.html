@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function saveCookie() {
+                //쿠키이름=값;expires=쿠키만료일;(domain=도메인명;path=쿠키저장경로)
+                let myCookie = "";
+                let now = new Date();
+
+                //1일 후에 만료되는 쿠기 생성
+                now.setDate(now.getDate() + 1); // 1일 후
+
+                console.log(now.toUTCString());
+
+                myCookie = "myCook=jingoo;expires=" + now.toUTCString();
+
+                console.log(myCookie);
+
+                document.cookie = myCookie;
+
+                // 2분 후에 만료되는 쿠키 생성
+                let myCookie2 = "";
+
+                let now2 = new Date();
+
+                now2.setMinutes(now2.getMinutes() + 2);
+
+                console.log(now2.toUTCString());
+
+                myCookie2 = "myCook=jingoo;expires=" + now2.toUTCString();
+
+                document.cookie = myCookie2;
+            }
+
+            function readCookie() {
+                let cook = document.cookie;
+
+                // console.log(cook);
+                let cookArr = cook.split(",");
+                // console.log(cookArr);
+
+                let isFind = false;
+                let searchName = "myCook";
+
+                for (let i = 0; i < cookArr.length; i++) {
+                    let cookName = cookArr[i].split("=")[0];
+
+                    console.log(cookName);
+
+                    if (cookName.trim() == searchName) {
+                        alert("찾았다." + cookArr[i].split("=")[1]);
+                        isFind = true;
+                    }
+                }
+
+                if (!isFind) {
+                    alert("그런 쿠키 없습니다.");
+                }
+            }
+
+            function delCookie() {
+                // 삭제할 쿠키: myCook
+                // 삭제할 쿠키의 expires 값을 현재 시간으로 설정
+                let delName = "myCook";
+                let now = new Date();
+                let cookie = delName + "=;expires=" + now.toUTCString();
+                document.cookie = cookie;
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="쿠키저장" onclick="saveCookie()" />
+        <input type="button" value="쿠키읽기" onclick="readCookie()" />
+        <input type="button" value="쿠키삭제" onclick="delCookie()" />
+    </body>
+</html>

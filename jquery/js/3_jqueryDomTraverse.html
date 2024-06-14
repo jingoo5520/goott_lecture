@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            $(function () {
+                console.log($(".tr td").eq(0).html());
+                console.log($(".tr td").eq(2).html());
+
+                // next(): nextElementSibling()
+                console.log($(".tr td").eq(0).next().html());
+
+                // prev() : previousElementSibling
+                // td5 요소에서 4번 찾기
+                console.log($("#td5").prev().html());
+
+                // parent(): 부모 요소 찾기
+                // children(): 자식 요소 찾기
+                // td1에서 td4 찾기
+                console.log(
+                    $(".tr td").eq(0).parent().next().children().eq(0).html()
+                );
+
+                // td5에서 td9 찾기
+                console.log($("#td5").parent().next().children().eq(2).html());
+
+                // td1의 배경색을 노란색으로
+                $(".tr td").eq(0).css("background-color", "yellow");
+                $(".tr td:last").eq(0).css("background-color", "red");
+
+                $("table").css("width", "200px");
+
+                // td5의 5 글자 앞에 "a" 를 추가하고 진하게
+                $("#td5").prepend("<b>a</b>");
+
+                // td9의 배경색을 파란색으로, 글자 색상은 하얀색으로 변경
+                $("#td9").css({ "background-color": "blue", color: "white" });
+
+                // td8의 html을 100으로 변경
+                $(".tr td").eq(7).html("100");
+            });
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <tr class="tr">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr class="tr">
+                <td>4</td>
+                <td id="td5">5</td>
+                <td>6</td>
+            </tr>
+            <tr class="tr">
+                <td>7</td>
+                <td>8</td>
+                <td id="td9">9</td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQUery 사용해보기</title>
+        <!-- <script src="jquery-3.7.1.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // javascript의 onload와 같음
+            });
+
+            onload = function () {
+                // javascript
+                document.getElementsByTagName("h1")[0].style.color = "red";
+
+                // jQuery
+                $("h1").css("color", "blue");
+
+                // zero-base
+                // 0 번째 h2 태그 접근
+                $("h2").eq(0).css("color", "orange");
+                // 1 번째 h2 태그 접근
+                $("h2").eq(1).css("color", "green");
+
+                // 태그 속성 접근
+                // $("div").click(function () {
+                //     alert("jQuery");
+                //     $(this).html("jQuery");
+                // });
+
+                $(".small").mouseover(function () {
+                    $(".big").show("slow");
+                });
+
+                $(".small").mouseout(function () {
+                    $(".big").hide("slow");
+                });
+            };
+
+            function myfunc() {
+                console.log("jQuery");
+            }
+
+            // function displayBig() {
+            //     document.getElementsByClassName("big")[0].style.display =
+            //         "block";
+            // }
+
+            // function displaySm() {
+            //     document.getElementsByClassName("big")[0].style.display =
+            //         "none";
+            // }
+        </script>
+    </head>
+    <style>
+        .small {
+            border: 1px solid black;
+        }
+        .big {
+            display: none;
+            border: 1px solid red;
+        }
+    </style>
+    <body>
+        <h1>Hello, jQuery!</h1>
+        <h2>첫 번째 h2</h2>
+        <h2>두 번째 h2</h2>
+        <div onclick="myfunc()">
+            jQuery는 자바스크립트 코딩을 좀 더 빠르고 편하게 사용할 수 있도록
+            하는 라이브러리
+        </div>
+        <div>
+            <img
+                class="small"
+                src="img/bmw.png"
+                alt=""
+                width="200px"
+                onmouseover="displayBig();"
+                onmouseout="displaySm();"
+            />
+        </div>
+        <div>
+            <img class="big" src="img/bmw.png" alt="" />
+        </div>
+    </body>
+</html>

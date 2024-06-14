@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이벤트 디폴트 행동 취소</title>
+    </head>
+    <body>
+        <div>
+            특정 이벤트에 대한 디폴드 액션을 취소하는 방법
+            <br />
+            <a href="https://www.naver.com" onclick="event.preventDefault()"
+                >네이버로 이동</a
+            ><br />
+
+            <a href="https://www.google.com" onclick="return false;"
+                >구글로 이동</a
+            >
+        </div>
+    </body>
+</html>

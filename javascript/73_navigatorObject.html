@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 코드명
+            let output = `appCodeName: ${navigator.appCodeName} <br>`;
+            // 브라우저 이름
+            output += `appName: ${navigator.appName} <br>`;
+            // 브라우저 버전
+            output += `appVersion: ${navigator.appVersion} <br>`;
+            // 컴퓨터 운영체제 정보
+            output += `platform: ${navigator.platform} <br>`;
+            // 브라우저와 운영체제의 조합 정보
+            output += `userAgent: ${navigator.userAgent} <br>`;
+            output += `language: ${navigator.language} <br>`;
+
+            document.write(output);
+        </script>
+    </head>
+    <body></body>
+</html>

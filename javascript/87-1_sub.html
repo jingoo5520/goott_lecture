@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="/javascript/commonJS.js"></script>
+        <script>
+            onload = function () {
+                let closeButton = document.getElementById("closeButton");
+
+                closeButton.addEventListener("click", function () {
+                    console.log("닫기버튼 클릭");
+
+                    let isChecked = document.getElementById("checkBox").checked;
+                    if (isChecked) {
+                        saveCookie("isChecked", isChecked, 3000);
+                    }
+
+                    window.close();
+                });
+            };
+        </script>
+    </head>
+    <style></style>
+    <body>
+        <div class="notice">
+            <h1>공지사항</h1>
+            <div>쿠키를 열심히 공부해 봅시다.</div>
+            <div class="check">
+                <input id="checkBox" type="checkBox" />하루동안 이 창 열지 않기
+            </div>
+            <div class="close">
+                <input id="closeButton" type="button" value="닫기" />
+            </div>
+        </div>
+    </body>
+</html>

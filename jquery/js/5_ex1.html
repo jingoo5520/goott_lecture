@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            // 데이터를 받았다고 가정
+            function Car(name, brand, price, color, description, img, link) {
+                (this.name = name),
+                    (this.brand = brand),
+                    (this.price = price),
+                    (this.color = color),
+                    (this.description = description),
+                    (this.img = img),
+                    (this.link = link);
+            }
+
+            let cars = [];
+
+            let car1 = new Car(
+                "Tesla model 3",
+                "Tesla",
+                "35,000$",
+                "Pearl White",
+                "전기차",
+                "https://i.namu.wiki/i/CPIq8IE9Q-cvoxaImh1-xWbny5QpPpoIAik-HDHbiONz_tr2M4gcA8jYamcj51g3o-NkdX1gtzbmLUEHmzI5vGxyvJwLtQL3a6DXzlgNzz23FISvdVyd93k6umCXZIGebopyAWPOMSXTalzD1M4-UA.webp",
+                "https://namu.wiki/w/%ED%85%8C%EC%8A%AC%EB%9D%BC%20%EB%AA%A8%EB%8D%B8%203"
+            );
+            let car2 = new Car(
+                "BMW 3 Series",
+                "BMW",
+                "41,000$",
+                "Alpine White",
+                "중형 럭셔리 세단",
+                "https://i.namu.wiki/i/-Br0MT4fWrlqNfONAuR1Via_kbGAjpnt0JP2Q9cu_BT__ZoGpWwP38zsmdF3IXTAFgReFmCRsUvoxCFDz8j8swREB2GQ7e5BWsd_NcaM_hIFt7pZhh59QIY_Ckjnv_bY4e-OKJIvBNc3mj0HwTNBhw.webp",
+                "https://namu.wiki/w/BMW%203%EC%8B%9C%EB%A6%AC%EC%A6%88"
+            );
+
+            let car3 = new Car(
+                "Audi A4",
+                "Audi",
+                "39,000$",
+                "Ibis White",
+                "세련된 디자인",
+                "https://i.namu.wiki/i/95kAeEixv3ci9z_0pD6b-V2u32Fjs_jGr39wFLxMOmOAbP-24BfKJJXWK-FgeYVvCI2jWnxQFrYZLG_zKEIuyGfeQ7AVYGeEkysuVrw3C9CzEsgaSA1X8eOiIV5zKDJ3wS4dutQr39H8Xn3BzB8cnA.webp",
+                "https://namu.wiki/w/%EC%95%84%EC%9A%B0%EB%94%94%20A4"
+            );
+
+            cars.push(car1);
+            cars.push(car2);
+            cars.push(car3);
+
+            let str = JSON.stringify(cars);
+            let json = JSON.parse(str);
+
+            // 화면에 테이블 형식으로 출력
+            // 이미지 데이터가 없는 경우 처리해보기(noimage.png)
+
+            $(function () {
+                $(".car").each(function (i, e) {
+                    $(this).append(`<td>${json[i].name}</td>`);
+                    $(this).append(`<td>${json[i].brand}</td>`);
+                    $(this).append(`<td>${json[i].price}</td>`);
+                    $(this).append(`<td>${json[i].color}</td>`);
+                    $(this).append(`<td>${json[i].description}</td>`);
+                    $(this).append(`<td><img src="${json[i].img}"></td>`);
+                    $(this).append(
+                        `<td><a href="${json[i].link}">${json[i].link}</a></td>`
+                    );
+                });
+            });
+        </script>
+        <style>
+            img {
+                width: 200px;
+            }
+
+            td {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td>이름</td>
+                <td>브랜드명</td>
+                <td>가격</td>
+                <td>색상</td>
+                <td>설명</td>
+                <td>이미지</td>
+                <td>링크</td>
+            </tr>
+            <tr class="car"></tr>
+            <tr class="car"></tr>
+            <tr class="car"></tr>
+        </table>
+    </body>
+</html>

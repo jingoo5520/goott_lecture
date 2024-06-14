@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            let output = `<ul>`;
+
+            function getLocation() {
+                console.log(
+                    navigator.geolocation.getCurrentPosition(
+                        showPosition,
+                        outputError
+                    )
+                );
+            }
+
+            function showPosition(pos) {
+                // console.log(pos);
+                let lat = pos.coords.latitude;
+                let lon = pos.coords.longitude;
+                let timeStamp = pos.timestamp;
+
+                console.log(lat, lon);
+                console.log(timeStamp);
+
+                let date = new Date(timeStamp).toLocaleString();
+
+                output += `<li>당신의 위치는 위도: ${lat}, 경도: ${lon}입니다.</li>`;
+                output += `<li>당신의 위치의 정확도: ${pos.coords.accuracy}</li>`;
+                output += `<li>시간: ${date}</li>`;
+                output += `</ul>`;
+                document.write(output);
+            }
+
+            function outputError(pos) {
+                document.getElementById("output").innerHTML =
+                    "위치 정보를 가져오지 못했습니다.";
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="getLocation()">click!</button>
+        <div id="output"></div>
+    </body>
+</html>

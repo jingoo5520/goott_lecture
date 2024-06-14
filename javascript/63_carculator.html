@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>초간단계산기</title>
+        <script>
+            // 배운 것을 이용해서 계산기 만들기
+
+            // 누른 연산자, 피연산자 디스플레이
+            // 7 8 9 /
+            // 4 5 6 *
+            // 1 2 3 -
+            // + 0 = c
+
+            // = 누를 시 결과
+            // C 누를 시 클리어
+            let calArea;
+
+            const keys = [
+                ["7", "8", "9", "/"],
+                ["4", "5", "6", "*"],
+                ["1", "2", "3", "-"],
+                ["+", "0", "=", "C"],
+            ];
+
+            let calculator = `<table>`;
+
+            for (let i = 0; i < 5; i++) {
+                calculator += `<tr>`;
+                if (i != 0) {
+                    for (let j = 0; j < 4; j++) {
+                        calculator += `<td class="button">${
+                            keys[i - 1][j]
+                        }</td>`;
+                    }
+                } else {
+                    calculator += `<td id="calArea" colspan="4">0</td>`;
+                }
+
+                calculator += `</tr>`;
+            }
+
+            calculator += `</table>`;
+
+            document.write(calculator);
+
+            function onclick(e) {
+                console.log("click");
+                console.log(e.target);
+
+                console.log(calArea);
+
+                calArea.textContent += e.target.textContent;
+            }
+
+            function reset() {
+                calArea.textContent = "";
+            }
+
+            function calculate() {
+                let num1, num2;
+                let index;
+                let operator;
+                let result;
+                let str = calArea.textContent;
+                calArea.textContent = "";
+
+                let operators = ["+", "-", "/", "*"];
+                for (let i = 0; i < 4; i++) {
+                    index = str.indexOf(operators[i]);
+                    if (index != -1) {
+                        let temp = str.split(operators[i]);
+                        num1 = Number(temp[0]);
+                        num2 = Number(temp[1]);
+                        operator = operators[i];
+                        break;
+                    }
+                }
+
+                switch (operator) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        break;
+                    default:
+                }
+
+                calArea.textContent = result;
+            }
+
+            onload = function () {
+                calArea = document.getElementById("calArea");
+
+                const buttons = document.getElementsByClassName("button");
+                console.log(buttons);
+
+                for (let i = 0; i < buttons.length; i++) {
+                    if (i == 14) {
+                        // 결과
+                        buttons[i].addEventListener("click", calculate);
+                    } else if (i == 15) {
+                        // 지우기
+                        buttons[i].addEventListener("click", reset);
+                    } else {
+                        buttons[i].addEventListener("click", onclick);
+                    }
+                }
+            };
+        </script>
+    </head>
+    <style>
+        table,
+        td {
+            border: 1px solid black;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        #calArea {
+            text-align: right;
+            font-size: 24px;
+        }
+    </style>
+    <body></body>
+</html>

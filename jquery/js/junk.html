@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            // 배민 메뉴 고르기 페이지 만들어보기
+            // $("#id-checkBox").click(function () {
+            //     //$("#id-checkBox").prop("checked", true) // 미리 설정
+            //     console.log($("#id-checkBox").prop("checked")); // true, false
+            // });
+            // // $("#id-checkBox").prop("checked")
+
+            // .click()
+            // .change()
+            function Menu(
+                name,
+                img,
+                isPopular,
+                description,
+                reviewCnt,
+                basicPrice,
+                toppings
+            ) {
+                this.name = name;
+                this.img = img;
+                this.isPopular = isPopular;
+                this.description = description;
+                this.reviewCnt = reviewCnt;
+                this.basicPrice = basicPrice;
+                this.toppings = toppings;
+            }
+
+            let menu1 = new Menu(
+                "스파이시 치킨버거",
+                "/jquery/img/caffe/caffe_americano.png",
+                true,
+                `순살 닭다리살을 납작하게 튀긴 '지파이 스타일' 치킨<br>
+                (약간 매콤해요)<br>
+                살짝 매콤하고 부드러운 닭안심살이 들어간 치킨버거`,
+                133,
+                7000,
+                {
+                    "통새우패티 토핑": 2500,
+                    "쇠고개핕 추가": 2000,
+                    "머쉬룸 토핑 추가": 1500,
+                    "베이컨 토핑": 1200,
+                }
+            );
+
+            $(function () {
+                setMenu(menu1);
+            });
+
+            function setMenu(menu) {
+                $("#menuName").html(`${menu.name}`);
+
+                $("#menuImg").attr("src", `${menu.img}`);
+                $("#description").html(`${menu.description}`);
+                if (menu.isPopular == true) {
+                    $("#isPopular").html(`[인기] `);
+                } else {
+                }
+            }
+        </script>
+    </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        #container {
+            width: 500px;
+            height: 100vh;
+            border: 1px solid black;
+        }
+
+        #imgArea {
+            background-color: red;
+            height: 200px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            padding: 10px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+    <body>
+        <div id="container">
+            <div id="imgArea">
+                <img id="menuImg" src="" alt="" />
+            </div>
+            <div id="main">
+                <div>
+                    <span id="isPopular"></span>
+                    <span id="menuName" class="title"></span>
+                </div>
+                <div id="description"></div>
+            </div>
+            <input type="checkbox" name="" id="id-checkBox" />
+        </div>
+    </body>
+</html>

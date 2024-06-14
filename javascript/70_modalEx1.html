@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = function () {
+                const closeBtn = document.getElementById("close");
+                const modal1 = document.getElementById("modal1");
+
+                closeBtn.addEventListener("click", function () {
+                    modal1.classList.toggle("hidden");
+                });
+            };
+        </script>
+    </head>
+    <style>
+        .container {
+            z-index: 0;
+        }
+
+        #modal1 {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.884);
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: pink;
+            width: 300px;
+            height: 300px;
+            padding: 30px;
+            border: 5px solid black;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        #close {
+            font-size: 15px;
+            color: grey;
+            float: right;
+        }
+
+        #close:hover {
+            color: black;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Cumque nobis odit, atque delectus nulla tempora corrupti
+                    sequi animi, necessitatibus quod ipsum obcaecati aspernatur
+                    nisi ipsam magni maxime deleniti voluptatem! Quibusdam.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Natus ea voluptate minus, eos id error, beatae velit ratione
+                    at fugiat consequuntur tempora iusto, reprehenderit ullam.
+                    Praesentium itaque placeat reprehenderit iusto! Lorem ipsum
+                    dolor, sit amet consectetur adipisicing elit. Illum facere
+                    voluptate, saepe voluptatem sit exercitationem possimus
+                    iusto similique veniam rerum cupiditate voluptates
+                    temporibus unde. Explicabo asperiores amet autem praesentium
+                    consequuntur. Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Voluptatem delectus saepe mollitia
+                    exercitationem. Nihil voluptates iure, exercitationem quasi
+                    eveniet ratione nemo aliquam blanditiis, fuga eius, voluptas
+                    consequatur sequi commodi itaque. Lorem, ipsum dolor sit
+                    amet consectetur adipisicing elit. Cumque nobis odit, atque
+                    delectus nulla tempora corrupti sequi animi, necessitatibus
+                    quod ipsum obcaecati aspernatur nisi ipsam magni maxime
+                    deleniti voluptatem! Quibusdam. Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Natus ea voluptate minus, eos
+                    id error, beatae velit ratione at fugiat consequuntur
+                    tempora iusto, reprehenderit ullam. Praesentium itaque
+                    placeat reprehenderit iusto! Lorem ipsum dolor, sit amet
+                    consectetur adipisicing elit. Illum facere voluptate, saepe
+                    voluptatem sit exercitationem possimus iusto similique
+                    veniam rerum cupiditate voluptates temporibus unde.
+                    Explicabo asperiores amet autem praesentium consequuntur.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatem delectus saepe mollitia exercitationem. Nihil
+                    voluptates iure, exercitationem quasi eveniet ratione nemo
+                    aliquam blanditiis, fuga eius, voluptas consequatur sequi
+                    commodi itaque. Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Cumque nobis odit, atque delectus nulla
+                    tempora corrupti sequi animi, necessitatibus quod ipsum
+                    obcaecati aspernatur nisi ipsam magni maxime deleniti
+                    voluptatem! Quibusdam. Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Natus ea voluptate minus, eos
+                    id error, beatae velit ratione at fugiat consequuntur
+                    tempora iusto, reprehenderit ullam. Praesentium itaque
+                    placeat reprehenderit iusto! Lorem ipsum dolor, sit amet
+                    consectetur adipisicing elit. Illum facere voluptate, saepe
+                    voluptatem sit exercitationem possimus iusto similique
+                    veniam rerum cupiditate voluptates temporibus unde.
+                    Explicabo asperiores amet autem praesentium consequuntur.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatem delectus saepe mollitia exercitationem. Nihil
+                    voluptates iure, exercitationem quasi eveniet ratione nemo
+                    aliquam blanditiis, fuga eius, voluptas consequatur sequi
+                    commodi itaque.
+                </p>
+            </div>
+            <div id="modal1" class="">
+                <div class="modal-content">
+                    <span id="close">X</span>
+                    <p>
+                        여름 휴가 기간 동안 배송이 지연됨을 알려드립니다. 문제가
+                        생기면..
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

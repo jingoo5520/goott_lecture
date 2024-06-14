@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            // 이전 페이지에서 GET 방식으로 보낸 데이터 사용해보기
+            let url = location.href; // string 타입
+            console.log(url);
+
+            let queryString = url.split("?")[1]; // array 반환, queryString 만 가져옴
+
+            queryString = queryString.split("&");
+
+            // console.log(queryString);
+
+            let base;
+            let height;
+
+            queryString.forEach((element) => {
+                if (element.split("=")[0] == "base") {
+                    base = element.split("=")[1];
+                }
+
+                if (element.split("=")[0] == "height") {
+                    height = element.split("=")[1];
+                }
+            });
+
+            console.log(base, height);
+        </script>
+    </head>
+    <body>
+        <h1>Sub Page</h1>
+    </body>
+</html>

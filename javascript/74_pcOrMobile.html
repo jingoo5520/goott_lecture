@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            let pcFilter = ["win16", "win32", "win64", "mac", "macintel"];
+            let isPc = false;
+
+            console.log(navigator.platform.toLowerCase());
+
+            if (pcFilter.includes(navigator.platform.toLowerCase())) {
+                console.log("123");
+                isPc = true;
+                location.href = "https://www.google.com";
+            }
+
+            if (!isPc) {
+                location.href = "https://www.naver.com";
+            }
+
+            // screen 내장객체
+        </script>
+    </head>
+    <body></body>
+</html>

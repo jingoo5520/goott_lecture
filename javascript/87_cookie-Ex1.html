@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="/javascript/commonJS.js"></script>
+        <script>
+            onload = function () {
+                // 쿠키 확인 if, else
+
+                if (readCookie("isChecked") == true) {
+                } else {
+                    window.open(
+                        "87-1_sub.html",
+                        "myScore",
+                        "top=300, left=20, width=400, height=400"
+                    );
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h1>MainPage</h1>
+    </body>
+</html>

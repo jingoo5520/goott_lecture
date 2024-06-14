@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            console.log("현재 페이지 url: " + location.href);
+
+            function goSite() {
+                let url = document.getElementById("site").value;
+
+                console.log(url);
+
+                // 현재 페이지에 주소 할당 개념
+                location.href = url;
+
+                // 새로고침
+                // location.reload();
+            }
+        </script>
+    </head>
+    <body>
+        <div>이동할 페이지를 선택하고 이동 버튼을 누르세요.</div>
+        <select name="" id="site">
+            <option value="https://www.naver.com">네이버</option>
+            <option value="https://www.daum.net">다음</option>
+            <option value="https://www.google.com">구글</option>
+        </select>
+        <button onclick="goSite()">이동하기</button>
+
+        <!-- history -->
+        <p>page1</p>
+        <a href="72-1_page2.html">페이지 2로 이동하기</a>
+        <button onclick="history.back()">이전 페이지</button>
+        <button onclick="history.forward()">다음 페이지</button>
+    </body>
+</html>

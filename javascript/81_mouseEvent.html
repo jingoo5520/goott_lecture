@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://kit.fontawesome.com/02b6277f46.js"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            window.onload = function () {
+                let box = document.getElementById("box");
+                let tail = document.getElementById("tail");
+
+                box.addEventListener("mousemove", (e) => {
+                    console.log(e);
+                    tail.style.display = "block";
+                    tail.style.left = `${e.clientX}px`;
+                    tail.style.top = `${e.clientY}px`;
+                });
+            };
+        </script>
+        <style>
+            #box {
+                width: 300px;
+                height: 300px;
+                border: 10px solid slateblue;
+            }
+
+            #tail {
+                width: 50px;
+                height: 50px;
+                color: red;
+                position: absolute;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="box"></div>
+        <div id="tail">
+            <span id="heart">
+                <i id="jjim1" class="fa-regular fa-heart"></i>
+            </span>
+        </div>
+    </body>
+</html>

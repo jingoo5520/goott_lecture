@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            onload = function () {
+                // 현재 화면 크기
+                console.log(window.innerWidth, window.innerHeight);
+
+                // 현재 화면의 수평, 수직 스크롤 위치
+                console.log(window.scrollX, window.scrollY);
+
+                const parentElt = document.querySelector(".parent");
+                // console.log(parentElt);
+
+                setTimeout(function () {
+                    // 크르롤 이동
+                    // window.scrollTo({ top: 100, left: 0, behavior: "smooth" });
+                    parentElt.scrollTo({
+                        top: 100,
+                        left: 0,
+                        behavior: "smooth",
+                    });
+                }, 1000);
+
+                // 테두리를 제외한 요소의 크기
+                // 스크롤바 만큼의 크기도 제외
+                console.log(parentElt.clientWidth, parentElt.clientHeight);
+
+                const childElt = document.querySelector(".child");
+
+                console.log(childElt.clientWidth, childElt.clientHeight);
+
+                // 테두리를 포함한 요소의 크기
+                console.log(parentElt.offsetWidth, parentElt.offsetHeight);
+
+                //
+                console.log(childElt.offsetWidth, childElt.offsetHeight);
+
+                // 최상단 기준, 요소의 위치값
+                console.log(parentElt.offsetLeft, parentElt.offsetTop);
+
+                const output = document.querySelector("#output");
+                parentElt.addEventListener("scroll", function (e) {
+                    output.textContent = `scrollTop: ${parentElt.scrollTop}`;
+                });
+            };
+        </script>
+    </head>
+    <style>
+        body {
+            height: 1000px;
+            padding: 500px 0;
+        }
+
+        .parent {
+            width: 300px;
+            height: 200px;
+            margin-top: 1000px;
+            padding: 20px;
+            overflow: auto;
+            border: 10px solid;
+        }
+
+        .child {
+            height: 100px;
+            margin-top: 100px;
+            border: 10px solid crimson;
+        }
+    </style>
+    <body>
+        <div class="parent">
+            <div class="child">content-1</div>
+            <div class="child">content-2</div>
+        </div>
+        <div id="output"></div>
+    </body>
+</html>

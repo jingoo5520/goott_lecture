@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            jQuery를 이용하여 동적으로 행을 추가, 삭제하는 테이블 만들기
+        </title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            // input 요소 값 가져오기: $().val();
+            // deep copy?
+
+            function Product(proName, prodQty, proPrice) {
+                this.proName = proName;
+                this.prodQty = prodQty;
+                this.proPrice = proPrice;
+            }
+
+            $(function () {
+                $("table").on("click", ".addBtn", function () {
+                    // let copyTr = $(this).parent().parent();
+                    // let newTr = $(this).parent().parent().clone();
+                    // newTr.insertAfter(copyTr);
+                    // clearContents(newTr.children());
+                    $(this).parent().parent().after(makeTr());
+                });
+
+                $("table").on("click", ".removeBtn", function () {
+                    if ($("tr").length < 3) {
+                        // 헤드 포함
+                        alert("더이상 지울 수 없습니다.");
+                    } else {
+                        $(this).parent().parent().remove();
+                    }
+                });
+
+                $(".send").on("click", function () {
+                    let data = new Array();
+
+                    $("tr").each(function (i, e) {
+                        // 방법 1
+                        // if (i != 0) {
+                        //     let proName = $(e)
+                        //         .children()
+                        //         .eq(0)
+                        //         .children()
+                        //         .val();
+                        //     let prodQty = $(e)
+                        //         .children()
+                        //         .eq(1)
+                        //         .children()
+                        //         .val();
+                        //     let proPrice = $(e)
+                        //         .children()
+                        //         .eq(2)
+                        //         .children()
+                        //         .val();
+
+                        //     let product = new Product(
+                        //         proName,
+                        //         prodQty,
+                        //         proPrice
+                        //     );
+
+                        //     data.push(product);
+                        // }
+
+                        if (i != 0) {
+                            $(e)
+                                .children()
+                                .each(function (index, inputTd) {
+                                    let product = new Object();
+                                    if (index < 3) {
+                                        product[
+                                            $(inputTd).children().attr("name")
+                                        ] = $(inputTd).children().val();
+                                    }
+
+                                    data.push(product);
+                                });
+
+                            // console.log(product);
+                        }
+
+                        console.log(data);
+                        // console.log(JSON.stringify(data));
+
+                        // console.log();
+                        $("#data").html(JSON.stringify(data));
+                    });
+                });
+            });
+
+            // function clearContents(newTr) {
+            //     $.each(newTr, function (index, item) {
+            //         $(item).children().val("");
+            //     });
+            // }
+
+            function makeTr() {
+                let tr = `<tr>;
+                        <td><input type="text" name="proName" /></td>
+                        <td><input type="text" name="prodQty" /></td>
+                        <td><input type="text" name="proPrice" /></td>
+                        <td><button class="addBtn">+</button></td>
+                        <td><button class="removeBtn">-</button></td>
+                    </tr>`;
+
+                return tr;
+            }
+
+            function submitItems() {}
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td>상품명</td>
+                <td>수량</td>
+                <td>가격</td>
+                <td>추가</td>
+                <td>삭제</td>
+            </tr>
+            <tr id="tr1">
+                <td><input type="text" name="proName" /></td>
+                <td><input type="text" name="prodQty" /></td>
+                <td><input type="text" name="proPrice" /></td>
+                <td><button class="addBtn">+</button></td>
+                <td><button class="removeBtn">-</button></td>
+            </tr>
+        </table>
+        <div><button class="send">전송</button></div>
+        <div id="data"></div>
+    </body>
+</html>

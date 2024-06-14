@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>성적표 출력</title>
+        <script>
+            let data = location.href;
+
+            let stuInfo = data.split("?")[1];
+
+            console.log(stuInfo);
+
+            let stuInfoArr = stuInfo.split("&");
+
+            let name;
+            let kor;
+            let eng;
+            let math;
+            let total;
+            let avg;
+            let grade;
+
+            stuInfoArr.forEach(function (item) {
+                if (item.split("=")[0] == "name") {
+                    name = decodeURIComponent(item.split("=")[1]);
+                }
+
+                if (item.split("=")[0] == "kor") {
+                    kor = Number(item.split("=")[1]);
+                }
+
+                if (item.split("=")[0] == "eng") {
+                    eng = Number(item.split("=")[1]);
+                }
+
+                if (item.split("=")[0] == "math") {
+                    math = Number(item.split("=")[1]);
+                }
+            });
+
+            total = kor + eng + math;
+            avg = total / 3;
+
+            switch (Math.floor(avg / 10)) {
+                case 10:
+                case 9:
+                    grade = "A";
+                    break;
+                case 8:
+                    grade = "B";
+                    break;
+                case 7:
+                    grade = "C";
+                    break;
+                case 6:
+                    grade = "D";
+                    break;
+                default:
+                    grade = "F";
+            }
+
+            let output = "<table border='1'>";
+
+            output += `<tr>
+                <td>이름</td>
+                <td>국어</td>
+                <td>수학</td>
+                <td>영어</td>
+                <td>총점</td>
+                <td>평균</td>
+                <td>성적</td>    
+                </tr>
+
+                <tr>
+                <td>${name}</td>
+                <td>${kor}</td>
+                <td>${eng}</td>
+                <td>${math}</td>
+                <td>${total}</td>
+                <td>${avg}</td>
+                <td>${grade}</td>
+                </tr></table>`;
+
+            onload = function () {
+                document.getElementById("score").innerHTML = output;
+            };
+        </script>
+    </head>
+    <body>
+        <h1>Score V6, sub page</h1>
+        <div id="score"></div>
+    </body>
+</html>
