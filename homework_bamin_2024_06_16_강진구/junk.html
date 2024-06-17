@@ -93,7 +93,16 @@
                         </div>
                         </li>`;
                 }
-                toppingList += `</li>`;
+
+                // 모두 선택 기능 구현
+                toppingList += `<li>
+                    <div>
+                            <input id="check-all" type="checkbox" />
+                            모두 선택
+                        </div>
+                    </li>`;
+
+                toppingList += `</ul>`;
 
                 $("#select-topping-area").html(toppingList);
                 $("#final-price").html(`${numberFormat(json.basicPrice)}`);
@@ -110,6 +119,14 @@
                     }
 
                     $("#final-price").html(numberFormat(finalPrice));
+                });
+
+                $("#check-all").on("click", function () {
+                    if ($(this).prop("checked")) {
+                        $(".topping-check-box").prop("checked", true);
+                    } else {
+                        $(".topping-check-box").prop("checked", false);
+                    }
                 });
             }
 
@@ -211,8 +228,9 @@
         }
 
         #final-choice-button {
+            font-size: 16px;
             width: 70%;
-            height: 40px;
+            height: 50px;
             border: 1px solid black;
             display: flex;
             justify-content: center;
