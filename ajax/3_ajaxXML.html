@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>비동기 통신 방식으로 XML</title>
+        <script>
+            function txtLoad() {
+                $.ajax({
+                    url: "http://goott01.cafe24.com/kjg/account.xml", // url
+                    type: "GET", // method
+                    dataType: "xml", // dataType
+                    success: function (data) {
+                        // $("#output").html(data);
+                        console.log(data);
+                        parsingXML(data);
+                    }, // 통신 성공
+                    error: function () {}, // 통신 실패
+                    complete: function () {}, // 통신 완료
+                });
+            }
+
+            function parsingXML(xml) {
+                let account = xml.getElementsByTagName("account");
+
+                // console.log(account.children());
+
+                let output = `<table border="1">`;
+                output += `<tr>
+                        <th>예금주</th>
+                        <th>계좌번호</th>
+                        <th>잔액</th>
+                        <th>계좌명</th>
+                        <th>은행</th>
+                        <tr>`;
+
+                $.each(account, function (i, account) {
+                    output += `<tr>`;
+
+                    output += `<td>${$(account).children().eq(0).html()}</td>`;
+                    output += `<td>${$(account).children().eq(1).html()}</td>`;
+                    output += `<td>${$(account).children().eq(2).html()}</td>`;
+                    output += `<td>${$(account).children().eq(3).html()}</td>`;
+                    output += `<td>${$(account).children().eq(4).html()}</td>`;
+
+                    output += `</tr>`;
+                });
+
+                output += `</table>`;
+
+                $("#output").html(output);
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="로딩" onclick="txtLoad();" />
+        <div id="output"></div>
+    </body>
+</html>

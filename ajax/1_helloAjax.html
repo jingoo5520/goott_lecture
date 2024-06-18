@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>비동기 통신 방식(vanila JS)</title>
+        <script>
+            // 로딩 버튼을 누르면 서버에 있는 hello.txt 파일을
+            // 비동기 통신방식으로 얻어와
+            // div 영역에 그 내용을 출력
+
+            function txtLoad() {
+                let xhttp = new XMLHttpRequest();
+
+                if (xhttp != null) {
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            // 통신 성공
+                            document.getElementById("output").innerHTML =
+                                this.responseText;
+                        }
+                    };
+                } else {
+                    alert("통신 실패");
+                }
+
+                xhttp.open("get", "http://goott01.cafe24.com/kjg/hello.txt");
+
+                xhttp.send(); // 요청 전송, 통신 시작
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="로딩" onclick="txtLoad();" />
+        <div id="output"></div>
+    </body>
+</html>

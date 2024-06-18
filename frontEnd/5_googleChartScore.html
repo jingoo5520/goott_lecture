@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>성적표 차트 그리기</title>
+        <script src="js/jquery-3.7.1.js"></script>
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+        <script type="text/javascript">
+            let arr = [["stu", "kor", "eng", "math", "avg"]];
+
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+
+                var stuData = google.visualization.arrayToDataTable(arr);
+
+                var options = {
+                    title: "Monthly Coffee Production by Country",
+                    vAxis: { title: "score" },
+                    hAxis: { title: "stu" },
+                    seriesType: "bars",
+                    series: { 3: { type: "line" } },
+                };
+
+                var chart = new google.visualization.ComboChart(
+                    document.getElementById("chart_div")
+                );
+                chart.draw(stuData, options);
+            }
+
+            $(function () {
+                $("#btnResult").click(function () {
+                    let nameArr = [];
+                    let scoreArr = [];
+                    console.log(
+                        $("tbody tr").eq(0).children().eq(0).children().val()
+                    );
+                    $("tbody tr").each(function (i, e) {
+                        if (i < 3) {
+                            let name = $(this)
+                                .children()
+                                .children()
+                                .eq(0)
+                                .val();
+
+                            let kor = Number(
+                                $(this).children().children().eq(1).val()
+                            );
+                            let eng = Number(
+                                $(this).children().children().eq(2).val()
+                            );
+                            let math = Number(
+                                $(this).children().children().eq(3).val()
+                            );
+
+                            let total = kor + eng + math;
+                            let avg = total / 3;
+
+                            $(this).children().children().eq(4).val(total);
+                            $(this).children().children().eq(5).val(avg);
+
+                            let stuArr = [name, kor, eng, math, avg];
+
+                            arr.push(stuArr);
+                        }
+                    });
+
+                    google.charts.load("current", { packages: ["corechart"] });
+                    google.charts.setOnLoadCallback(drawVisualization);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>국어</th>
+                    <th>영어</th>
+                    <th>수학</th>
+                    <th>총점</th>
+                    <th>평균</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="student">
+                    <td><input type="text" class="stuName" value="짱구" /></td>
+                    <td><input type="text" class="kor" value="88" /></td>
+                    <td><input type="text" class="eng" value="68" /></td>
+                    <td><input type="text" class="math" value="78" /></td>
+                    <td><input type="text" class="tot" /></td>
+                    <td><input type="text" class="avg" /></td>
+                </tr>
+                <tr class="student">
+                    <td><input type="text" class="stuName" value="철수" /></td>
+                    <td><input type="text" class="kor" value="90" /></td>
+                    <td><input type="text" class="eng" value="70" /></td>
+                    <td><input type="text" class="math" value="75" /></td>
+                    <td><input type="text" class="tot" /></td>
+                    <td><input type="text" class="avg" /></td>
+                </tr>
+                <tr class="student">
+                    <td><input type="text" class="stuName" value="유리" /></td>
+                    <td><input type="text" class="kor" value="100" /></td>
+                    <td><input type="text" class="eng" value="80" /></td>
+                    <td><input type="text" class="math" value="74" /></td>
+                    <td><input type="text" class="tot" /></td>
+                    <td><input type="text" class="avg" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div><input type="button" value="결과" id="btnResult" /></div>
+        <div id="chart_div" style="width: 900px; height: 500px"></div>
+    </body>
+</html>

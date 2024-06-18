@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery를 이용한 비동기 통신 예제</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            function txtLoad() {
+                $.ajax({
+                    url: "http://goott01.cafe24.com/kjg/hello.txt", // url
+                    type: "get", // method
+                    dataType: "text", // dataType
+                    success: function (data) {
+                        $("#output").html(data);
+                        console.log("ajax success");
+                    }, // 통신 성공
+                    error: function () {}, // 통신 실패
+                    complete: function () {}, // 통신 완료
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="로딩" onclick="txtLoad();" />
+        <div id="output"></div>
+    </body>
+</html>
