@@ -24,7 +24,7 @@
 
             $(function () {
                 $.ajax({
-                    url: "https://mbn.co.kr/rss/", // url
+                    url: "https://mbn.co.kr/rss/enter/", // url
                     type: "GET", // method
                     dataType: "xml", // dataType
                     success: function (data) {
@@ -59,7 +59,7 @@
                 >
                     <div class="card-body">
                         ${itemArr[i].description}<br><br>
-                        <a href="${itemArr[i].link}">${itemArr[i].link}</a>
+                        <a href="${itemArr[i].link}">${itemArr[i].link}</a><br>
                         ${itemArr[i].pubDate}
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                 >
                     <div class="card-body">
                         ${itemArr[i].description}<br><br>
-                        <a href="${itemArr[i].link}">${itemArr[i].link}</a>
+                        <a href="${itemArr[i].link}">${itemArr[i].link}</a><br>
                         ${itemArr[i].pubDate}
                     </div>
                 </div>
@@ -139,16 +139,17 @@
         </script>
     </head>
     <body>
-        <div class="container"></div>
-        <h1>MBN 뉴스</h1>
-        <div class="mt-3 mb-3">
-            <input
-                id="search"
-                type="text"
-                placeholder="검색어를 입력하시고 엔터를 누르세요..."
-            />
-        </div>
+        <div class="container">
+            <h1>MBN 뉴스</h1>
+            <div class="mt-3 mb-3">
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="검색어를 입력하시고 엔터를 누르세요..."
+                />
+            </div>
 
-        <div id="accordion"></div>
+            <div id="accordion"></div>
+        </div>
     </body>
 </html>
