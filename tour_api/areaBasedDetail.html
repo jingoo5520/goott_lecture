@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            // 주소에서 contentid를 읽어온다.
+            // api 요청 후 json 응답받기
+
+            let currentURL = location.href;
+            let urlInfos = currentURL.split("?")[1];
+            let infoArray = urlInfos.split("&");
+            let contentid;
+
+            let appKey =
+                "6gNmKhyEs%2BsCMNSLmsp%2FQTRwU3aROgyt%2F84W0LeYg0i%2BIX98xBhh6%2F1teGtm431ojGRZR4cEjNVelra2oXxPmA%3D%3D";
+
+            $(function () {
+                infoArray.forEach(function (val, i) {
+                    // console.log(val.split("="));
+                    if (val.split("=")[0] == "contentid") {
+                        contentid = val.split("=")[1];
+                    }
+                });
+
+                getTourData(contentid);
+
+                getAdditionalImage(contentid);
+            });
+
+            function getTourData(contentid) {
+                let baseURL = `http://apis.data.go.kr/B551011/KorService1/detailCommon1?`;
+                let apiParam = `&MobileOS=ETC&MobileApp=AppTest&ServiceKey=${appKey}&contentId=${contentid}&_type=json&firstImageYN=Y&defaultYN=Y`;
+
+                let url = `${baseURL}${apiParam}`;
+                console.log(url);
+
+                $.ajax({
+                    url: url, // url
+                    type: "get", // method
+                    dataType: "json", // dataType
+                    success: function (data) {
+                        console.log(data);
+                    }, // 통신 성공
+                    error: function () {}, // 통신 실패
+                    complete: function () {}, // 통신 완료
+                });
+            }
+
+            // function parsingJson(json) {
+            //     console.log(json.response.body.items.item[0].title);
+
+            //     $(".content").html(json.response.body.items.item[0].title);
+            // }
+
+            function getAdditionalImage(contentid) {
+                let baseURL = `http://apis.data.go.kr/B551011/KorService1/detailImage1?`;
+                let apiParam = `&MobileOS=ETC&MobileApp=AppTest&ServiceKey=${appKey}&contentId=${contentid}&_type=json&imageYN=Y&subImageYN=Y`;
+
+                let url = `${baseURL}${apiParam}`;
+                console.log(url);
+                $.ajax({
+                    url: url, // url
+                    type: "get", // method
+                    dataType: "json", // dataType
+                    success: function (data) {
+                        setImages(data.response.body.items.item);
+                    }, // 통신 성공
+                    error: function () {}, // 통신 실패
+                    complete: function () {}, // 통신 완료
+                });
+            }
+
+            function setImages(images) {
+                console.log(images);
+
+                if (images == null) {
+                    return;
+                }
+
+                for (let i = 0; i < images.length; i++) {
+                    let img = images[i].originimgurl;
+                    $(".carousel-indicators").append(
+                        `<button
+                        type="button"
+                        data-bs-target="#demo"
+                        data-bs-slide-to="${i}"
+                        class="active"
+                        ></button>`
+                    );
+
+                    $(".carousel-inner").append(
+                        `<div class="carousel-item ${i == 0 ? `active` : ""}">
+                            <div class="imgArea">
+                                <img
+                                    src="${img}"
+                                    alt="New York"
+                                    class="d-block"
+                                    style="width: 100%"
+                                />
+                            </div>
+                        </div>`
+                    );
+                }
+            }
+        </script>
+        <style>
+            .fakeimg {
+                height: 200px;
+                background: #aaa;
+            }
+
+            .topHeader {
+                background-image: url("panorama.jpg");
+                background-size: 100% 300px;
+                /* background-position: top; */
+                height: 300px;
+            }
+
+            img {
+                height: 400px;
+            }
+
+            .imgArea {
+                padding: 0 200px;
+                background-color: #212529;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="p-5 bg-primary text-white text-center topHeader">
+                <h1>Tour API</h1>
+                <p>Resize this responsive page to see the effect!</p>
+            </div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="area.html">지역기반</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Carousel -->
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators"></div>
+
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner"></div>
+
+                <!-- Left and right controls/icons -->
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#demo"
+                    data-bs-slide="prev"
+                >
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#demo"
+                    data-bs-slide="next"
+                >
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <div class="mt-5 p-4 bg-dark text-white text-center">
+                <p>Footer</p>
+                <p>Goott All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>

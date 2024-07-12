@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            let url = "https://www.naver.com?q=날씨";
+            document.write(`기존 문자열: ${url} <br>`);
+            document.write(`encoded 문자열: ${encodeURI(url)} <br>`);
+            document.write(
+                `encoded 문자열 -> decode : ${decodeURI(encodeURI(url))} <br>`
+            );
+
+            document.write(
+                `encodeURIComponent : ${encodeURIComponent(url)} <br>`
+            );
+            document.write(
+                `encodeURIComponent -> decodeURIComponent : ${decodeURIComponent(
+                    encodeURIComponent(url)
+                )} <br>`
+            );
+        </script>
+    </head>
+    <body></body>
+</html>
