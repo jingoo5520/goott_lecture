@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                console.log($(".title").html());
+
+                $("#check").click(function () {
+                    $("#userId").val("gildong1234");
+                    $("#myLink").attr("href", "new_link");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1 class="title">제목</h1>
+        <input id="userId" type="text" />
+        <button id="check">버튼</button>
+
+        <a id="myLink" href="http://www.naver.com">링크</a>
+
+        <input type="range" type="0.1" />
+    </body>
+</html>
