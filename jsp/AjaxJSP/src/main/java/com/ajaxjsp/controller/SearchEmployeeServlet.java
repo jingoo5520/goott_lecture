@@ -1,7 +1,6 @@
 package com.ajaxjsp.controller;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -15,38 +14,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.ajaxjsp.dao.EmployeesDAO;
 import com.ajaxjsp.dao.EmployeesDAOImpl;
-import com.ajaxjsp.etc.OutputJSONForError;
 import com.ajaxjsp.vo.EmployeeVO;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-/**
- * Servlet implementation class GetAllEmployees
- */
-@WebServlet("/employees")
-public class GetAllEmployeesServlet extends HttpServlet {
+@WebServlet("/findEmpByName.do")
+public class SearchEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	EmployeesDAO emp = EmployeesDAOImpl.getInstance();
-	
+
+	public SearchEmployeeServlet() {
+		
+    }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String searchName = request.getParameter("searchName");
+		String orderMethod = request.getParameter("orderMethod");
+		
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		String orderMethod = request.getParameter("orderMethod"); 
-		String searchName = request.getParameter("searchName");
 		
-		System.out.println(searchName);
+		EmployeesDAO dao = EmployeesDAOImpl.getInstance();
 		
 		try {
-			List<EmployeeVO> list = emp.selectAllEmp(orderMethod, searchName);
-			// JSON-SIMPLE LIB
+			List<EmployeeVO> list = dao.selectByEmpName(searchName, orderMethod);
+			
 			JSONObject jo = new JSONObject();
 			JSONArray ja = new JSONArray();
 			SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
@@ -77,31 +72,15 @@ public class GetAllEmployeesServlet extends HttpServlet {
 			out.print(jo.toJSONString());
 			out.close();
 			
-			
-			//GSON
-//			String json = toJsonWithGson(list);
-//			PrintWriter out = response.getWriter();
-//			System.out.println(json);
-//			out.print(json);
-//			out.close();
-			
-			
-		}catch(NamingException | SQLException e) {
-			response.getWriter().print(OutputJSONForError.outputJson(e));
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-	
-	/*
-	 * private String toJsonWithGson(List<EmployeeVO> list) { Gson gson = new
-	 * GsonBuilder().create(); JSONObject j = new JSONObject(); SimpleDateFormat
-	 * date = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초"); j.put("status",
-	 * "ok"); j.put("outputDate", date.format(new Date())); j.put("size",
-	 * list.size()); j.put("datas", list); return gson.toJson(j); }
-	 */
 
 }

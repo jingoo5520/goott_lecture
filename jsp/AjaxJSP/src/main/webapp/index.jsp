@@ -25,7 +25,7 @@
    let deptData = null;
    
    $(document).ready(function() {
-      getAllEmployees();
+      getAllEmployees("employee_id");
       getAllJobs();
       getAllDepartments();
       
@@ -75,6 +75,83 @@
     	  
     	  inputEmpValidate(tempEmp);
       })
+      
+      // 이름으로 사원 검색하기(Enter)
+      $("#findEmpName").keyup(function(e){
+    	  let searchName = $(this).val().toLowerCase();
+    	  
+    	   if(e.keyCode == 13){
+    		   $("#orderEmpNo").prop('checked', true);
+    		   
+    		  $.ajax({
+ 		         url : "findEmpByName.do",
+ 		         type: "GET",
+ 		         data: {
+ 		        	 "searchName" : searchName,
+ 		        	 "orderMethod" : "employee_id",
+ 		         },
+ 		         dataType : "json",
+ 		         success: function(data) {
+ 		           empData = data;
+ 		           outputEntireEmployees(data);
+ 		         },
+ 		         error: function(e) {
+ 		        	 console.log(e);
+ 		         },
+ 		         complete: function() {
+ 		         }
+ 		      });
+    	  } 
+      })
+      
+      // 정렬 방식 변경
+		$(".orderMethod").click(function(){
+			let orderMethod = $(this).val();
+			let searchName = $("#findEmpName").val();
+			
+			console.log("searchName:" + searchName);
+			console.log("orderMethod:" + orderMethod);
+			
+			if(searchName != ""){
+				$.ajax({
+	 		         url : "findEmpByName.do",
+	 		         type: "GET",
+	 		         data: {
+	 		        	"orderMethod" : orderMethod,
+	 		        	"searchName" : searchName,
+	 		         },
+	 		         dataType : "json",
+	 		         success: function(data) {
+	 		        	 outputEntireEmployees(data);
+	 		         },
+	 		         error: function(e) {
+	 		        	
+	 		         },
+	 		         complete: function() {
+	 		         }
+	 		      });	
+			} else {
+				$.ajax({
+	 		         url : "employees",
+	 		         type: "GET",
+	 		         data: {
+	 		        	 "orderMethod" : orderMethod,
+	 		         },
+	 		         dataType : "json",
+	 		         success: function(data) {
+	 		        	outputEntireEmployees(data);
+	 		         },
+	 		         error: function(e) {
+	 		        	
+	 		         },
+	 		         complete: function() {
+	 		         }
+	 		      });	
+			}
+			
+			 
+		})
+      
    });
    
 	function inputEmpValidate(tempEmp){
@@ -186,12 +263,13 @@
    }
    /* check 종료 */
    
-   function getAllEmployees() {
+   function getAllEmployees(orderMethod) {
       let url = "employees";
       $.ajax({
          url : url,
          type: "GET",
          dataType : "json",
+         data: {"orderMethod" : orderMethod},
          success: function(response) {
             empData = response;
             outputEntireEmployees(response);
@@ -382,6 +460,8 @@
 		$("#manager_id").val(data.employee.manager_id);
 		
 		$("#department_id").val(data.employee.department_id);
+		
+		
 }
 </script>
 <style>
@@ -404,6 +484,25 @@
 			<div id="outputCnt" class="genInfo"></div>
 		</div>
 
+		<input type="text" id="findEmpName" class="form-control" placeholder="찾을 사원의 이름을 입력하세요.">
+
+		<!-- 정렬방식 선택 -->
+		<div class="form-check">
+			<input type="radio" class="form-check-input orderMethod" id="orderEmpNo" name="optradio" value="employee_id" checked>
+			사번순(오름차순) 
+			<label class="form-check-label" for="orderEmpNo"></label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input orderMethod" id="orderHireDate" name="optradio" value="hire_date">
+			입사일순(내림차순)
+			<label class="form-check-label  for="orderHireDate"></label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input orderMethod" id="orderSalary" name="optradio" value="salary">
+			급여순(내림차순)
+			<label class="form-check-label" for="orderSalary"></label>
+		</div>
+		
 		<div id="outputEmp" class="empInfo"></div>
 		<img src="./assets/insert.png" id="writeIcon" alt="직원 추가">
 	</div>
@@ -416,18 +515,16 @@
 				<!-- Modal Header -->
 				<div class="modal-header">
 					<h4 class="modal-title">사원 입력</h4>
-					<button type="button" class="btn-close writeBtnClose"
-						data-bs-dismiss="modal" aria-label="Close"></button>
+					<button type="button" class="btn-close writeBtnClose" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div class="input-group p-3">
-						<span class="input-group-text">성</span> <input type="text"
-							class="form-control" placeholder="성" name="last_name"
-							id="last_name"> <span class="input-group-text">이름</span>
-						<input type="text" class="form-control" placeholder="이름"
-							name="first_name" id="first_name">
+						<span class="input-group-text">성</span> 
+						<input type="text" class="form-control" placeholder="성" name="last_name" id="last_name"> 
+						<span class="input-group-text">이름</span>
+						<input type="text" class="form-control" placeholder="이름" name="first_name" id="first_name">
 					</div>
 					<div class="input-group p-3">
 						<span class="input-group-text">이메일</span> <input type="text"
@@ -448,14 +545,16 @@
 						</select>
 					</div>
 					<div class="input-group p-3">
-						<span class="input-group-text">급여</span> 
-						<input type="text" class="form-control" placeholder="0" name="salary" id="salary">
-						
+						<span class="input-group-text">급여</span> <input type="text"
+							class="form-control" placeholder="0" name="salary" id="salary">
+
 					</div>
-					<div class="input-group p-3"><input type="range""
-							class="form-control" placeholder="급여" name="salary" id="salaryBar"
-							min="0" max="0"></div>
-					
+					<div class="input-group p-3">
+						<input type="range" "
+							class="form-control"
+							placeholder="급여" name="salary" id="salaryBar" min="0" max="0">
+					</div>
+
 					<div class="input-group p-3">
 						<input type="number" class="form-control" placeholder="커미션"
 							name="commission_pct" id="commission_pct"> <span

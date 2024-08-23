@@ -11,7 +11,7 @@ import com.ajaxjsp.vo.EmployeeVO;
 import com.ajaxjsp.vo.JobsVO;
 
 public interface EmployeesDAO {
-	List<EmployeeVO> selectAllEmp() throws NamingException, SQLException;
+	List<EmployeeVO> selectAllEmp(String orderMethod, String searchName) throws NamingException, SQLException;
 	List<JobsVO> selectAllJobs() throws NamingException, SQLException;
 	List<DepartmentVO> selectAllDepartments() throws NamingException, SQLException;
 	
@@ -19,4 +19,6 @@ public interface EmployeesDAO {
 	String insertEmp(EmployeeDTO emp) throws NamingException, SQLException;
 	
 	EmployeeVO selectEmployeeByEmpNo(int empNo) throws NamingException, SQLException;
+	
+	List<EmployeeVO> selectByEmpName(String searchName, String orderMethod) throws NamingException, SQLException;
 }
