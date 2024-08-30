@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.miniproject.mappers.hboardMapper">
+	
+	<select id="getDateTime" resultType="string">
+		select now()
+	</select>
+	
+	<select id="getAllBoard" resultType="com.miniproject.domain.HBoardVO">
+		select * from hboard order by boardNo desc
+	</select>
+	
+</mapper>

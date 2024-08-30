@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mappers.memberMapper">
+
+
+	<!-- select문은 return타입을 알 수 없음 -->
+	<!-- 나머지 쿼리문은 int return -->
+	<select id="getDateTime" resultType="string">
+		select now()
+	</select>
+	
+	<insert id="insertMember">
+		insert into member values(#{userId}, sha1(md5(#{userPwd})), #{userEmail}, #{userMobile}, #{userGender}, #{hobbies}, #{job}, #{userImg}, #{memo}, #{isAdmin})
+	</insert>
+	
+	<update id="updateMember">
+		update member set userImg = #{userImg} where userId = #{userId}
+	</update>
+	
+	<delete id="deleteMember">
+		delete from member where userId = #{userId}
+	</delete>
+	
+	<select id="viewAllMembers" resultType = "com.spring.domain.MemberDTO">
+		select * from member
+	</select>
+	
+	<select id="viewMemberByUserId" resultType = "com.spring.domain.MemberDTO">
+		select * from member where userId = #{userId}
+	</select>
+	
+	<select id="loginMember" resultType = "com.spring.domain.MemberDTO">
+		select * from member where userId = #{userId} and userPwd = sha1(md5(#{userPwd}))
+	</select>
+	
+</mapper>

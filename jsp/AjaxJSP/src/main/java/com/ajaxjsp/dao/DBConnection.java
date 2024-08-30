@@ -14,7 +14,7 @@ public class DBConnection {
 	public static Connection dbConnect() throws NamingException, SQLException {
 		Context initContext = new InitialContext();
 		Context envContext  = (Context)initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource)envContext.lookup("jdbc/AjaxJSP");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/webkjg");
 		Connection conn = ds.getConnection();
 		return conn;
 	}
