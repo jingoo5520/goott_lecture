@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.miniproject.mappers.cboardMapper">
+
+	<select id="getAllBoard" resultType="HBoardVO">
+		select * from hboard where boardType = 'cboard' order by ref desc, refOrder asc limit #{startRowIndex}, #{viewPostCntPerPage}
+	</select>
+
+	<select id="selectTotalCount" resultType="int">
+		select count(*) from hboard
+	</select>
+
+	<insert id="saveNewBoard">
+		insert into hboard (title, content, writer, boardType)
+		values
+		(#{title}, #{content}, #{writer}, 'cboard')
+	</insert>
+
+	<select id="getMaxNo" resultType="int">
+		select max(boardNo) from hboard where boardType = 'cboard'
+	</select>
+
+	<select id="getBoard" resultType="HBoardVO">
+		select * from hboard where boardNo = #{boardNo};
+	</select>
+
+
+	<!-- resultMap 연습 -->
+	<resultMap type="com.miniproject.domain.HBoardDTO" id="boardResultMapTest">
+		<id column="boardNo" property="boardNo" javaType="int"></id>
+		<result column="title" property="title" javaType="String"></result>
+		<result column="content" property="content" javaType="String"></result>
+		<result column="writer" property="writer" javaType="String"></result>
+
+		<collection column="boardNo" property="fileList" ofType="BoardUpFilesVODTO" javaType="java.util.List" select="getBoardUpFiles">
+
+		</collection>
+
+	</resultMap>
+
+	<select id="selectResultMapTest" resultMap="boardResultMapTest">
+		select boardNo, title, content, writer from hboard where boardNo = #{boardNo}
+	</select>
+
+	<resultMap type="com.miniproject.domain.BoardDetailInfo" id="BoardDetailInfo">
+		<result column="boardNo" property="boardNo" javaType="int"></result>
+		<result column="title" property="title" javaType="String"></result>
+		<result column="content" property="content" javaType="String"></result>
+		<result column="writer" property="writer" javaType="String"></result>
+		<result column="postDate" property="postDate" javaType="java.sql.Timestamp"></result>
+		<result column="readCount" property="readCount" javaType="int"></result>
+		<result column="ref" property="ref" javaType="int"></result>
+		<result column="step" property="step" javaType="int"></result>
+		<result column="refOrder" property="refOrder" javaType="int"></result>
+
+		<result column="userName" property="userName" javaType="String"></result>
+		<result column="email" property="email" javaType="String"></result>
+		<result column="hobby" property="hobby" javaType="String"></result>
+	</resultMap>
+
+	<select id="selectBoardDetailInfoByBoardNo" resultMap="BoardDetailInfo">
+		select h.*, f.*, m.userName, m.email
+		from hboard h left outer join boardupfiles f on h.boardNo = f.boardNo
+		join member m on h.writer = m.userId
+		where h.boardNo = #{boardNo} and boardType = 'cboard';
+	</select>
+
+
+	<!-- 조회수 처리 ipAddr의 유저가 boardNo글을 조회한 날짜와 현재 시간 차이, 조회기록이 없다면 -1 반환 -->
+	<select id="selectBoardDateDiff" resultType="int">
+		select ifnull(datediff(now(), (select readWhen from boardreadlog where readWho = #{ipAddr} and boardNo = #{boardNo})) , -1) as datediff
+	</select>
+
+	<!-- BoardReadLog에 조회한 내역 저장 -->
+	<insert id="saveBoardReadLog">
+		insert into boardreadlog(readWho, boardNo) values(#{ipAddr}, #{boardNo});
+	</insert>
+
+	<!-- 조회수 증가 -->
+	<update id="updateReadCount">
+		update hboard set readCount = readCount + 1 where boardNo = #{boardNo}
+	</update>
+
+
+	<!-- 조회 시간 업데이트 -->
+	<update id="updateBoardReadLog">
+		update boardreadlog set readWhen = now()
+		where readWho = #{ipAddr} and boardNo = #{boardNo};
+	</update>
+
+	<!-- 답글 처리 -->
+	<update id="updateBoardRef">
+		update hboard set ref = #{boardNo}
+		where boardNo = #{boardNo}
+	</update>
+
+	<update id="updateBoardRefOrder">
+		update hboard set refOrder = refOrder + 1
+		where ref = #{ref} and refOrder > #{refOrder}
+	</update>
+
+	<!-- 답글 입력데이터와 함께 ref, step, refOrder 값 저장 -->
+	<insert id="insertReplyBoard">
+		insert into hboard(title, content, writer, ref, step, refOrder, boardType)
+		values(#{title}, #{content}, #{writer}, #{ref}, #{step}, #{refOrder}, 'cboard');
+	</insert>
+
+	<update id="updateBoardIsDelete">
+		update hboard set isDelete = 'Y'
+		where boardNo = #{boardNo};
+	</update>
+
+	<delete id="deleteBoardUpFiles">
+		delete from boardupfiles where boardNo = #{boardNo};
+	</delete>
+
+	<update id="updateBoard">
+		update hboard set title = #{title}, content = #{content}
+		where boardNo = #{boardNo};
+	</update>
+
+	<delete id="deleteBoardUpSomeFile">
+		delete from boardupfiles where boardUpfileNo = #{fileNo};
+	</delete>
+
+	<!-- 검색 -->
+	<select id="getSearchBoard" resultType="HBoardVO">
+		select * from hboard where isDelete = 'N'
+		<choose>
+			<when test="searchType == 'title'">
+				and title like #{searchWord}
+			</when>
+			<when test="searchType == 'writer'">
+				and writer like #{searchWord}
+			</when>
+			<when test="searchType == 'content'">
+				and content like #{searchWord}
+			</when>
+		</choose>
+		and boardType = 'cboard'
+		order by ref desc, refOrder asc limit #{startRowIndex}, #{viewPostCntPerPage}
+	</select>
+
+	<select id="selectTotalCntWithSearchCriteria" resultType="int">
+		select count(*) from hboard where isDelete = 'N'
+		<choose>
+			<when test="searchType == 'title'">
+				and title like #{searchWord}
+			</when>
+			<when test="searchType == 'writer'">
+				and writer like #{searchWord}
+			</when>
+			<when test="searchType == 'content'">
+				and content like #{searchWord}
+			</when>
+		</choose>
+		and boardType = 'cboard'
+	</select>
+	
+	<!-- 좋아요 -->
+	<insert id="like">
+		insert into boardlike(who, boardNo) values(#{who}, #{boardNo});
+	</insert>
+	
+	<update id="updateLikeCount">
+		update hboard set likecount = likecount + #{n} where boardNo = #{boardNo};
+	</update>
+	
+	<delete id="disLike">
+		delete from boardlike where boardNo = #{boardNo} and who = #{who}
+	</delete>
+
+</mapper>

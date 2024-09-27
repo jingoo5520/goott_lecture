@@ -24,7 +24,6 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -34,6 +33,17 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "index";
+	}
+	
+	
+	@RequestMapping("/exampleInterceptor")
+	public void examInterceptor() {
+		logger.info("exampleInterceptor() 호출!");
+	}
+	
+	@RequestMapping("/example")
+	public void testInterceptors() {
+		logger.info("testInterceptors() 호출!");
 	}
 	
 }

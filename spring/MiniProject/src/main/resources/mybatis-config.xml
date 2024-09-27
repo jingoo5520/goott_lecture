@@ -3,5 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
- 
+	<!-- type 별칭 정하기 -->
+	<typeAliases>
+		<typeAlias type="com.miniproject.domain.HBoardVO" alias="HBoardVO"/>
+		<typeAlias type="com.miniproject.domain.BoardUpFilesVODTO" alias="BoardUpFilesVODTO"/>
+		<typeAlias type="com.miniproject.domain.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.miniproject.domain.CommentVO" alias="CommentVO"/>
+	</typeAliases>
+
+	
+
 </configuration>

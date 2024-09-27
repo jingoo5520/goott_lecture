@@ -4,8 +4,25 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Test</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            function test(buttonElement) {
+                console.log("123");
+                console.log($(this));
+                console.log(buttonElement.outerHTML);
+            }
+
+            // window.onload = function () {
+            //     $("#btn").click(function () {
+            //         console.log(this);
+            //         // $(this).remove(); // 클릭된 버튼을 삭제
+            //     });
+            // };
+        </script>
     </head>
     <body>
-        이동된 페이지
+        <div>
+            <button id="btn" onclick="test(this)">버튼</button>
+        </div>
     </body>
 </html>

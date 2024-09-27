@@ -24,4 +24,6 @@ public class HBoardVO {
 	private int ref;
 	private int step;
 	private int refOrder;
+	private String isDelete;
+	private String boardType;
 }
