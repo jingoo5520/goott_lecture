@@ -24,6 +24,7 @@ import com.miniproject.domain.HBoardVO;
 import com.miniproject.domain.PagingInfo;
 import com.miniproject.domain.PagingInfoDTO;
 import com.miniproject.domain.SearchCriteriaDTO;
+import com.miniproject.persistence.CBoardDAO;
 import com.miniproject.service.hboard.CBoardService;
 import com.miniproject.util.GetClientIPAddr;
 
@@ -36,6 +37,9 @@ public class CBoardController {
 
 	@Inject
 	private CBoardService service; // 서비스 객체 주입
+	
+	@Inject
+	private CBoardDAO cDao;
 
 	@RequestMapping("/listAll") // /hboard/listAll 호출시 해당 메서드 실행
 	public void listAll(Model model, @RequestParam(value = "pageNo", defaultValue = "1") int pageNo,
@@ -92,12 +96,16 @@ public class CBoardController {
 		BoardDetailInfo hboardInfo = null;
 		String ipAddr = GetClientIPAddr.getClientIp(request);
 		String returnViewPage = "";
+		List<String> peopleLike = null;
 
 		if (boardNo == -1) {
 			returnViewPage = "redirect:/hboard/listAll";
 
 		} else {
 			try {
+				
+				peopleLike = cDao.selectPeopleWhoLikeBoard(boardNo);
+				
 				if (request.getRequestURI().equals("/cboard/viewBoard")) {
 					System.out.println("게시글 상세보기 호출");
 					hboardInfo = service.read(boardNo, ipAddr);
@@ -115,6 +123,7 @@ public class CBoardController {
 			}
 
 			model.addAttribute("board", hboardInfo);
+			model.addAttribute("peopleLike", peopleLike);
 		}
 		
 		return returnViewPage;
@@ -244,4 +253,9 @@ public class CBoardController {
 		
 		return result;
 	}
+	
+//	@GetMapping("/getBoardlikers")
+//	public void getBoardlikers(@RequestParam("boardNo") int boardNo) {
+//		// service.getBoardlikers(boardNo);
+//	}
 }

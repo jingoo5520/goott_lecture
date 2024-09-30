@@ -12,12 +12,12 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<!-- 데이터베이스 Connection -->
-<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="false">
-	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-	<property name="url" value="jdbc:mysql://localhost:3306/my?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useSSL=false" />
-	<property name="username" value="root" />
-	<property name="password" value="1234" />
-</bean>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="false">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/my?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useSSL=false" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
 
 	<!-- DB log4jdbc 설정 -->
 	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="false"> <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" /> <property name="url" value="jdbc:slf4jdbc:mysql://localhost:3306/my?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useSSL=false" /> <property name="username" value="root" /> <property name="password" value="1234" /> </bean> -->
@@ -25,25 +25,25 @@
 	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy"> </property> <property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/my?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useSSL=false"> </property> <property name="username" value="root"></property> <property name="password" value="1234"></property> </bean> -->
 
 
-<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource" />
-	<!-- mybatis 환경 설정 파일이 위치해 있는 곳 -->
-	<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-	<!-- mapper파일이 위치해 있는 곳 -->
-	<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" />
-</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- mybatis 환경 설정 파일이 위치해 있는 곳 -->
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<!-- mapper파일이 위치해 있는 곳 -->
+		<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" />
+	</bean>
 
 	<!-- sqlSessionTemplate 객체 설정 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
+
 	<!-- transaction 처리를 annotaion 으로 진행하겠다. -->
-	<tx:annotation-driven/>
-	
+	<tx:annotation-driven />
+
 	<!-- AOP 설정을 위한 proxy 객체 생성 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
+
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
@@ -52,9 +52,9 @@
 	<context:component-scan base-package="com.miniproject.service.hboard" />
 	<context:component-scan base-package="com.miniproject.service.member" />
 	<context:component-scan base-package="com.miniproject.util" />
-	
 
 
 
-	
+
+
 </beans>

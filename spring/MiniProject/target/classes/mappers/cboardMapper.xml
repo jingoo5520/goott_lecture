@@ -170,4 +170,8 @@
 		delete from boardlike where boardNo = #{boardNo} and who = #{who}
 	</delete>
 
+	<select id="selectPeopleWhoLikeBoard" resultType="String">
+		select who from boardlike where boardNo = #{boardNo }
+	</select>
+
 </mapper>

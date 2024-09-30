@@ -15,6 +15,7 @@
 
 	$(function() {
 		getAllComments(pageNo);
+		getLikers();
 		
 		$(".fa-heart").click(function(){
 			if($(this).attr("id") == "dislike"){
@@ -29,6 +30,26 @@
 		})
 		
 	});
+	
+	// 보류
+	function getLikers(boardNo){
+		$.ajax({
+			url : "/cboard/getBoardlikers",
+			type : "GET",
+			data: {
+				"boardNo": boardNo,
+			},
+			dataType: "text",
+			success : function(data) {
+				console.log(data);
+			},
+			error : function(e) {
+				console.log(e);
+			},
+			complete : function() {
+			}
+		});
+	}
 	
 	// 좋아요 업데이트
 	function sendBoardLike(doesLike){
@@ -68,7 +89,9 @@
 				// displayAllComments(data);
 				
 				if(data.resultCode == 200 || data.resultMessage == 'SUCCESS'){
-					outputComments(data);				
+					outputComments(data);			
+					outputPagination(data);
+					
 				}
 			},
 			error : function(e) {
@@ -102,7 +125,7 @@
 	                              output += `<div class="commentBtns"></div>`;
 	                           } else if (item.commenter == '${loginMember.userId}') {
 	                              output += `<div class="commentBtns">`;
-	                              output += `<img src="/resources/images/modify.png" onclick="modifyComment(\${item.commentNo});" width="25px;"/>`;
+	                              // output += `<img src="/resources/images/modify.png" onclick="modifyComment(\${item.commentNo});" width="25px;"/>`;
 	                              output += `<img src="/resources/images/remove.png" onclick="removeComment(\${item.commentNo});" width="25px;"/>`;
 	                              output += `</div>`;
 	                           }
@@ -126,6 +149,39 @@
 	      $(".commentList").html(output);
 	   }
 	
+	// 댓글 페이징
+	function outputPagination(comments){
+		console.log(pageNo);
+		let pagingInfo = comments.data.pi;
+		let output = `<ul class="pagination justify-content-center" style="margin:20px 0">`;
+		
+		console.log(pagingInfo);
+		
+		if(pageNo > 1){
+			output += `<li class="page-item"><a class="page-link" onclick="getAllComments(--pageNo)">Previous</a></li>`;	
+		} else if(pageNo == 1){
+			output += `<li class="page-item disabled"><a class="page-link">Previous</a></li>`
+		}
+		
+		for(let i = pagingInfo.startPageNoCurBloack; i <= pagingInfo.endPageNoCurBlock; i++){
+				output += `<li class="page-item \${i == pageNo ? 'active' : ''}"><a class="page-link" onclick="getAllComments(\${i})">\${i}</a></li>`	
+		}
+
+		if(pageNo < pagingInfo.totalPageCnt){
+			output += `<li class="page-item"><a class="page-link" onclick="getAllComments(++pageNo)">Next</a></li>`;
+		} else if(pageNo == pagingInfo.totalPageCnt){
+			output += `<li class="page-item disabled"><a class="page-link">Next</a></li>`
+		}
+		
+		output += `</ul>`;
+		
+		$(".commentPagination").html(output);
+	}
+	
+	
+	//<ul class="pagination justify-content-center" style="margin:20px 0">
+	 // 
+	// </ul>
 	
 	
 	
@@ -207,7 +263,14 @@
 				dataType : "json",
 				success : function(data) {
 					console.log(data);
-					getAllComments();
+					
+					if(data.msg == 'success'){
+						$("#commentContent").val("");
+						getAllComments(1);
+					}
+					
+					
+					
 				},
 				error : function(e) {
 					console.log(e);
@@ -242,6 +305,7 @@
 	<div class="container">
 		<div>${board }</div>
 
+
 		<h1>게시글 조회</h1>
 		<div class="input-group mb-3">
 			<span class="input-group-text">글 번호</span>
@@ -265,7 +329,47 @@
 			<input type="text" class="form-control" name="readCount" value='${board.readCount}' readonly />
 		</div>
 
-		<i id="dislike" class="fa-regular fa-heart"></i>
+
+
+
+
+		<div>${peopleLike.size()}</div>
+
+		<div class="mb-3 mt-3">
+			이 글을
+			<span>
+				<c:if test="${not empty peopleLike}">
+					<c:if test="${peopleLike.size() le 3}">
+						<c:forEach var="who" items="${peopleLike }" varStatus="status">
+							<c:if test="${status.first }">${who }님 </c:if>
+							<c:if test="${not status.first }">, ${who }님 </c:if>
+						</c:forEach>이 좋아합니다.
+					</c:if>
+
+					<c:if test="${peopleLike.size() ge 4}">
+						<c:forEach var="who" items="${peopleLike }" begin="1" end="3">
+							${who }님
+						</c:forEach>
+						외 <span>${peopleLike.size() - 3}명이 좋아합니다.</span>
+					</c:if>
+				</c:if>
+			</span>
+		</div>
+
+		<div>
+			<c:set var="stop" value="false" />
+			<c:forEach var="who" items="${peopleLike }">
+				<c:if test="${who == loginMember.userId }">
+					<i id="like" class="fa-solid fa-heart"></i>
+					<c:set var="stop" value="true" />
+				</c:if>
+			</c:forEach>
+			<c:if test="${stop == false }">
+				<i id="dislike" class="fa-regular fa-heart"></i>
+			</c:if>
+		</div>
+
+
 
 		<div class="mb-3">
 			<label for="content">내용: </label>
@@ -283,6 +387,8 @@
 		</div>
 
 		<div class="commentList"></div>
+		<div class="commentPagination"></div>
+
 
 
 	</div>

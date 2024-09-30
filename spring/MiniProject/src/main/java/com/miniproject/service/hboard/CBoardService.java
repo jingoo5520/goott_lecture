@@ -44,9 +44,13 @@ public interface CBoardService {
 	// 게시판 수정
 	boolean modifyBoard(HBoardDTO modifyBoard) throws Exception;
 
-	// 좋아요, 좋아요 취소
+	// 좋아요
 	boolean likeBoard(int boardNo, String who) throws Exception;
 
+	// 좋아요 취소
 	boolean disLikeBoard(int boardNo, String who) throws Exception;
+
+	// 해당 게시글을 좋아요 한 사람들 조회
+	List<String> selectPeopleWhoLike(int boardNo) throws Exception;
 
 }

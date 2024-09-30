@@ -81,4 +81,6 @@ public interface CBoardDAO {
 	int updateBoardLikeCount(int i, int boardNo) throws Exception;
 
 	int disLikeBoard(int boardNo, String who) throws Exception;
+
+	List<String> selectPeopleWhoLikeBoard(int boardNo) throws Exception;
 }

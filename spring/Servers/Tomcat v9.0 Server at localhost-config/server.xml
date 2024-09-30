@@ -164,7 +164,7 @@
 
       <Context docBase="simpleproject" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:simpleproject"/>
       
-      </Host>
+      <Context docBase="final_project" path="/" reloadable="true" source="org.eclipse.jst.jee.server:final_project"/></Host>
     </Engine>
   </Service>
 </Server>

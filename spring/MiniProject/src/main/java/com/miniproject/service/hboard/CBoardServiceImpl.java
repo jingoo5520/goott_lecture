@@ -4,14 +4,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.miniproject.domain.BoardDetailInfo;
-import com.miniproject.domain.BoardUpFilesVODTO;
 import com.miniproject.domain.HBoardDTO;
 import com.miniproject.domain.HBoardReplyDTO;
 import com.miniproject.domain.HBoardVO;
@@ -149,7 +153,18 @@ public class CBoardServiceImpl implements CBoardService {
 			updateReadCount(boardNo, boardInfo);
 			// 해당 글 불러오기
 		}
+		
+		
+		
+		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attrs.getRequest();
+        
+        HttpSession ses = request.getSession();
+        
+        System.out.println("ses: " + ses);
 
+		
+		
 		return boardInfo;
 	}
 
@@ -159,7 +174,7 @@ public class CBoardServiceImpl implements CBoardService {
 			boardInfo.setReadCount(boardInfo.getReadCount() + 1);
 		}
 	}
-
+	
 	@Override
 	public boolean saveReply(HBoardReplyDTO replyBoardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -217,6 +232,12 @@ public class CBoardServiceImpl implements CBoardService {
 		}
 
 		return false;
+	}
+
+	// 해당 게시글을 좋아요 한 사람들 조회
+	@Override
+	public List<String> selectPeopleWhoLike(int boardNo) throws Exception {
+		return cDao.selectPeopleWhoLikeBoard(boardNo);
 	}
 
 }
