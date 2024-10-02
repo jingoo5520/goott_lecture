@@ -47,4 +47,9 @@
 		select * from member where sesId = #{sesId} and allimit > now()
 	</select>
 	
+	<update id="updateAccountLock">
+		update member set isLock = 'Y' where userId = #{userId}
+	</update>
+	
+	
 </mapper>

@@ -15,7 +15,7 @@ import com.miniproject.persistence.MemberDAO;
 import com.miniproject.persistence.PointLogDAO;
 
 @Service
-public class memberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService {
 
 	@Inject
 	private MemberDAO mDao;

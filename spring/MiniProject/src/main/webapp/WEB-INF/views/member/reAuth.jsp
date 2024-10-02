@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>재인증 뷰</h1>
 </body>
 </html>

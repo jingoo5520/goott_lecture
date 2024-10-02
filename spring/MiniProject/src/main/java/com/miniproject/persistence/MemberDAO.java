@@ -22,4 +22,7 @@ public interface MemberDAO {
 
 	// 댓글작성으로 인한 유저의 point 수정
 	int updateUserPointComment(String commenter) throws Exception;
+	
+	// 유저 계정 잠금
+	int updateAccountLock(String userId) throws Exception;
 }

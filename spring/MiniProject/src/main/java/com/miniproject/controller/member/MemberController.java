@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -212,11 +213,10 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// 유저 이미지 가져오기
-	/*
-	 * public String getMemberImg() {
-	 * 
-	 * 
-	 * }
-	 */
+	@GetMapping("/reAuth")
+	public String reAuthGet(HttpSession session) {
+		session.removeAttribute("destPath");
+		
+		return "/member/reAuth";
+	}
 }
